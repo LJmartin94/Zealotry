@@ -4,27 +4,78 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Log.d("lbo_Main", "Main completed successfully");
-    }
+	 	int day;
 
-    public void launchNewActivity(View v)
-    {
-        //launch new activity
-        Intent i = new Intent(this, NewActivity.class);
-        startActivity(i);
-    }
+	 	super.onCreate(savedInstanceState);
+	 	setContentView(R.layout.activity_main);
+	 	setTitle(getString(R.string.act_main));
+	 	day = getDay();
+	 	setDay(day);
+	 	Log.d("lbo_Main", "Main completed successfully");
+	}
+
+	public int	getDay()
+	{
+		Calendar calendar = Calendar.getInstance();
+		int day = calendar.get(Calendar.DAY_OF_WEEK);
+		return (day);
+	}
+
+	public int	setDay(int	day)
+	{
+		String today;
+
+		today = getString(R.string.NaN);
+		switch (day) {
+			case Calendar.SUNDAY:
+				today = getString(R.string.Sunday);
+				break;
+			case Calendar.MONDAY:
+				today = getString(R.string.Monday);
+				break;
+			case Calendar.TUESDAY:
+				today = getString(R.string.Tuesday);
+				break;
+			case Calendar.WEDNESDAY:
+				today = getString(R.string.Wednesday);
+				break;
+			case Calendar.THURSDAY:
+				today = getString(R.string.Thursday);
+				break;
+			case Calendar.FRIDAY:
+				today = getString(R.string.Friday);
+				break;
+			case Calendar.SATURDAY:
+				today = getString(R.string.Saturday);
+				break;
+		}
+		((TextView)findViewById(R.id.Day)).setText(today);
+		return (1);
+	}
+
+	public void launchNewActivity(View v)
+	{
+		//launch new activity
+		Intent i = new Intent(this, NewActivity.class);
+		String input = ((EditText)findViewById(R.id.inputTextName)).getText().toString();
+		i.putExtra("Extra_info", input);
+		startActivity(i);
+	}
 
     public void unusedExample()
     {
