@@ -5,10 +5,10 @@
     <string name="main_text_input">Blank</string>
 	<string name="NaN">Nun</string>
 	<string name="Monday">Moon</string>
-	<string name="Tuesday">Tyr</string>
-	<string name="Wednesday">Wodan</string>
-	<string name="Thursday">Thor</string>
-	<string name="Friday">Frigg</string>
-	<string name="Saturday">Saturn</string>
+	<string name="Tuesday">Tyr\'s day</string>
+	<string name="Wednesday">Wodan\'s day</string>
+	<string name="Thursday">Thor\'s day</string>
+	<string name="Friday">Frigg\'s day</string>
+	<string name="Saturday">Saturn\'s day</string>
 	<string name="Sunday">Sun</string>
 </resources>
