@@ -2,16 +2,10 @@
 TO DO:
 Need to choose good colour scheme
 
-Have Days run from 4am to 4am.
-
 ----------------------------------------------
 BLUE PRINT:
 
 Want to appify and gamify my daily routine:
-
-Fetch day of the week
-
-Hydration
 
 Sunrise - Wake up
 
@@ -32,6 +26,7 @@ Wind watch
 Go to work or for walk
 
 Food
+Hydration
 
 Dishes
 
@@ -46,13 +41,15 @@ Sleep
 
 
 
-Other:
+Other actions:
 
 Writing
 Arts & Crafts
 Tailoring
 Find new music
 Other creative project
+
+Computer games
 
 Outing
 
@@ -72,7 +69,23 @@ Contact with Friends abroad
 
 Seasonal/recurring (Birthdays, haircuts, perfume)
 
+
+Other aspects of app:
+
+music
+
+Art
+
+"Personality test"
+
+Regions
+
+Game
+
 ----------------------------------------------
 GENERAL NOTES:
 
 Make touch targets at least 48dp
+
+wrap_content and match_parent
+

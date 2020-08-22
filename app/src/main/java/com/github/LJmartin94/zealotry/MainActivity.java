@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
 	{
 		Calendar calendar = Calendar.getInstance();
 		int day = calendar.get(Calendar.DAY_OF_WEEK);
+		//We want one day to turn into the next at 4am, not 12am.
+		//It is my devout belief no one should go to bed after 4am nor get up before 4am.
+		if (calendar.get(Calendar.HOUR_OF_DAY) < 4)
+			day = (7 + day - 1) % 7;
 		return (day);
 	}
 
