@@ -36,4 +36,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Day" />
 
+	<ScrollView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/button">
+
+		<TextView
+			android:id="@+id/tv_toy_names"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="16dp"
+			android:textSize="20sp" />
+	</ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
