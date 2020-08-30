@@ -1,56 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="launchNewActivity"
-        android:text="@string/act_second"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputTextName" />
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".MainActivity">
 
 	<TextView
 		android:id="@+id/Day"
-		android:layout_width="95dp"
-		android:layout_height="27dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
 		android:text="@string/NaN"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/inputTextName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/main_text_input"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Day" />
-
-	<ScrollView
+	<EditText
+		android:id="@+id/inputTextName"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:ems="10"
+		android:inputType="textPersonName"
+		android:text="@string/main_text_input"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/Day" />
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="32dip"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/button">
+		app:layout_constraintTop_toTopOf="@+id/guideline">
 
-		<TextView
-			android:id="@+id/tv_toy_names"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:padding="16dp"
-			android:textSize="20sp" />
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+			<Button
+				android:id="@+id/Sunrise"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:onClick="launchSunshine"
+				android:text="@string/act_sunshine" />
+
+			<Button
+				android:id="@+id/Sunrise2"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:onClick="launchNewActivity"
+				android:text="@string/act_second" />
+
+			<TextView
+				android:id="@+id/tv_toy_names"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="16dp"
+				android:textSize="20sp" />
+		</LinearLayout>
 	</ScrollView>
+
+	<androidx.constraintlayout.widget.Guideline
+		android:id="@+id/guideline"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		app:layout_constraintGuide_percent="0.15" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

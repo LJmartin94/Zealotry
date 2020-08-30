@@ -18,12 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+		<activity
+			android:name=".Sunshine"
+			android:label="@string/act_sunshine"
+			android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".NewActivity"
             android:label="@string/act_second"
             android:parentActivityName=".MainActivity"/>
-		<activity
-			android:name=".Sunshine"/>
     </application>
 
 </manifest>
