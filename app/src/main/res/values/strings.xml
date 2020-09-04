@@ -12,4 +12,6 @@
 	<string name="Friday">Frigg\'s day</string>
 	<string name="Saturday">Saturn\'s day</string>
 	<string name="Sunday">Day of the Sun</string>
+
+	<string name="sunshineMenu">Search</string>
 </resources>
