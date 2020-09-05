@@ -3,12 +3,15 @@ package com.github.LJmartin94.zealotry;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.IOException;
 import java.net.URL;
 
 public class Sunshine extends AppCompatActivity {
@@ -37,10 +40,34 @@ public class Sunshine extends AppCompatActivity {
 		String githubQuery = mSearchBoxEditText.getText().toString();
 		URL githubSearchUrl = NetworkUtils.buildUrl(githubQuery);
 		mUrlDisplayTextView.setText(githubSearchUrl.toString());
+		new GithubQueryTask().execute(githubSearchUrl);
+	}
+
+	public class GithubQueryTask extends AsyncTask<URL, Void, String>
+	{
+		@Override
+		protected String doInBackground(URL... params)
+		{
+			URL searchUrl = params[0];
+			String githubSearchResults = null;
+			try
+				{ githubSearchResults = NetworkUtils.getResponseFromHttpUrl(searchUrl);}
+			catch (IOException e)
+				{ e.printStackTrace();}
+			return githubSearchResults;
+		}
+
+		@Override
+		protected void onPostExecute(String githubSearchResults)
+		{
+			if (githubSearchResults != null && !githubSearchResults.equals(""))
+				{ mSearchResultsTextView.setText(githubSearchResults);}
+		}
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
 		getMenuInflater().inflate(R.menu.sunshine, menu);
 		return true;
 	}

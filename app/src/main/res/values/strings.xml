@@ -11,6 +11,8 @@
 	<string name="Thursday">Thor\'s day</string>
 	<string name="Friday">Frigg\'s day</string>
 	<string name="Saturday">Saturn\'s day</string>
+	<string name="DanishSaturday">Lør dage</string>
+	<string name="IcelandicSaturday">Laugar dagur</string>
 	<string name="Sunday">Day of the Sun</string>
 
 	<string name="sunshineMenu">Search</string>
