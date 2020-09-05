@@ -9,13 +9,13 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.net.URL;
 
 public class Sunshine extends AppCompatActivity {
 
 	private EditText mSearchBoxEditText;
 	private TextView mUrlDisplayTextView;
 	private TextView mSearchResultsTextView;
-	//could move this inside the function, no?
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,18 @@ public class Sunshine extends AppCompatActivity {
 		mSearchBoxEditText = (EditText) findViewById(R.id.et_search_box);
 		mUrlDisplayTextView = (TextView) findViewById(R.id.tv_url_display);
 		mSearchResultsTextView = (TextView) findViewById(R.id.tv_github_search_results_json);
+	}
+
+	/**
+	 * This method retrieves the search text from the EditText, constructs
+	 * the URL (using {@link NetworkUtils}) for the github repository you'd like to find, displays
+	 * that URL in a TextView, and finally fires off an AsyncTask to perform the GET request using
+	 * our (not yet created) {@link GithubQueryTask}
+	 */
+	private void makeGithubSearchQuery() {
+		String githubQuery = mSearchBoxEditText.getText().toString();
+		URL githubSearchUrl = NetworkUtils.buildUrl(githubQuery);
+		mUrlDisplayTextView.setText(githubSearchUrl.toString());
 	}
 
 	@Override
@@ -37,16 +49,13 @@ public class Sunshine extends AppCompatActivity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
-		// Get the ID of the item that was selected
 		int itemThatWasClickedId = item.getItemId();
-		// If the item's ID is R.id.action_search,
 		if (itemThatWasClickedId == R.id.action_search)
 		{
 			Context context = Sunshine.this;
-			// show a Toast
-			String textToShow = "Search clicked";
-			Toast.makeText(context, textToShow, Toast.LENGTH_SHORT).show();
-			// and return true to tell Android that you've handled this menu click.
+			// String textToShow = "Search clicked";
+			// Toast.makeText(context, textToShow, Toast.LENGTH_SHORT).show();
+			makeGithubSearchQuery();
 			return true;
 		}
 		// If you do NOT handle the menu click, return super.onOptionsItemSelected to let Android handle the menu click
