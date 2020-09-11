@@ -55,7 +55,8 @@ public class NetworkUtils
 			"https://andfun-weather.udacity.com/weather";
 	private static final String STATIC_WEATHER_URL =
 			"https://andfun-weather.udacity.com/staticweather";
-	private static final String FORECAST_BASE_URL = STATIC_WEATHER_URL;
+	//private static final String FORECAST_BASE_URL = STATIC_WEATHER_URL;
+	private static final String FORECAST_BASE_URL = DYNAMIC_WEATHER_URL;
 
 	/* The format we want our API to return */
 	private static final String format = "json";

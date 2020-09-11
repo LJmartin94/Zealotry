@@ -24,6 +24,10 @@
 	<string name="act_WeatherForecast">Weather Forecast</string>
 	<string name="today">Today</string>
 	<string name="tomorrow">Tomorrow</string>
+	<string name="action_refresh">Refresh</string>
+	<string name="error_message">
+        An error has occurred. Please REFRESH
+    </string>
 	<string name="format_full_friendly_date">
         <xliff:g id="day">%2$s</xliff:g>, <xliff:g id="month">%1$s</xliff:g>
     </string>
