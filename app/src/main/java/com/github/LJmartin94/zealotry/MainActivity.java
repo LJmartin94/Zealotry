@@ -76,10 +76,10 @@ public class MainActivity extends AppCompatActivity {
 		return (1);
 	}
 
-	public void launchNewActivity(View v)
+	public void launchWeatherForecast(View v)
 	{
 		//launch new activity
-		Intent i = new Intent(this, NewActivity.class);
+		Intent i = new Intent(this, WeatherForecast.class);
 		String input = ((EditText)findViewById(R.id.inputTextName)).getText().toString();
 		i.putExtra("Extra_info", input);
 		startActivity(i);
@@ -89,6 +89,15 @@ public class MainActivity extends AppCompatActivity {
 	{
 		//launch new activity
 		Intent i = new Intent(this, GitHubSearch.class);
+		String input = ((EditText)findViewById(R.id.inputTextName)).getText().toString();
+		i.putExtra("Extra_info", input);
+		startActivity(i);
+	}
+
+	public void launchNewActivity(View v)
+	{
+		//launch new activity
+		Intent i = new Intent(this, NewActivity.class);
 		String input = ((EditText)findViewById(R.id.inputTextName)).getText().toString();
 		i.putExtra("Extra_info", input);
 		startActivity(i);

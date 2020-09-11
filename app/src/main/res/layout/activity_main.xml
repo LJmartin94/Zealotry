@@ -41,14 +41,21 @@
 			android:orientation="vertical">
 
 			<Button
-				android:id="@+id/Sunrise"
+				android:id="@+id/WeatherForecast"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:onClick="launchWeatherForecast"
+				android:text="@string/act_WeatherForecast" />
+
+			<Button
+				android:id="@+id/GHsearch"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:onClick="launchGitHubSearch"
 				android:text="@string/act_githubsearch" />
 
 			<Button
-				android:id="@+id/Sunrise2"
+				android:id="@+id/NewAct"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:onClick="launchNewActivity"

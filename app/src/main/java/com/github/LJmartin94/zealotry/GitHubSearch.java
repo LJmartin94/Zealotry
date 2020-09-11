@@ -45,7 +45,7 @@ public class GitHubSearch extends AppCompatActivity
 	private void makeGithubSearchQuery()
 	{
 		String githubQuery = mSearchBoxEditText.getText().toString();
-		URL githubSearchUrl = NetworkUtils.buildUrl(githubQuery);
+		URL githubSearchUrl = NetworkUtils.GHbuildUrl(githubQuery);
 		mUrlDisplayTextView.setText(githubSearchUrl.toString());
 		new GithubQueryTask().execute(githubSearchUrl);
 	}

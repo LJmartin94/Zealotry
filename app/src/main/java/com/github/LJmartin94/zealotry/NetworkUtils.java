@@ -1,7 +1,9 @@
 package com.github.LJmartin94.zealotry;
 
 import android.net.Uri;
-		import java.io.IOException;
+import android.util.Log;
+
+import java.io.IOException;
 		import java.io.InputStream;
 		import java.net.HttpURLConnection;
 		import java.net.MalformedURLException;
@@ -14,6 +16,10 @@ import android.net.Uri;
 
 public class NetworkUtils
 {
+	/**
+	 * 	Git Hub Search variables
+	 */
+
 	final static String GITHUB_BASE_URL =
 			"https://api.github.com/search/repositories";
 	final static String PARAM_QUERY = "q";
@@ -23,12 +29,9 @@ public class NetworkUtils
 
 	/**
 	 * Builds the URL used to query GitHub.
-	 *
-	 * @param githubSearchQuery The keyword that will be queried for.
-	 * @return The URL to use to query the GitHub server.
 	 */
 
-	public static URL buildUrl(String githubSearchQuery)
+	public static URL GHbuildUrl(String githubSearchQuery)
 	{
 		Uri builtUri = Uri.parse(GITHUB_BASE_URL).buildUpon()
 				.appendQueryParameter(PARAM_QUERY, githubSearchQuery)
@@ -42,6 +45,56 @@ public class NetworkUtils
 			{ e.printStackTrace();}
 		return url;
 	}
+
+	/**
+	 * 	Weather Forecast variables
+	 */
+
+	private static final String TAG = NetworkUtils.class.getSimpleName();
+	private static final String DYNAMIC_WEATHER_URL =
+			"https://andfun-weather.udacity.com/weather";
+	private static final String STATIC_WEATHER_URL =
+			"https://andfun-weather.udacity.com/staticweather";
+	private static final String FORECAST_BASE_URL = STATIC_WEATHER_URL;
+
+	/* The format we want our API to return */
+	private static final String format = "json";
+	/* The units we want our API to return */
+	private static final String units = "metric";
+	/* The number of days we want our API to return */
+	private static final int numDays = 14;
+
+	final static String QUERY_PARAM = "q";
+	final static String LAT_PARAM = "lat";
+	final static String LON_PARAM = "lon";
+	final static String FORMAT_PARAM = "mode";
+	final static String UNITS_PARAM = "units";
+	final static String DAYS_PARAM = "cnt";
+
+	/**
+	 * Builds the URL used to talk to the weather server.
+	 */
+	public static URL WFbuildUrl(String locationQuery)
+	{
+		Uri builtUri = Uri.parse(FORECAST_BASE_URL).buildUpon()
+				.appendQueryParameter(QUERY_PARAM, locationQuery)
+				.appendQueryParameter(FORMAT_PARAM, format)
+				.appendQueryParameter(UNITS_PARAM, units)
+				.appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
+				.build();
+		URL url = null;
+		try
+		{ url = new URL(builtUri.toString());}
+		catch (MalformedURLException e)
+		{ e.printStackTrace();}
+		Log.v(TAG, "Built URI " + url);
+		return url;
+	}
+
+//	public static URL WFbuildUrl(Double lat, Double lon) {
+//		/** This will be implemented in a future lesson **/
+//		return null;
+//	}
 
 	/**
 	 * This method returns the entire result from the HTTP response.
