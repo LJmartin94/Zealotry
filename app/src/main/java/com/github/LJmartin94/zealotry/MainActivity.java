@@ -85,10 +85,10 @@ public class MainActivity extends AppCompatActivity {
 		startActivity(i);
 	}
 
-	public void launchSunshine(View v)
+	public void launchGitHubSearch(View v)
 	{
 		//launch new activity
-		Intent i = new Intent(this, Sunshine.class);
+		Intent i = new Intent(this, GitHubSearch.class);
 		String input = ((EditText)findViewById(R.id.inputTextName)).getText().toString();
 		i.putExtra("Extra_info", input);
 		startActivity(i);

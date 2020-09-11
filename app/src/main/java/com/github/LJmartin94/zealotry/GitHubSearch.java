@@ -11,12 +11,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.URL;
 
-public class Sunshine extends AppCompatActivity
+public class GitHubSearch extends AppCompatActivity
 {
 	private EditText mSearchBoxEditText;
 	private TextView mUrlDisplayTextView;
@@ -28,7 +27,7 @@ public class Sunshine extends AppCompatActivity
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_sunshine);
+		setContentView(R.layout.activity_githubsearch);
 
 		mSearchBoxEditText = (EditText) findViewById(R.id.et_search_box);
 		mUrlDisplayTextView = (TextView) findViewById(R.id.tv_url_display);
@@ -100,7 +99,7 @@ public class Sunshine extends AppCompatActivity
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
-		getMenuInflater().inflate(R.menu.sunshine, menu);
+		getMenuInflater().inflate(R.menu.githubsearch, menu);
 		return true;
 	}
 
@@ -111,7 +110,7 @@ public class Sunshine extends AppCompatActivity
 		int itemThatWasClickedId = item.getItemId();
 		if (itemThatWasClickedId == R.id.action_search)
 		{
-			Context context = Sunshine.this;
+			Context context = GitHubSearch.this;
 			// String textToShow = "Search clicked";
 			// Toast.makeText(context, textToShow, Toast.LENGTH_SHORT).show();
 			makeGithubSearchQuery();

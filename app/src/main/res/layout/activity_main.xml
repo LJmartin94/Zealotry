@@ -44,8 +44,8 @@
 				android:id="@+id/Sunrise"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:onClick="launchSunshine"
-				android:text="@string/act_sunshine" />
+				android:onClick="launchGitHubSearch"
+				android:text="@string/act_githubsearch" />
 
 			<Button
 				android:id="@+id/Sunrise2"

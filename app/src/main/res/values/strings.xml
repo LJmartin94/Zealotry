@@ -15,6 +15,8 @@
 	<string name="IcelandicSaturday">Laugar dagur</string>
 	<string name="Sunday">Day of the Sun</string>
 
-	<string name="sunshineMenu">Search</string>
+
+	<string name="act_githubsearch">GitHub Search</string>
+	<string name="githubMenu">Search</string>
 	<string name="searchFailed">Failed to get results, please try again.</string>
 </resources>

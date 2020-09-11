@@ -5,5 +5,5 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
 			android:id="@+id/action_search"
 			android:orderInCategory="1"
 			app:showAsAction="ifRoom"
-			android:title="@string/sunshineMenu"/>
+			android:title="@string/githubMenu"/>
 </menu>
