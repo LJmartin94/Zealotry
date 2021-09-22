@@ -12,6 +12,11 @@ public class WF_ForecastAdapter extends RecyclerView.Adapter<WF_ForecastAdapter.
 {
 	private String[] mWeatherData;
 
+	public WF_ForecastAdapter()
+	{
+
+	}
+
 	public class ForecastAdapterViewHolder extends RecyclerView.ViewHolder
 	{
 		public final TextView mWeatherTextView;
