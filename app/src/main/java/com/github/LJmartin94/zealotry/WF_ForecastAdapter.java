@@ -28,4 +28,17 @@ public class WF_ForecastAdapter extends RecyclerView.Adapter<WF_ForecastAdapter.
 	{
 
 	}
+
+	@Override
+	public ForecastAdapterViewHolder onBindViewHolder(ForecastAdapterViewHolder forecastAdapterViewHolder, int position)
+	{
+
+	}
+
+	@Override
+	public ForecastAdapterViewHolder getItemCount()
+	{
+
+	}
+
 }
