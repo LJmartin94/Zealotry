@@ -38,15 +38,16 @@ public class WF_ForecastAdapter extends RecyclerView.Adapter<WF_ForecastAdapter.
 	@Override
 	public void onBindViewHolder(ForecastAdapterViewHolder forecastAdapterViewHolder, int position)
 	{
-		TextView textView;
-		textView = (TextView)forecastAdapterViewHolder;
-		textView.setText(position);
+		String weatherForThisDay = mWeatherData[position];
+		forecastAdapterViewHolder.mWeatherTextView.setText(weatherForThisDay);
 	}
 
 	@Override
 	public int getItemCount()
 	{
-
+		if (mWeatherData == null)
+			return(0);
+		return mWeatherData.length;
 	}
 
 }
