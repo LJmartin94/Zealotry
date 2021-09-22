@@ -36,13 +36,15 @@ public class WF_ForecastAdapter extends RecyclerView.Adapter<WF_ForecastAdapter.
 	}
 
 	@Override
-	public ForecastAdapterViewHolder onBindViewHolder(ForecastAdapterViewHolder forecastAdapterViewHolder, int position)
+	public void onBindViewHolder(ForecastAdapterViewHolder forecastAdapterViewHolder, int position)
 	{
-
+		TextView textView;
+		textView = (TextView)forecastAdapterViewHolder;
+		textView.setText(position);
 	}
 
 	@Override
-	public ForecastAdapterViewHolder getItemCount()
+	public int getItemCount()
 	{
 
 	}
