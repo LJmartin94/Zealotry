@@ -30,7 +30,7 @@ public class WeatherForecast extends AppCompatActivity {
 		setContentView(R.layout.activity_weatherforecast);
 
 //		mWeatherTextView = (TextView)findViewById(R.id.tv_weather_data);
-		mRecyclerView = (RecyclerView)findViewById(R.id.recyclerview_forecast)
+		mRecyclerView = (RecyclerView)findViewById(R.id.recyclerview_forecast);
 		LinearLayoutManager layoutManager
 				= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 		mRecyclerView.setLayoutManager(layoutManager);
