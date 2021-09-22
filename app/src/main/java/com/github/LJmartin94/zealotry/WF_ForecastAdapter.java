@@ -26,7 +26,13 @@ public class WF_ForecastAdapter extends RecyclerView.Adapter<WF_ForecastAdapter.
 	@Override
 	public ForecastAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
 	{
+		Context context = viewGroup.getContext();
+		int layoutIdForListItem = R.layout.wf_list_item;
+		LayoutInflater inflater = LayoutInflater.from(context);
+		boolean attachImmediately = false;
 
+		View view = inflater.inflate(layoutIdForListItem, viewGroup, attachImmediately);
+		return new ForecastAdapterViewHolder(view);
 	}
 
 	@Override
