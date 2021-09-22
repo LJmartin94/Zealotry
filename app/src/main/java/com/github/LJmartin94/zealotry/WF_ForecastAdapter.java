@@ -50,4 +50,9 @@ public class WF_ForecastAdapter extends RecyclerView.Adapter<WF_ForecastAdapter.
 		return mWeatherData.length;
 	}
 
+	public void setWeatherData(String[] weatherData)
+	{
+		mWeatherData = weatherData;
+		notifyDataSetChanged();
+	}
 }
