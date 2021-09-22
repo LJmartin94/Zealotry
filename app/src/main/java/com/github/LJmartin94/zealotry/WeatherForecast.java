@@ -1,6 +1,7 @@
 package com.github.LJmartin94.zealotry;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,7 +16,9 @@ import java.net.URL;
 
 public class WeatherForecast extends AppCompatActivity {
 
-	private TextView mWeatherTextView;
+//	private TextView mWeatherTextView;
+	private RecyclerView mRecyclerView;
+	private WF_ForecastAdapter mForecastAdapter;
 	private TextView mErrorMessageDisplay;
 	private ProgressBar mLoadingIndicator;
 
