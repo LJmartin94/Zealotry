@@ -1,6 +1,7 @@
 package com.github.LJmartin94.zealotry;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.AsyncTask;
@@ -28,8 +29,18 @@ public class WeatherForecast extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_weatherforecast);
 
-		mWeatherTextView = (TextView)findViewById(R.id.tv_weather_data);
+//		mWeatherTextView = (TextView)findViewById(R.id.tv_weather_data);
+		mRecyclerView = (RecyclerView)findViewById(R.id.recyclerview_forecast)
+		LinearLayoutManager layoutManager
+				= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+		mRecyclerView.setLayoutManager(layoutManager);
+		mRecyclerView.setHasFixedSize(true);
+
+		mForecastAdapter = new WF_ForecastAdapter();
+		mRecyclerView.setAdapter(mForecastAdapter);
+
 		mErrorMessageDisplay = (TextView)findViewById(R.id.tv_error_message_display);
+
 		mLoadingIndicator = (ProgressBar)findViewById(R.id.pb_loading_indicator);
 		loadWeatherData();
 	}
@@ -51,7 +62,7 @@ public class WeatherForecast extends AppCompatActivity {
 		int id = item.getItemId();
 		if (id == R.id.action_refresh)
 		{
-			mWeatherTextView.setText("");
+			mForecastAdapter.setWeatherData(null);
 			loadWeatherData();
 			return true;
 		}
@@ -67,13 +78,13 @@ public class WeatherForecast extends AppCompatActivity {
 
 	private void showWeatherDataView()
 	{
-		mWeatherTextView.setVisibility(View.VISIBLE);
+		mRecyclerView.setVisibility(View.VISIBLE);
 		mErrorMessageDisplay.setVisibility(View.INVISIBLE);
 	}
 
 	private void showErrorMessage()
 	{
-		mWeatherTextView.setVisibility(View.INVISIBLE);
+		mRecyclerView.setVisibility(View.INVISIBLE);
 		mErrorMessageDisplay.setVisibility(View.VISIBLE);
 	}
 
@@ -115,11 +126,12 @@ public class WeatherForecast extends AppCompatActivity {
 			if (weatherData != null)
 			{
 				showWeatherDataView();
-				for (String weatherString : weatherData)
-					{ mWeatherTextView.append((weatherString) + "\n\n\n");}
+				mForecastAdapter.setWeatherData(weatherData);
 			}
 			else
-				{ showErrorMessage();}
+			{
+				showErrorMessage();
+			}
 		}
 	}
 }
