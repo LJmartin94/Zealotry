@@ -1,6 +1,7 @@
 package com.github.LJmartin94.zealotry;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 public class WF_ForecastAdapter extends RecyclerView.Adapter<WF_ForecastAdapter.ForecastAdapterViewHolder>
 {
 	private String[] mWeatherData;
+	final private ForecastAdapterOnClickHandler mClickHandler;
 
-	public WF_ForecastAdapter()
+	public interface ForecastAdapterOnClickHandler
 	{
-
+		void onClick(String weatherForDay);
 	}
 
-	public class ForecastAdapterViewHolder extends RecyclerView.ViewHolder
+	public WF_ForecastAdapter(ForecastAdapterOnClickHandler handler)
+	{
+		mClickHandler = handler;
+	}
+
+	public class ForecastAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
 	{
 		public final TextView mWeatherTextView;
 
@@ -25,6 +32,18 @@ public class WF_ForecastAdapter extends RecyclerView.Adapter<WF_ForecastAdapter.
 		{
 			super(view);
 			mWeatherTextView = view.findViewById(R.id.tv_weather_data);
+			view.setOnClickListener(this);
+		}
+
+		@Override
+		public void onClick(View view)
+		{
+			int adapterPos;
+			String weatherDataForDay;
+
+			adapterPos = getAdapterPosition();
+			weatherDataForDay = mWeatherData[adapterPos];
+			mClickHandler.onClick(weatherDataForDay);
 		}
 	}
 
