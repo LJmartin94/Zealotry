@@ -12,10 +12,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.net.URL;
 
-public class WeatherForecast extends AppCompatActivity {
+public class WeatherForecast extends AppCompatActivity implements WF_ForecastAdapter.ForecastAdapterOnClickHandler {
 
 //	private TextView mWeatherTextView;
 	private RecyclerView mRecyclerView;
@@ -36,7 +37,7 @@ public class WeatherForecast extends AppCompatActivity {
 		mRecyclerView.setLayoutManager(layoutManager);
 		mRecyclerView.setHasFixedSize(true);
 
-		mForecastAdapter = new WF_ForecastAdapter();
+		mForecastAdapter = new WF_ForecastAdapter(this);
 		mRecyclerView.setAdapter(mForecastAdapter);
 
 		mErrorMessageDisplay = (TextView)findViewById(R.id.tv_error_message_display);
@@ -67,6 +68,19 @@ public class WeatherForecast extends AppCompatActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	Toast toast = null;
+
+	@Override
+	public void onClick(String weatherForDay)
+	{
+		if (toast != null)
+		{
+			toast.cancel();
+		}
+		toast = Toast.makeText(this, weatherForDay, Toast.LENGTH_SHORT);
+		toast.show();
 	}
 
 	private void loadWeatherData()
