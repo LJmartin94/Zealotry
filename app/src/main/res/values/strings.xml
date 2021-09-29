@@ -3,9 +3,6 @@
 	<string name="act_main">Main</string>
 	<string name="act_sunshine">Sunrise</string>
 	<string name="main_text_input">Blank</string>
-	<string name="main_morning_menu">Morning</string>
-	<string name="main_day_menu">Day</string>
-	<string name="main_evening_menu">Evening</string>
 
 	<string name="NaN">Nun</string>
 	<string name="Monday">Day of the Moon</string>
@@ -18,7 +15,12 @@
 	<string name="IcelandicSaturday">Laugar dagur</string>
 	<string name="Sunday">Day of the Sun</string>
 
-	<string name="act_second">Secondary Activity</string>
+	<string name="act_morning">Morning Menu</string>
+	<string name="main_morning_menu">Morning</string>
+	<string name="act_day">Day Menu</string>
+	<string name="main_day_menu">Day</string>
+	<string name="act_evening">Evening Menu</string>
+	<string name="main_evening_menu">Evening</string>
 
 	<string name="act_githubsearch">GitHub Search</string>
 	<string name="githubMenu">Search</string>
