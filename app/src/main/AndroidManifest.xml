@@ -11,9 +11,7 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".Evening_menu"></activity>
-		<activity android:name=".Day_menu" />
-		<activity android:name=".Morning_menu" /> <!-- <meta-data -->
+		<!-- <meta-data -->
 		<!-- android:name="com.google.android.actions" -->
 		<!-- android:resource="@xml/githubsearch" /> -->
 		<activity
@@ -34,8 +32,16 @@
 			android:label="@string/act_githubsearch"
 			android:parentActivityName=".MainActivity" />
 		<activity
-			android:name=".NewActivity"
-			android:label="@string/act_second"
+			android:name=".Morning_menu"
+			android:label="@string/act_morning"
+			android:parentActivityName=".MainActivity" />
+		<activity
+			android:name=".Day_menu"
+			android:label="@string/act_day"
+			android:parentActivityName=".MainActivity" />
+		<activity
+			android:name=".Evening_menu"
+			android:label="@string/act_evening"
 			android:parentActivityName=".MainActivity" />
 	</application>
 
