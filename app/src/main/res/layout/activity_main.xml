@@ -41,6 +41,27 @@
 			android:orientation="vertical">
 
 			<Button
+				android:id="@+id/Morning_Menu"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:onClick="launchMorningMenu"
+				android:text="@string/main_morning_menu" />
+
+			<Button
+				android:id="@+id/Day_Menu"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:onClick="launchDayMenu"
+				android:text="@string/main_day_menu" />
+
+			<Button
+				android:id="@+id/Evening_Menu"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:onClick="launchEveningMenu"
+				android:text="@string/main_evening_menu" />
+
+			<Button
 				android:id="@+id/WeatherForecast"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"

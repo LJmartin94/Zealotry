@@ -103,7 +103,36 @@ public class MainActivity extends AppCompatActivity {
 		startActivity(i);
 	}
 
-    public void unusedExample()
+	public void launchMorningMenu(View v)
+	{
+		//launch new activity
+		Intent i = new Intent(this, Morning_menu.class);
+		//String input = ((EditText)findViewById(R.id.inputTextName)).getText().toString();
+		//i.putExtra("Extra_info", input);
+		startActivity(i);
+	}
+
+	public void launchDayMenu(View v)
+	{
+		//launch new activity
+		Intent i = new Intent(this, Day_menu.class);
+		//String input = ((EditText)findViewById(R.id.inputTextName)).getText().toString();
+		//i.putExtra("Extra_info", input);
+		startActivity(i);
+	}
+
+	public void launchEveningMenu(View v)
+	{
+		//launch new activity
+		Intent i = new Intent(this, Evening_menu.class);
+		//String input = ((EditText)findViewById(R.id.inputTextName)).getText().toString();
+		//i.putExtra("Extra_info", input);
+		startActivity(i);
+	}
+
+
+
+	public void unusedExample()
     {
 //        ((Button)findViewById(R.id.someViewName)).setText("This is how to cast a view to a" +
 //        "button and immediately set its text");

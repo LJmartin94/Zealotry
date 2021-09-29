@@ -3,6 +3,9 @@
 	<string name="act_main">Main</string>
 	<string name="act_sunshine">Sunrise</string>
 	<string name="main_text_input">Blank</string>
+	<string name="main_morning_menu">Morning</string>
+	<string name="main_day_menu">Day</string>
+	<string name="main_evening_menu">Evening</string>
 
 	<string name="NaN">Nun</string>
 	<string name="Monday">Day of the Moon</string>

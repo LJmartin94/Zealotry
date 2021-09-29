@@ -11,7 +11,9 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<!-- <meta-data -->
+		<activity android:name=".Evening_menu"></activity>
+		<activity android:name=".Day_menu" />
+		<activity android:name=".Morning_menu" /> <!-- <meta-data -->
 		<!-- android:name="com.google.android.actions" -->
 		<!-- android:resource="@xml/githubsearch" /> -->
 		<activity
