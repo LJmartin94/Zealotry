@@ -94,12 +94,14 @@
 				android:id="@+id/meditation_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:onClick="launchMeditation"
 				android:text="@string/meditation" />
 
 			<Button
 				android:id="@+id/lang_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:onClick="launchLanguage"
 				android:text="@string/language" />
 
 			<Button
