@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 				today = getString(R.string.Saturday);
 				break;
 		}
-		((TextView)findViewById(R.id.Day)).setText(today);
+		//((TextView)findViewById(R.id.Day)).setText(today);
 		setTitle(today);
 		return (1);
 	}
