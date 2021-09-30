@@ -6,4 +6,126 @@
 	android:layout_height="match_parent"
 	tools:context=".Morning_menu">
 
+	<ScrollView
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:scrollbarStyle="insideOverlay"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+			<!--			app:layout_constraintBottom_toBottomOf="parent"-->
+			<!--			app:layout_constraintEnd_toEndOf="parent"-->
+			<!--			app:layout_constraintStart_toStartOf="parent"-->
+			<!--			app:layout_constraintTop_toTopOf="parent">-->
+
+			<Button
+				android:id="@+id/wakeup_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/wake_up" />
+
+			<Button
+				android:id="@+id/get_up_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/get_up" />
+
+			<Button
+				android:id="@+id/shower_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/shower" />
+
+			<Button
+				android:id="@+id/news_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/news" />
+
+			<Button
+				android:id="@+id/coffee_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/coffee" />
+
+			<Button
+				android:id="@+id/smoothie_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/smoothie" />
+
+			<Button
+				android:id="@+id/hydrate_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/water" />
+
+			<Button
+				android:id="@+id/vitamins_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/vitamins" />
+
+			<Button
+				android:id="@+id/dishes_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/dishes" />
+
+			<Button
+				android:id="@+id/breakfast_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/breakfast" />
+
+			<Button
+				android:id="@+id/plants_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/water_plants" />
+
+			<Button
+				android:id="@+id/meditation_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/meditation" />
+
+			<Button
+				android:id="@+id/lang_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/language" />
+
+			<Button
+				android:id="@+id/teeth_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/brush_teeth" />
+
+			<Button
+				android:id="@+id/gel_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/gel" />
+
+			<Button
+				android:id="@+id/pack_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/pack" />
+
+			<Button
+				android:id="@+id/bin_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/bins" />
+		</LinearLayout>
+	</ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

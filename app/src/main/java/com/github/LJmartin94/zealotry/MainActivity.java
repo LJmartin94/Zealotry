@@ -80,8 +80,6 @@ public class MainActivity extends AppCompatActivity {
 	{
 		//launch new activity
 		Intent i = new Intent(this, WeatherForecast.class);
-		String input = ((EditText)findViewById(R.id.inputTextName)).getText().toString();
-		i.putExtra("Extra_info", input);
 		startActivity(i);
 	}
 
