@@ -51,27 +51,27 @@
 			<Button
 				android:id="@+id/Morning_Menu"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
+				android:layout_height="0dp"
 				android:layout_weight="30"
-				android:background="#FCE4EC"
+				android:background="@drawable/morning_button_long"
 				android:onClick="launchMorningMenu"
 				android:text="@string/main_morning_menu" />
 
 			<Button
 				android:id="@+id/Day_Menu"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
+				android:layout_height="0dp"
 				android:layout_weight="30"
-				android:background="#00BCD4"
+				android:background="@drawable/day_button_template"
 				android:onClick="launchDayMenu"
 				android:text="@string/main_day_menu" />
 
 			<Button
 				android:id="@+id/Evening_Menu"
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
+				android:layout_height="0dp"
 				android:layout_weight="30"
-				android:background="#673AB7"
+				android:background="@drawable/evening_button"
 				android:onClick="launchEveningMenu"
 				android:text="@string/main_evening_menu" />
 
