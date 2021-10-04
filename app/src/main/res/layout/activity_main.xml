@@ -53,7 +53,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
 				android:layout_weight="30"
-				android:background="@drawable/morning_button_long"
+				android:background="@drawable/morning_button_clickable"
 				android:onClick="launchMorningMenu"
 				android:text="@string/main_morning_menu" />
 
@@ -62,7 +62,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
 				android:layout_weight="30"
-				android:background="@drawable/day_button_template"
+				android:background="@drawable/day_button_clickable"
 				android:onClick="launchDayMenu"
 				android:text="@string/main_day_menu" />
 
@@ -71,7 +71,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="0dp"
 				android:layout_weight="30"
-				android:background="@drawable/evening_button"
+				android:background="@drawable/evening_button_clickable"
 				android:onClick="launchEveningMenu"
 				android:text="@string/main_evening_menu" />
 
