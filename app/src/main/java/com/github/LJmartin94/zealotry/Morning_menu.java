@@ -34,13 +34,14 @@ public class Morning_menu extends AppCompatActivity {
 
 	public void launchAlarm(View v)
 	{
-		// Alarm should be set for: (time_you_need_to_leave - time_you_need_to_get_ready) at latest, and at (sunrise or 8:00) at the earliest.
-		// Eventually the app should be able to wake the user when they are in their lightesst sleep somewhere between these two extremes.
+		// Alarm should be set for: (time_you_need_to_leave - time_you_need_to_get_ready) at latest, and at (sunrise || 8:00 || half an hour before latest alarm -> whichever is earliest) at the earliest.
+		// Eventually the app should be able to wake the user when they are in their lightest sleep somewhere between these two extremes.
 		int	hourSunrise;
 		int minSunrise;
 
 		hourSunrise = 8;
 		minSunrise = 0;
+		//Function should delete previous alarm called 'Sunrise' if available
 		Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
 		i.putExtra(AlarmClock.EXTRA_MESSAGE, "Sunrise");
 		i.putExtra(AlarmClock.EXTRA_HOUR, hourSunrise);
