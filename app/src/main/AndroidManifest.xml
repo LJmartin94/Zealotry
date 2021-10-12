@@ -3,7 +3,7 @@
 	package="com.github.LJmartin94.zealotry">
 
 	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="com.android.alarm.permission.SET_ALARM"/>
+	<uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
 	<application
 		android:allowBackup="true"
@@ -32,14 +32,24 @@
 			android:name=".GitHubSearch"
 			android:label="@string/act_githubsearch"
 			android:parentActivityName=".MainActivity" />
+
+
 		<activity
 			android:name=".Morning_menu"
 			android:label="@string/act_morning"
 			android:parentActivityName=".MainActivity" />
 		<activity
+			android:name=".Morning_menu_wake_up"
+			android:label="@string/wake_up"
+			android:parentActivityName=".MainActivity" />
+
+
+		<activity
 			android:name=".Day_menu"
 			android:label="@string/act_day"
 			android:parentActivityName=".MainActivity" />
+
+
 		<activity
 			android:name=".Evening_menu"
 			android:label="@string/act_evening"
