@@ -61,50 +61,62 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		double	time_zone = 0; //B5 //leave at zero
 
 		//Calculation based on extended NOAA Solar Calculations
-		//TODO simplify calculations (break up into smaller steps) once everything is confirmed working
-
 		// General variables
 		double date_as_number; //D3
 		date_as_number = day_of_year; //TODO Needs changing based on input
 		double time_past_midnight; //E3
 		time_past_midnight = hour / 24;
 		double julian_day; //F3
-		julian_day = date_as_number + 2415018.5 + time_past_midnight - time_zone/24;
+		julian_day = date_as_number + 2415018.5 + time_past_midnight - time_zone / 24;
 		double jul_century; //G3
 		jul_century = (julian_day - 2451545) / 36525;
 
 		double geom_mean_long_sun; //I3
-		geom_mean_long_sun = (280.46646 + jul_century * (36000.76983 + jul_century * 0.0003032)) % 360;
+		geom_mean_long_sun = 280.46646 + jul_century * (36000.76983 + jul_century * 0.0003032);
+		geom_mean_long_sun = geom_mean_long_sun % 360;
 		double geom_mean_anom_sun; //J3
 		geom_mean_anom_sun = 357.52911 + jul_century * (35999.05029 - 0.0001537 * jul_century);
 
 		double mean_obliq_ecliptic; //Q3
-		mean_obliq_ecliptic = 23 + (26 + ((21.448 - jul_century * (46.815 + jul_century * (0.00059 - jul_century *0.001813)))) / 60 ) / 60;
+		mean_obliq_ecliptic = 46.815 + jul_century * (0.00059 - jul_century * 0.001813);
+		mean_obliq_ecliptic = 21.448 - jul_century * mean_obliq_ecliptic;
+		mean_obliq_ecliptic = 23 + (26 + mean_obliq_ecliptic / 60 ) / 60;
 		double obliq_corr; //R3
-		obliq_corr = mean_obliq_ecliptic + 0.00256 * Math.cos(Math.toRadians(125.04 - 1934.136 * jul_century));
+		obliq_corr = Math.toRadians(125.04 - 1934.136 * jul_century);
+		obliq_corr = mean_obliq_ecliptic + 0.00256 * Math.cos(obliq_corr);
 
-		//Calculating ha_sunrise
+		// Calculating ha_sunrise
 		double sun_eq_of_ctr; //L3
-		sun_eq_of_ctr = Math.sin(Math.toRadians(geom_mean_anom_sun)) * (1.914602 - jul_century * (0.004817 + 0.000014 * jul_century)) + Math.sin(Math.toRadians(2 * geom_mean_anom_sun)) * (0.019993 - 0.000101 * jul_century) + Math.sin(Math.toRadians(3 * geom_mean_anom_sun)) * 0.000289;
+		sun_eq_of_ctr = Math.sin(Math.toRadians(geom_mean_anom_sun));
+		sun_eq_of_ctr = sun_eq_of_ctr * (1.914602 - jul_century * (0.004817 + 0.000014 * jul_century));
+		sun_eq_of_ctr = sun_eq_of_ctr + Math.sin(Math.toRadians(2 * geom_mean_anom_sun)) * (0.019993 - 0.000101 * jul_century);
+		sun_eq_of_ctr = sun_eq_of_ctr + Math.sin(Math.toRadians(3 * geom_mean_anom_sun)) * 0.000289;
 		double sun_true_long; //M3
 		sun_true_long = geom_mean_long_sun + sun_eq_of_ctr;
 		double sun_app_long; //P3
 		sun_app_long = sun_true_long - 0.00569 - 0.00478 * Math.sin(Math.toRadians(125.04 - 1934.136 * jul_century));
 		double sun_declin; //T3
-		sun_declin = Math.toDegrees(Math.asin(Math.sin(Math.toRadians(obliq_corr))*Math.sin(Math.toRadians(sun_app_long))));
+		sun_declin = Math.sin(Math.toRadians(obliq_corr)) * Math.sin(Math.toRadians(sun_app_long));
+		sun_declin = Math.asin(sun_declin);
+		sun_declin = Math.toDegrees(sun_declin);
 		double ha_sunrise; //W3
-		ha_sunrise = Math.cos(Math.toRadians(90.833)) / (Math.cos(Math.toRadians(lat)) * Math.cos(Math.toRadians(sun_declin)));
+		ha_sunrise = Math.cos(Math.toRadians(90.833));
+		ha_sunrise = ha_sunrise / (Math.cos(Math.toRadians(lat)) * Math.cos(Math.toRadians(sun_declin)));
 		ha_sunrise = ha_sunrise - Math.tan(Math.toRadians(lat)) * Math.tan(Math.toRadians(sun_declin));
 		ha_sunrise = Math.acos(ha_sunrise);
 		ha_sunrise = Math.toDegrees(ha_sunrise);
 
-		//Calculating solarNoon
+		// Calculating solarNoon
 		double eccent_earth_orbit; //K3
 		eccent_earth_orbit = 0.016708634 - jul_century * (0.000042037 + 0.0000001267 * jul_century);
 		double var_y; //U3
 		var_y = Math.tan(Math.toRadians(obliq_corr / 2)) * Math.tan(Math.toRadians(obliq_corr / 2));
 		double eqTime; //V3
-		eqTime = var_y * Math.sin(2 * Math.toRadians(geom_mean_long_sun)) - 2 * eccent_earth_orbit * Math.sin(Math.toRadians(geom_mean_anom_sun)) + 4 * eccent_earth_orbit * var_y * Math.sin(Math.toRadians(geom_mean_anom_sun)) * Math.cos(2 * Math.toRadians(geom_mean_long_sun)) - 0.5 * var_y * var_y * Math.sin( 4 * Math.toRadians(geom_mean_long_sun)) - 1.25 * eccent_earth_orbit * eccent_earth_orbit * Math.sin(2 * Math.toRadians(geom_mean_anom_sun));
+		eqTime = var_y * Math.sin(2 * Math.toRadians(geom_mean_long_sun));
+		eqTime = eqTime - 2 * eccent_earth_orbit * Math.sin(Math.toRadians(geom_mean_anom_sun));
+		eqTime = eqTime + 4 * eccent_earth_orbit * var_y * Math.sin(Math.toRadians(geom_mean_anom_sun)) * Math.cos(2 * Math.toRadians(geom_mean_long_sun));
+		eqTime = eqTime - 0.5 * var_y * var_y * Math.sin( 4 * Math.toRadians(geom_mean_long_sun));
+		eqTime = eqTime - 1.25 * eccent_earth_orbit * eccent_earth_orbit * Math.sin(2 * Math.toRadians(geom_mean_anom_sun));
 		eqTime = 4 * Math.toDegrees(eqTime);
 		double solarNoon = (720 - 4 * longitude - eqTime + time_zone *60)/1440; //X3
 
