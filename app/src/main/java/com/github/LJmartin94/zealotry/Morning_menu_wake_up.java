@@ -7,6 +7,12 @@ import android.Manifest;
 import android.content.Context;
 
 import java.lang.Math;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -20,6 +26,8 @@ import android.widget.Toast;
 public class Morning_menu_wake_up extends AppCompatActivity
 {
 	private final int LAT_LONG_REQUEST_CODE = 0;
+	int	hourSunrise = 10;
+	int minSunrise = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -36,6 +44,9 @@ public class Morning_menu_wake_up extends AppCompatActivity
 			ActivityCompat.requestPermissions(this, permissions, LAT_LONG_REQUEST_CODE);
 			return;
 		}
+		double[] sunriseTime = calculateSunrise();
+		hourSunrise = (int)sunriseTime[0];
+		minSunrise = (int)sunriseTime[1];
 	}
 
 	@Override
@@ -98,24 +109,34 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		return(lat_long);
 	}
 
-	public double calculateSunrise()
+	public double[] calculateSunrise()
 	{
-		//TODO get input
 		//Input - place
 		double[] lat_long;
 		lat_long = get_location();
 		double lat = lat_long[0];
 		double longitude = lat_long[1];
 		//Input - time
-		double	day_of_year = 44486;
+		Date	current_date = Calendar.getInstance().getTime();
 		double	hour = 0.1; // Leave hardcoded to 6 minutes past midnight
-		double	leap_year = 0;
 		double	time_zone = 0; //leave at zero
 
 		//Calculation based on extended NOAA Solar Calculations
 		// General variables
+		String	start_string = "30/12/1899";
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Date	start_date = null;
+		try {
+			start_date = sdf.parse(start_string);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		long diff = current_date.getTime() - start_date.getTime();
+		diff = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+		if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= 10)
+			diff = diff + 1; //Unless its past midnight but before 10am, you should be looking at tomorrow's sunrise, not today's
 		double date_as_number;
-		date_as_number = day_of_year; //TODO Needs changing based on input
+		date_as_number = (double)diff;
 		double time_past_midnight;
 		time_past_midnight = hour / 24;
 		double julian_day;
@@ -180,20 +201,28 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		double utc_Sunrise_Minutes = Math.floor((utc_Sunrise_Time - utc_Sunrise_Hours) * 60);
 		double utc_Sunrise_Seconds = Math.floor(((utc_Sunrise_Time - utc_Sunrise_Hours) * 60 - utc_Sunrise_Minutes) * 60);
 
+		long now = System.currentTimeMillis();
+		double time_zone_offset = (TimeZone.getDefault().getOffset(now)) / 3600000.0;
+		double local_sunrise_time = utc_Sunrise_Time + time_zone_offset;
+
 		//Output
-		double ret = utc_Sunrise_Time;
-		return ret;
+		double local_sunrise_time_hours = Math.floor(local_sunrise_time);
+		double local_sunrise_time_minutes = Math.round((local_sunrise_time - local_sunrise_time_hours) * 60);
+		double[] Hours_Minutes_Local_Sunrise = {local_sunrise_time_hours, local_sunrise_time_minutes};
+		return Hours_Minutes_Local_Sunrise;
+	}
+
+	public double[] calculateLeaveTime()
+	{
+		double []Hours_Minutes_need_to_leave = {(double)hourSunrise, (double)minSunrise};
+		return Hours_Minutes_need_to_leave;
 	}
 
 	public void setAlarm(View v)
 	{
 		// Alarm should be set for: (time_you_need_to_leave - time_you_need_to_get_ready) at latest, and at (sunrise || 8:00 || half an hour before latest alarm -> whichever is earliest) at the earliest.
 		// Eventually the app should be able to wake the user when they are in their lightest sleep somewhere between these two extremes.
-		int	hourSunrise;
-		int minSunrise;
 
-		hourSunrise = 8;
-		minSunrise = 0;
 		//Function should delete previous alarm called 'Sunrise' if available
 		Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
 			i.putExtra(AlarmClock.EXTRA_MESSAGE, "Sunrise");
@@ -202,14 +231,14 @@ public class Morning_menu_wake_up extends AppCompatActivity
 			//i.putExtra(AlarmClock.EXTRA_RINGTONE, )
 			//https://developer.android.com/reference/android/provider/AlarmClock#EXTRA_RINGTONE
 
-		double sunriseTime = calculateSunrise();
-		String timeText = String.format("%,.4f", sunriseTime);
+
+		//String timeText = String.format("%,.4f", sunriseTime);
 
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
-			//startActivity(i);
-			Toast showTime = Toast.makeText(this, timeText, Toast.LENGTH_SHORT);
-			showTime.show();
+			startActivity(i);
+//			Toast showTime = Toast.makeText(this, timeText, Toast.LENGTH_SHORT);
+//			showTime.show();
 		}
 	}
 }
