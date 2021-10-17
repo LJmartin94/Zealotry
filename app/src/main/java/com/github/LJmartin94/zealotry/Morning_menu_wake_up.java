@@ -21,6 +21,7 @@ import android.provider.AlarmClock;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Morning_menu_wake_up extends AppCompatActivity
@@ -209,6 +210,18 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		double local_sunrise_time_hours = Math.floor(local_sunrise_time);
 		double local_sunrise_time_minutes = Math.round((local_sunrise_time - local_sunrise_time_hours) * 60);
 		double[] Hours_Minutes_Local_Sunrise = {local_sunrise_time_hours, local_sunrise_time_minutes};
+
+		//Set TextView
+		String hourpad = "";
+		String minpad = "";
+		//if ((int)local_sunrise_time_hours < 10)
+		//	hourpad = "0";
+		if ((int)local_sunrise_time_minutes < 10)
+			minpad = "0";
+		String sunriseDisplay = hourpad + String.valueOf((int)local_sunrise_time_hours) + ":" + minpad + String.valueOf((int)local_sunrise_time_minutes);
+		((TextView)findViewById(R.id.timeSunriseTime)).setText(sunriseDisplay);
+
+		//Return
 		return Hours_Minutes_Local_Sunrise;
 	}
 

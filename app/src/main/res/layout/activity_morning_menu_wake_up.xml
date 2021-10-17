@@ -6,30 +6,115 @@
 	android:layout_height="match_parent"
 	tools:context=".Morning_menu_wake_up">
 
-	<ScrollView
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:scrollbarStyle="insideOverlay"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent">
+<!--	<ScrollView-->
+<!--		android:id="@+id/scrollView2"-->
+<!--		android:layout_width="match_parent"-->
+<!--		android:layout_height="match_parent"-->
+<!--		android:scrollbarStyle="insideOverlay">-->
+
+<!--		android:layout_width="0dp"-->
+<!--		app:layout_constraintBottom_toBottomOf="parent"-->
+<!--		app:layout_constraintEnd_toEndOf="parent"-->
+<!--		app:layout_constraintStart_toStartOf="parent"-->
+<!--		app:layout_constraintTop_toTopOf="parent">-->
+
 
 		<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
 			android:orientation="vertical"
 			android:padding="5dp">
 
+			<TextView
+				android:id="@+id/textSunriseTime"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/textSunriseTime"
+				android:gravity="bottom"
+				android:padding="5dp"
+				android:textSize="25dp"
+				android:textColor="@color/colorPrimary"
+				android:textAllCaps="false"/>
+
+			<TextView
+				android:id="@+id/timeSunriseTime"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="10:00"
+				android:textSize="50dp"
+				android:layout_weight="10"
+				android:textColor="@color/colorPrimaryDark"
+				android:gravity="center"/>
+
+			<TextView
+				android:id="@+id/textLatestAlarm"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/textLatestRise"
+				android:gravity="bottom"
+				android:padding="5dp"
+				android:textSize="25dp"
+				android:textColor="@color/colorPrimary"
+				android:textAllCaps="false"/>
+
+			<TextView
+				android:id="@+id/timeLatestAlarm"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="10:00"
+				android:textSize="50dp"
+				android:textColor="@color/colorPrimaryDark"
+				android:layout_weight="10"
+				android:gravity="center"/>
+
+			<TextView
+				android:id="@+id/textTimeToLeave"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/textLeaveBy"
+				android:gravity="bottom"
+				android:padding="5dp"
+				android:textSize="25dp"
+				android:textColor="@color/colorPrimary"
+				android:textAllCaps="false"/>
+
+			<Spinner
+				android:id="@+id/spinner_wake_up"
+				android:layout_width="409dp"
+				android:layout_height="wrap_content"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+				android:layout_weight="50"/>
+
+			<TextView
+				android:id="@+id/wakeUpExplanation"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_weight="20"
+				android:gravity="center"
+				android:text="@string/wakeUpExplanation"
+				android:textAllCaps="false" />
 
 			<Button
 				android:id="@+id/set_alarm"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="Set Alarm"
-				android:textAllCaps="false"
+				android:onClick="setAlarm"
 				android:padding="30dp"
-				android:onClick="setAlarm"/>
+				android:text="@string/SetAlarm"
+				android:textAllCaps="false"
+				/>
+
+<!--			<TextView-->
+<!--				android:id="@+id/invisiBuffer"-->
+<!--				android:layout_width="match_parent"-->
+<!--				android:layout_height="wrap_content"-->
+<!--				android:text=""-->
+<!--				android:layout_weight="1"/>-->
+
 		</LinearLayout>
-	</ScrollView>
+<!--	</ScrollView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

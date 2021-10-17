@@ -15,14 +15,17 @@
 	<string name="IcelandicSaturday">Laugar dagur</string>
 	<string name="Sunday">Day of the Sun</string>
 
-	<string name="act_morning">Good Morning</string>
 	<string name="main_morning_menu">Morning</string>
-	<string name="act_day">Good Day</string>
-	<string name="main_day_menu">Day</string>
-	<string name="act_evening">Good Evening</string>
-	<string name="main_evening_menu">Evening</string>
+	<string name="act_morning">Good Morning</string>
 
 	<string name="wake_up">Wake up</string>
+	<string name="textSunriseTime">Sunrise Today:</string>
+	<string name="textSunriseTimeTomorrow">Sunrise Tomorrow:</string>
+	<string name="textLatestRise">Latest Rise:</string>
+	<string name="textLeaveBy">Time to Leave:</string>
+	<string name="wakeUpExplanation">ZEALOTRY will wake you somewhere between sunrise and your latest rise. Your latest rise is based on the time you take to get ready in the morning and when you need to leave the house.</string>
+	<string name="SetAlarm">Set Alarm</string>
+
 	<string name="get_up">Get up</string>
 	<string name="shower">Shower</string>
 	<string name="news">News</string>
@@ -39,9 +42,17 @@
 	<string name="gel">Gel, cologne etc</string>
 	<string name="pack">Pack bag</string>
 	<string name="bins">Take out the bins</string>
+
+	<string name="main_day_menu">Day</string>
+	<string name="act_day">Good Day</string>
+
 	<string name="walk">Walk</string>
 	<string name="work">Work</string>
 	<string name="lunch">Lunch</string>
+
+	<string name="main_evening_menu">Evening</string>
+	<string name="act_evening">Good Evening</string>
+
 	<string name="unpack">Unpack</string>
 	<string name="journal">Journal</string>
 	<string name="shop">Shopping</string>
