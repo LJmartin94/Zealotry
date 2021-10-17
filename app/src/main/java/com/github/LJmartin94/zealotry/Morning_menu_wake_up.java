@@ -1,9 +1,12 @@
 package com.github.LJmartin94.zealotry;
 
+import androidx.annotation.StyleRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 
 import java.lang.Math;
@@ -11,17 +14,21 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.location.Location;
 import android.location.LocationManager;
 import android.provider.AlarmClock;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class Morning_menu_wake_up extends AppCompatActivity
@@ -29,6 +36,9 @@ public class Morning_menu_wake_up extends AppCompatActivity
 	private final int LAT_LONG_REQUEST_CODE = 0;
 	int	hourSunrise = 10;
 	int minSunrise = 0;
+	Button leaveTimeButton;
+	int select_hour = 10;
+	int select_minute = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -48,6 +58,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		double[] sunriseTime = calculateSunrise();
 		hourSunrise = (int)sunriseTime[0];
 		minSunrise = (int)sunriseTime[1];
+		leaveTimeButton = (Button)findViewById(R.id.button_spinner_wake_up);
 	}
 
 	@Override
@@ -209,26 +220,65 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		//Output
 		double local_sunrise_time_hours = Math.floor(local_sunrise_time);
 		double local_sunrise_time_minutes = Math.round((local_sunrise_time - local_sunrise_time_hours) * 60);
+		if (local_sunrise_time_hours >= 10.0) //Hardcode sunrise to be 10am at the latest
+		{
+			local_sunrise_time_hours = 10.0;
+			local_sunrise_time_minutes = 0;
+		}
+		hourSunrise = (int)local_sunrise_time_hours;
+		minSunrise = (int)local_sunrise_time_minutes;
 		double[] Hours_Minutes_Local_Sunrise = {local_sunrise_time_hours, local_sunrise_time_minutes};
 
-		//Set TextView
-		String hourpad = "";
-		String minpad = "";
-		//if ((int)local_sunrise_time_hours < 10)
-		//	hourpad = "0";
-		if ((int)local_sunrise_time_minutes < 10)
-			minpad = "0";
-		String sunriseDisplay = hourpad + String.valueOf((int)local_sunrise_time_hours) + ":" + minpad + String.valueOf((int)local_sunrise_time_minutes);
-		((TextView)findViewById(R.id.timeSunriseTime)).setText(sunriseDisplay);
-
+		updateTextViews();
 		//Return
 		return Hours_Minutes_Local_Sunrise;
+	}
+
+	private void updateTextViews()
+	{
+		//Set TextView Sunrise Display
+		String hourpad = "";
+		String minpad = "";
+		//if (hourSunrise < 10)
+		//	hourpad = "0";
+		if (minSunrise < 10)
+			minpad = "0";
+		String sunriseDisplay = hourpad + String.valueOf(hourSunrise) + ":" + minpad + String.valueOf(minSunrise);
+		((TextView)findViewById(R.id.timeSunriseTime)).setText(sunriseDisplay);
+
+		//Set TextView today or tomorrow Sunrise
+		String which_sunrise;
+		if (Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= 10) //TODO or user has marked themselves as UP
+			which_sunrise = getResources().getString(R.string.textSunriseTimeTomorrow);
+		else
+			which_sunrise = getResources().getString(R.string.textSunriseTime);
+		((TextView)findViewById(R.id.textSunriseTime)).setText(which_sunrise);
 	}
 
 	public double[] calculateLeaveTime()
 	{
 		double []Hours_Minutes_need_to_leave = {(double)hourSunrise, (double)minSunrise};
 		return Hours_Minutes_need_to_leave;
+	}
+
+	public void popTimePicker(View view)
+	{
+		TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener()
+		{
+			@Override
+			public void onTimeSet(TimePicker timePicker, int h, int m)
+			{
+				select_hour = h;
+				select_minute = m;
+				leaveTimeButton.setText(String.format(Locale.getDefault(), "%02d:%02d", select_hour, select_minute));
+			}
+		};
+		int style = AlertDialog.THEME_HOLO_DARK;
+		style = R.style.CustomDatePickerDialog;
+		style = R.style.DarkSpinner;
+		TimePickerDialog timePickerDialog = new TimePickerDialog(this, style, onTimeSetListener, select_hour, select_minute, true);
+		timePickerDialog.setTitle("Select Time");
+		timePickerDialog.show();
 	}
 
 	public void setAlarm(View v)

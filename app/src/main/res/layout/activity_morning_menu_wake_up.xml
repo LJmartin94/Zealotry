@@ -32,7 +32,7 @@
 				android:text="@string/textSunriseTime"
 				android:gravity="bottom"
 				android:padding="5dp"
-				android:textSize="25dp"
+				android:textSize="25sp"
 				android:textColor="@color/colorPrimary"
 				android:textAllCaps="false"/>
 
@@ -41,7 +41,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:text="10:00"
-				android:textSize="50dp"
+				android:textSize="50sp"
 				android:layout_weight="10"
 				android:textColor="@color/colorPrimaryDark"
 				android:gravity="center"/>
@@ -53,7 +53,7 @@
 				android:text="@string/textLatestRise"
 				android:gravity="bottom"
 				android:padding="5dp"
-				android:textSize="25dp"
+				android:textSize="25sp"
 				android:textColor="@color/colorPrimary"
 				android:textAllCaps="false"/>
 
@@ -62,7 +62,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:text="10:00"
-				android:textSize="50dp"
+				android:textSize="50sp"
 				android:textColor="@color/colorPrimaryDark"
 				android:layout_weight="10"
 				android:gravity="center"/>
@@ -74,19 +74,31 @@
 				android:text="@string/textLeaveBy"
 				android:gravity="bottom"
 				android:padding="5dp"
-				android:textSize="25dp"
+				android:textSize="25sp"
 				android:textColor="@color/colorPrimary"
 				android:textAllCaps="false"/>
 
-			<Spinner
-				android:id="@+id/spinner_wake_up"
-				android:layout_width="409dp"
+			<Button
+				android:id="@+id/button_spinner_wake_up"
+				android:onClick="popTimePicker"
+				android:layout_width="300dp"
 				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:layout_weight="0"
+				android:background="@color/darkGrey"
+				android:text="Select Time"
+				android:textColor="@color/LightGrey"
+				android:textSize="30sp"
+				android:paddingTop="40dp"
+				android:paddingBottom="40dp"
+				android:paddingLeft="50dp"
+				android:paddingRight="50dp"
+				android:layout_marginTop="50dp"
+				android:layout_marginBottom="50dp"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-				android:layout_weight="50"/>
+				app:layout_constraintTop_toBottomOf="parent" />
 
 			<TextView
 				android:id="@+id/wakeUpExplanation"
