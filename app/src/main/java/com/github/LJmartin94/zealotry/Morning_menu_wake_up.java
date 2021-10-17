@@ -202,7 +202,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		double utc_Sunrise_Seconds = Math.floor(((utc_Sunrise_Time - utc_Sunrise_Hours) * 60 - utc_Sunrise_Minutes) * 60);
 
 		long now = System.currentTimeMillis();
-		double time_zone_offset = (TimeZone.getDefault().getOffset(now)) / 3600000.0;
+		double time_zone_offset = (TimeZone.getDefault().getOffset(now)) / 3600000.0; //TODO Might not work the day before the clocks change, as it looks at current offset - add a day to 'now' if not past midnight to fix.
 		double local_sunrise_time = utc_Sunrise_Time + time_zone_offset;
 
 		//Output
