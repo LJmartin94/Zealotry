@@ -1,9 +1,16 @@
 package com.github.LJmartin94.zealotry;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Context;
+
 import java.lang.Math;
+
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.provider.AlarmClock;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +19,9 @@ import android.widget.Toast;
 
 public class Morning_menu_wake_up extends AppCompatActivity
 {
+	final static int LAT_LONG_REQUEST_CODE = 0;
+	double	lat = 55.954757; //Default latitude in case permission denied or null
+	double	longitude = -3.184216; //Default longitude in case permission denied or null
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -20,41 +30,109 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		setContentView(R.layout.activity_morning_menu_wake_up);
 	}
 
-	public double old_calculateSunrise()
+	@Override
+	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
 	{
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+		if(requestCode == LAT_LONG_REQUEST_CODE)
+		{
+			for (int i = 0; i < permissions.length; i++)
+			{
+				String permission = permissions[i];
+				int grantResult = grantResults[i];
+
+				if (permission.equals(Manifest.permission.ACCESS_FINE_LOCATION))
+				{
+					get_location();
+				}
+				else if (permission.equals(Manifest.permission.ACCESS_COARSE_LOCATION))
+				{
+					get_location();
+				}
+				else
+				{
+					String permission_error = "Zealotry wants to know your location to calculate what time the sun will rise";
+					Toast showTime = Toast.makeText(this, permission_error, Toast.LENGTH_LONG);
+					showTime.show();
+				}
+//				if (permission.equals(Manifest.permission.SEND_SMS))
+//				{
+//					if (grantResult == PackageManager.PERMISSION_GRANTED)
+//					{
+//						onPPSButtonPress();
+//					}
+//					else
+//					{
+//						requestPermissions(new String[]{Manifest.permission.SEND_SMS}, PERMISSIONS_CODE);
+//					}
+//				}
+			}
+		}
+
+	}
+
+	public double old_calculateSunrise() {
 		//Input
-		double	lat = 52.370216;
-		double	longitude = 4.895168;
-		double	day_of_year = 290;
-		double	hour = 0;
-		double	leap_year = 0;
+		double[] lat_long;
+		lat_long = get_location();
+		double	lat = lat_long[0];
+		double	longitude = lat_long[1];
+		double day_of_year = 290;
+		double hour = 0;
+		double leap_year = 0;
 
 		//Calculation based on NOAA Solar Calculations
-		double	y; //fractional year
+		double y; //fractional year
 		y = ((Math.PI * 2) / (365 + leap_year)) * (day_of_year - 1 + ((hour - 12) / 24));
-		double	eqtime = 229.18 * (0.000075 + (0.001868 * Math.cos(y)) - (0.032077 * Math.sin(y)) - (0.014615 * Math.cos(2 * y)) - (0.040849 * Math.sin(2 * y)) );
-		double	decl = 0.006918 - (0.399912 * Math.cos(y)) + (0.070257 * Math.sin(y)) - (0.006758 * Math.cos(2 * y)) + (0.000907 * Math.sin(2 * y)) - (0.002697 * Math.cos(3 * y)) + (0.00148 * Math.sin(3 * y));
-		double	ha_calc = ( (Math.cos(Math.toRadians(90.833))/ (Math.cos(Math.toRadians(lat)) * Math.cos(decl))) - (Math.tan(Math.toRadians(lat)) * Math.tan(decl)) );
-		double	ha = Math.acos(ha_calc);
+		double eqtime = 229.18 * (0.000075 + (0.001868 * Math.cos(y)) - (0.032077 * Math.sin(y)) - (0.014615 * Math.cos(2 * y)) - (0.040849 * Math.sin(2 * y)));
+		double decl = 0.006918 - (0.399912 * Math.cos(y)) + (0.070257 * Math.sin(y)) - (0.006758 * Math.cos(2 * y)) + (0.000907 * Math.sin(2 * y)) - (0.002697 * Math.cos(3 * y)) + (0.00148 * Math.sin(3 * y));
+		double ha_calc = ((Math.cos(Math.toRadians(90.833)) / (Math.cos(Math.toRadians(lat)) * Math.cos(decl))) - (Math.tan(Math.toRadians(lat)) * Math.tan(decl)));
+		double ha = Math.acos(ha_calc);
 		ha = Math.toDegrees(ha);
 
 		//Output
-		double	utc_sunrise_in_minutes = 720 - 4 * (longitude + ha) -eqtime;
-		double	ret = utc_sunrise_in_minutes;
-		double	utcHourSunrise = Math.floor(utc_sunrise_in_minutes/60);
-		double	utcMinSunrise = (utc_sunrise_in_minutes - (utcHourSunrise * 60));
+		double utc_sunrise_in_minutes = 720 - 4 * (longitude + ha) - eqtime;
+		double ret = utc_sunrise_in_minutes;
+		double utcHourSunrise = Math.floor(utc_sunrise_in_minutes / 60);
+		double utcMinSunrise = (utc_sunrise_in_minutes - (utcHourSunrise * 60));
 
 		//this gets results but can be around 3 minutes off I've noticed on the dates I cross referenced.
 		return ret;
+	}
+
+	public double[] get_location()
+	{
+		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+				ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+		{
+			int requestCode;
+
+			requestCode = 0;
+			String[] permissions = new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+												Manifest.permission.ACCESS_COARSE_LOCATION};
+
+			ActivityCompat.requestPermissions(this, permissions, requestCode);
+		}
+		LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+		Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+		lat = location.getLatitude();
+		longitude = location.getLongitude();
+		double[] lat_long = {lat, longitude};
+
+		return(lat_long);
 	}
 
 	public double new_calculateSunrise()
 	{
 		//TODO get input
 		//Input
-		double	lat = 52.370216; //B3
-		double	longitude = 4.895168; //B4
+		double[] lat_long;
+		lat_long = get_location();
+		lat = lat_long[0];
+		longitude = lat_long[1];
 		//double	day_of_year = 290;
+		get_location();
 		double	day_of_year = 44486;
 		double	hour = 0.1; // Leave hardcoded to 6 minutes past midnight
 		double	leap_year = 0;
@@ -129,7 +207,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		double utc_Sunrise_Seconds = Math.floor(((utc_Sunrise_Time - utc_Sunrise_Hours) * 60 - utc_Sunrise_Minutes) * 60);
 
 		//Output
-		double ret = utc_Sunrise_Time;
+		double ret = lat;
 
 
 
@@ -180,7 +258,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 			//i.putExtra(AlarmClock.EXTRA_RINGTONE, )
 			//https://developer.android.com/reference/android/provider/AlarmClock#EXTRA_RINGTONE
 
-		double sunriseTime = old_calculateSunrise();
+		double sunriseTime = new_calculateSunrise();
 		String timeText = String.format("%,.4f", sunriseTime);
 
 		if (i.resolveActivity(getPackageManager()) != null)
