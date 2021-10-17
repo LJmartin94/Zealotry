@@ -19,56 +19,55 @@ import android.widget.Toast;
 
 public class Morning_menu_wake_up extends AppCompatActivity
 {
-	final static int LAT_LONG_REQUEST_CODE = 0;
-	double	lat = 55.954757; //Default latitude in case permission denied or null
-	double	longitude = -3.184216; //Default longitude in case permission denied or null
+	private final int LAT_LONG_REQUEST_CODE = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_morning_menu_wake_up);
+
+		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+			ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+		{
+			String[] permissions = new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
+												Manifest.permission.ACCESS_COARSE_LOCATION};
+
+			ActivityCompat.requestPermissions(this, permissions, LAT_LONG_REQUEST_CODE);
+			return;
+		}
 	}
 
 	@Override
 	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
 	{
-		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-		if(requestCode == LAT_LONG_REQUEST_CODE)
+		switch (requestCode)
 		{
-			for (int i = 0; i < permissions.length; i++)
-			{
-				String permission = permissions[i];
-				int grantResult = grantResults[i];
+			case LAT_LONG_REQUEST_CODE:
+				for (int i = 0; i < permissions.length; i++)
+				{
+					String permission = permissions[i];
+					int grantResult = grantResults[i];
 
-				if (permission.equals(Manifest.permission.ACCESS_FINE_LOCATION))
-				{
-					get_location();
+					if((permission == Manifest.permission.ACCESS_FINE_LOCATION ||
+						permission == Manifest.permission.ACCESS_COARSE_LOCATION) &&
+							grantResult == PackageManager.PERMISSION_GRANTED)
+					{
+						String permission_ok = "OK";
+						Toast showTime = Toast.makeText(this, permission_ok, Toast.LENGTH_LONG);
+						showTime.show();
+					}
+					else
+					{
+						String permission_error = "Zealotry wants to know your location to calculate what time the sun will rise";
+						Toast showTime = Toast.makeText(this, permission_error, Toast.LENGTH_LONG);
+						showTime.show();
+					}
 				}
-				else if (permission.equals(Manifest.permission.ACCESS_COARSE_LOCATION))
-				{
-					get_location();
-				}
-				else
-				{
-					String permission_error = "Zealotry wants to know your location to calculate what time the sun will rise";
-					Toast showTime = Toast.makeText(this, permission_error, Toast.LENGTH_LONG);
-					showTime.show();
-				}
-//				if (permission.equals(Manifest.permission.SEND_SMS))
-//				{
-//					if (grantResult == PackageManager.PERMISSION_GRANTED)
-//					{
-//						onPPSButtonPress();
-//					}
-//					else
-//					{
-//						requestPermissions(new String[]{Manifest.permission.SEND_SMS}, PERMISSIONS_CODE);
-//					}
-//				}
-			}
+				break;
+			default:
+				super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 		}
-
 	}
 
 	public double old_calculateSunrise() {
@@ -102,24 +101,29 @@ public class Morning_menu_wake_up extends AppCompatActivity
 
 	public double[] get_location()
 	{
+		double	lat = 55.954757; //Default latitude in case permission denied or null
+		double	longitude = -3.184216; //Default longitude in case permission denied or null
+		double[] lat_long = {lat, longitude};
+
 		if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
 				ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
 		{
-			int requestCode;
-
-			requestCode = 0;
 			String[] permissions = new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
-												Manifest.permission.ACCESS_COARSE_LOCATION};
+					Manifest.permission.ACCESS_COARSE_LOCATION};
 
-			ActivityCompat.requestPermissions(this, permissions, requestCode);
+			ActivityCompat.requestPermissions(this, permissions, LAT_LONG_REQUEST_CODE);
+			return(lat_long);
 		}
-		LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-		Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		else
+		{
+			LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+			Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-		lat = location.getLatitude();
-		longitude = location.getLongitude();
-		double[] lat_long = {lat, longitude};
-
+			lat = location.getLatitude();
+			longitude = location.getLongitude();
+		}
+		lat_long[0] = lat;
+		lat_long[1] = longitude;
 		return(lat_long);
 	}
 
@@ -129,10 +133,9 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		//Input
 		double[] lat_long;
 		lat_long = get_location();
-		lat = lat_long[0];
-		longitude = lat_long[1];
+		double lat = lat_long[0];
+		double longitude = lat_long[1];
 		//double	day_of_year = 290;
-		get_location();
 		double	day_of_year = 44486;
 		double	hour = 0.1; // Leave hardcoded to 6 minutes past midnight
 		double	leap_year = 0;
