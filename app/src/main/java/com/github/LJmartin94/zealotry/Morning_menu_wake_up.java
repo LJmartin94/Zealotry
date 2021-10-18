@@ -263,6 +263,8 @@ public class Morning_menu_wake_up extends AppCompatActivity
 
 	public void popTimePicker(View view)
 	{
+		int style = R.style.DarkSpinner;
+		//TODO if you want a custom time spinner, make a class and xlm file for it. Keywords: AlertDialog, timepicker spinner, dialogfragments.
 		TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener()
 		{
 			@Override
@@ -273,9 +275,6 @@ public class Morning_menu_wake_up extends AppCompatActivity
 				leaveTimeButton.setText(String.format(Locale.getDefault(), "%02d:%02d", select_hour, select_minute));
 			}
 		};
-		int style = AlertDialog.THEME_HOLO_DARK;
-		style = R.style.CustomDatePickerDialog;
-		style = R.style.DarkSpinner;
 		TimePickerDialog timePickerDialog = new TimePickerDialog(this, style, onTimeSetListener, select_hour, select_minute, true);
 		timePickerDialog.setTitle("Select Time");
 		timePickerDialog.show();
