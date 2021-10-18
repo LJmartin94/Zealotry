@@ -39,6 +39,8 @@ public class Morning_menu_wake_up extends AppCompatActivity
 	Button leaveTimeButton;
 	int select_hour = 10;
 	int select_minute = 0;
+	int g_hours_to_leave = 10;
+	int g_mins_to_leave = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -253,11 +255,37 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		else
 			which_sunrise = getResources().getString(R.string.textSunriseTime);
 		((TextView)findViewById(R.id.textSunriseTime)).setText(which_sunrise);
+
+		//Set TextView Latest Rise:
+		hourpad = "";
+		minpad = "";
+		//if (g_hours_to_leave < 10)
+		//	hourpad = "0";
+		if (g_mins_to_leave < 10)
+			minpad = "0";
+		String latestRiseDisplay = hourpad + String.valueOf(g_hours_to_leave) + ":" + minpad + String.valueOf(g_mins_to_leave);
+		((TextView)findViewById(R.id.timeLatestAlarm)).setText(latestRiseDisplay);
 	}
 
 	public double[] calculateLeaveTime()
 	{
-		double []Hours_Minutes_need_to_leave = {(double)hourSunrise, (double)minSunrise};
+		double hours_to_leave = select_hour;
+		double mins_to_leave = select_minute;
+		double time_to_ready = 2.64; // TODO Change from hardcoded value to adaptive estimate
+
+		if ((hours_to_leave + mins_to_leave / 60) < time_to_ready)
+			hours_to_leave = hours_to_leave + 24;
+
+		hours_to_leave = hours_to_leave - Math.floor(time_to_ready);
+		mins_to_leave = mins_to_leave - ((time_to_ready % 1.0) * 60);
+		hours_to_leave = hours_to_leave + (mins_to_leave / 60);
+		mins_to_leave = (hours_to_leave % 1.0) * 60;
+		hours_to_leave = Math.floor(hours_to_leave);
+		g_mins_to_leave = (int)mins_to_leave;
+		g_hours_to_leave = (int)hours_to_leave;
+
+		updateTextViews();
+		double []Hours_Minutes_need_to_leave = {hours_to_leave, mins_to_leave};
 		return Hours_Minutes_need_to_leave;
 	}
 
@@ -273,6 +301,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 				select_hour = h;
 				select_minute = m;
 				leaveTimeButton.setText(String.format(Locale.getDefault(), "%02d:%02d", select_hour, select_minute));
+				calculateLeaveTime();
 			}
 		};
 		TimePickerDialog timePickerDialog = new TimePickerDialog(this, style, onTimeSetListener, select_hour, select_minute, true);
