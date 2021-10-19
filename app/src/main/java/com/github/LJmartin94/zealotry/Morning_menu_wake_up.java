@@ -393,35 +393,37 @@ public class Morning_menu_wake_up extends AppCompatActivity
 			sunriseAlarmName = "Sunrise";
 		else
 			sunriseAlarmName = "First Rise";
-		//TODO Function should delete previous alarm called 'Sunrise' if available
+		//TODO Function should delete previous alarm called 'Sunrise / First Rise' if available
 		Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
 			i.putExtra(AlarmClock.EXTRA_MESSAGE, sunriseAlarmName);
 			i.putExtra(AlarmClock.EXTRA_HOUR, hours);
 			i.putExtra(AlarmClock.EXTRA_MINUTES, mins);
 			i.putExtra(AlarmClock.EXTRA_VIBRATE, false);
+			i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
 			//i.putExtra(AlarmClock.EXTRA_RINGTONE, gongAlarm); //TODO set a ringtone for the alarm
 			//https://developer.android.com/reference/android/provider/AlarmClock#EXTRA_RINGTONE
-		if (i.resolveActivity(getPackageManager()) != null)
-		{
-			startActivity(i);
-		}
-
-//		time = convertHoursMins(lastAlarm);
-//		hours = time[0];
-//		mins = time[1];
-//		//TODO Function should delete previous alarm called 'Sunrise' if available
-//		Intent j = new Intent(AlarmClock.ACTION_SET_ALARM);
-//		j.putExtra(AlarmClock.EXTRA_MESSAGE, "Last Rise");
-//		j.putExtra(AlarmClock.EXTRA_HOUR, hours);
-//		j.putExtra(AlarmClock.EXTRA_MINUTES, mins);
-//		j.putExtra(AlarmClock.EXTRA_VIBRATE, false);
-//		//i.putExtra(AlarmClock.EXTRA_RINGTONE, gongAlarm); //TODO set a ringtone for the alarm, MAKE THIS ONE LOUD!
-//		//https://developer.android.com/reference/android/provider/AlarmClock#EXTRA_RINGTONE
-//		if (i.resolveActivity(getPackageManager()) != null && j.resolveActivity(getPackageManager()) != null)
+//		if (i.resolveActivity(getPackageManager()) != null)
 //		{
 //			startActivity(i);
-//			startActivity(j);
 //		}
+
+		time = convertHoursMins(lastAlarm);
+		hours = time[0];
+		mins = time[1];
+		//TODO Function should delete previous alarm called 'Last Rise' if available
+		Intent j = new Intent(AlarmClock.ACTION_SET_ALARM);
+		j.putExtra(AlarmClock.EXTRA_MESSAGE, "Last Rise");
+		j.putExtra(AlarmClock.EXTRA_HOUR, hours);
+		j.putExtra(AlarmClock.EXTRA_MINUTES, mins);
+		j.putExtra(AlarmClock.EXTRA_VIBRATE, false);
+		i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
+		//i.putExtra(AlarmClock.EXTRA_RINGTONE, gongAlarm); //TODO set a ringtone for the alarm, MAKE THIS ONE LOUD!
+		//https://developer.android.com/reference/android/provider/AlarmClock#EXTRA_RINGTONE
+		if (i.resolveActivity(getPackageManager()) != null && j.resolveActivity(getPackageManager()) != null)
+		{
+			startActivity(i);
+			startActivity(j);
+		}
 
 
 	}
