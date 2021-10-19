@@ -14,6 +14,7 @@ import java.io.File;
 import java.lang.Math;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -120,37 +121,28 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		else
 		{
 			LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-			Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+			Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER); //First attempt at getting location
 
+			if (location == null)
+			{
+				Criteria crit = new Criteria();
+				crit.setAccuracy(Criteria.ACCURACY_FINE);
+				String provider = lm.getBestProvider(crit, true);
+				location = lm.getLastKnownLocation(provider); // Second attempt at getting location
+			}
+			if (location == null)
+			{
+				location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER); // Third attempt at getting location
+			}
 			if (location != null)
 			{
+				location_error = false; //Setting location if any of the above worked
 				lat = location.getLatitude();
 				longitude = location.getLongitude();
 			}
 			else
 			{
-				Criteria crit = new Criteria();
-				crit.setAccuracy(Criteria.ACCURACY_FINE);
-				String provider = lm.getBestProvider(crit, true);
-				location = lm.getLastKnownLocation(provider);
-				if (location != null)
-				{
-					lat = location.getLatitude();
-					longitude = location.getLongitude();
-				}
-				else
-				{
-					location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-					if (location != null)
-					{
-						lat = location.getLatitude();
-						longitude = location.getLongitude();
-					}
-				}
-			}
-			if (location == null)
-			{
-				lat = 55.954757;
+				lat = 55.954757; //Defaulting to set location if none of the above methods worked.
 				longitude = -3.184216;
 				location_error = true;
 				Toast latlongError = Toast.makeText(this, "ZEALOTRY failed to fetch latitude and longitude - Sunrise time may be inaccurate", Toast.LENGTH_LONG);
@@ -258,7 +250,12 @@ public class Morning_menu_wake_up extends AppCompatActivity
 
 		long now = System.currentTimeMillis();
 		double time_zone_offset = (TimeZone.getDefault().getOffset(now)) / 3600000.0; //TODO Might not work the day before the clocks change, as it looks at current offset - add a day to 'now' if not past midnight to fix.
-		double local_sunrise_time = utc_Sunrise_Time + time_zone_offset; //TODO only apply local timezone offset if the location did not default to the Edinburgh royal observatory.
+		if (location_error)
+		{
+			String zoneId = "Europe/London"; // Or whatever timezone is most apt for the City observatory on Calton Hill, Edinburgh.
+			time_zone_offset = (TimeZone.getTimeZone(zoneId).getOffset(now)) / 3600000.0;
+		}
+		double local_sunrise_time = utc_Sunrise_Time + time_zone_offset;
 
 		//Output
 		double local_sunrise_time_hours = Math.floor(local_sunrise_time);
