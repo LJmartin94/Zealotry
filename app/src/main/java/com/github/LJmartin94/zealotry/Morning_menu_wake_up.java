@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -15,6 +17,7 @@ import java.lang.Math;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -362,6 +365,27 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		return (ret);
 	}
 
+	public void setAlarmAtTime(double alarmTime, String alarmName)
+	{
+		int time[] = convertHoursMins(alarmTime);
+		int hours = time[0];
+		int mins = time[1];
+
+
+		Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
+		i.putExtra(AlarmClock.EXTRA_MESSAGE, alarmName);
+		i.putExtra(AlarmClock.EXTRA_HOUR, hours);
+		i.putExtra(AlarmClock.EXTRA_MINUTES, mins);
+		i.putExtra(AlarmClock.EXTRA_VIBRATE, false);
+		i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
+		//i.putExtra(AlarmClock.EXTRA_RINGTONE, gongAlarm); //TODO set a ringtone for the alarm, MAKE IT LOUD IF LASTALARM
+		//https://developer.android.com/reference/android/provider/AlarmClock#EXTRA_RINGTONE
+		if (i.resolveActivity(getPackageManager()) != null)
+		{
+			startActivityForResult(i, 0);
+		}
+	}
+
 	public void setAlarm(View v)
 	{
 		if (location_error)
@@ -383,48 +407,18 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		else
 			earliestAlarm = lastAlarm - 0.5;
 		medianAlarm = (earliestAlarm + lastAlarm) / 2.0;
-
-
-		int time[] = convertHoursMins(earliestAlarm);
-		int hours = time[0];
-		int mins = time[1];
+		
 		String sunriseAlarmName;
 		if (earliestAlarm == sunriseAlarm)
 			sunriseAlarmName = "Sunrise";
 		else
 			sunriseAlarmName = "First Rise";
 		//TODO Function should delete previous alarm called 'Sunrise / First Rise' if available
-		Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
-			i.putExtra(AlarmClock.EXTRA_MESSAGE, sunriseAlarmName);
-			i.putExtra(AlarmClock.EXTRA_HOUR, hours);
-			i.putExtra(AlarmClock.EXTRA_MINUTES, mins);
-			i.putExtra(AlarmClock.EXTRA_VIBRATE, false);
-			i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
-			//i.putExtra(AlarmClock.EXTRA_RINGTONE, gongAlarm); //TODO set a ringtone for the alarm
-			//https://developer.android.com/reference/android/provider/AlarmClock#EXTRA_RINGTONE
-//		if (i.resolveActivity(getPackageManager()) != null)
-//		{
-//			startActivity(i);
-//		}
-
-		time = convertHoursMins(lastAlarm);
-		hours = time[0];
-		mins = time[1];
+		setAlarmAtTime(earliestAlarm, sunriseAlarmName);
 		//TODO Function should delete previous alarm called 'Last Rise' if available
-		Intent j = new Intent(AlarmClock.ACTION_SET_ALARM);
-		j.putExtra(AlarmClock.EXTRA_MESSAGE, "Last Rise");
-		j.putExtra(AlarmClock.EXTRA_HOUR, hours);
-		j.putExtra(AlarmClock.EXTRA_MINUTES, mins);
-		j.putExtra(AlarmClock.EXTRA_VIBRATE, false);
-		i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
-		//i.putExtra(AlarmClock.EXTRA_RINGTONE, gongAlarm); //TODO set a ringtone for the alarm, MAKE THIS ONE LOUD!
-		//https://developer.android.com/reference/android/provider/AlarmClock#EXTRA_RINGTONE
-		if (i.resolveActivity(getPackageManager()) != null && j.resolveActivity(getPackageManager()) != null)
-		{
-			startActivity(i);
-			startActivity(j);
-		}
-
+		setAlarmAtTime(lastAlarm, "Last Rise");
+		//TODO Function should delete previous alarm called 'Zealotry' if available
+		setAlarmAtTime(medianAlarm, "Zealotry");
 
 	}
 }
