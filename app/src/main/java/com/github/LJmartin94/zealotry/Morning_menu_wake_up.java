@@ -258,7 +258,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 
 		long now = System.currentTimeMillis();
 		double time_zone_offset = (TimeZone.getDefault().getOffset(now)) / 3600000.0; //TODO Might not work the day before the clocks change, as it looks at current offset - add a day to 'now' if not past midnight to fix.
-		double local_sunrise_time = utc_Sunrise_Time + time_zone_offset;
+		double local_sunrise_time = utc_Sunrise_Time + time_zone_offset; //TODO only apply local timezone offset if the location did not default to the Edinburgh royal observatory.
 
 		//Output
 		double local_sunrise_time_hours = Math.floor(local_sunrise_time);
