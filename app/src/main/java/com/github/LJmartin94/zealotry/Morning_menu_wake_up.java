@@ -386,6 +386,21 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		}
 	}
 
+	public void deleteOldAlarms()
+	{
+		Intent i = new Intent(AlarmClock.ACTION_DISMISS_ALARM);
+		i.putExtra(AlarmClock.EXTRA_ALARM_SEARCH_MODE, AlarmClock.ALARM_SEARCH_MODE_LABEL);
+		i.putExtra(AlarmClock.ALARM_SEARCH_MODE_LABEL, "Sunrise");
+		if (i.resolveActivity(getPackageManager()) != null)
+		{
+			startActivityForResult(i, 0);
+		}
+
+		//TODO Function should delete previous alarm called 'Sunrise / First Rise' if available
+		//TODO Function should delete previous alarm called 'Last Rise' if available
+		//TODO Function should delete previous alarm called 'Zealotry' if available
+	}
+
 	public void setAlarm(View v)
 	{
 		if (location_error)
@@ -407,7 +422,8 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		else
 			earliestAlarm = lastAlarm - 0.5;
 		medianAlarm = (earliestAlarm + lastAlarm) / 2.0;
-		
+
+		deleteOldAlarms();
 		String sunriseAlarmName;
 		if (earliestAlarm == sunriseAlarm)
 			sunriseAlarmName = "Sunrise";
