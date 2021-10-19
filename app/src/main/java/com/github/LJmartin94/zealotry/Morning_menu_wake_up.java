@@ -7,8 +7,10 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.ContentResolver;
 import android.content.Context;
 
+import java.io.File;
 import java.lang.Math;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,9 +21,13 @@ import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 import android.content.pm.PackageManager;
+import android.content.res.AssetFileDescriptor;
 import android.content.res.Resources;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.provider.AlarmClock;
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,6 +47,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 	int select_minute = 0;
 	int g_hours_to_leave = 10;
 	int g_mins_to_leave = 0;
+	boolean location_error = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -115,8 +122,40 @@ public class Morning_menu_wake_up extends AppCompatActivity
 			LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 			Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-			lat = location.getLatitude();
-			longitude = location.getLongitude();
+			if (location != null)
+			{
+				lat = location.getLatitude();
+				longitude = location.getLongitude();
+			}
+			else
+			{
+				Criteria crit = new Criteria();
+				crit.setAccuracy(Criteria.ACCURACY_FINE);
+				String provider = lm.getBestProvider(crit, true);
+				location = lm.getLastKnownLocation(provider);
+				if (location != null)
+				{
+					lat = location.getLatitude();
+					longitude = location.getLongitude();
+				}
+				else
+				{
+					location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+					if (location != null)
+					{
+						lat = location.getLatitude();
+						longitude = location.getLongitude();
+					}
+				}
+			}
+			if (location == null)
+			{
+				lat = 55.954757;
+				longitude = -3.184216;
+				location_error = true;
+				Toast latlongError = Toast.makeText(this, "ZEALOTRY failed to fetch latitude and longitude - Sunrise time may be inaccurate", Toast.LENGTH_LONG);
+				latlongError.show();
+			}
 		}
 		lat_long[0] = lat;
 		lat_long[1] = longitude;
@@ -128,6 +167,8 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		//Input - place
 		double[] lat_long;
 		lat_long = get_location();
+		if (location_error)
+			lat_long = get_location();
 		double lat = lat_long[0];
 		double longitude = lat_long[1];
 		//Input - time
@@ -293,6 +334,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 	{
 		int style = R.style.DarkSpinner;
 		//TODO if you want a custom time spinner, make a class and xlm file for it. Keywords: AlertDialog, timepicker spinner, dialogfragments.
+		// Useful link : https://material.io/components/dialogs/android#theming-dialogs
 		TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener()
 		{
 			@Override
@@ -309,27 +351,81 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		timePickerDialog.show();
 	}
 
+	public int[] convertHoursMins(double Time)
+	{
+		double 	hours;
+		double 	mins;
+
+		hours = (Math.floor(Time));
+		mins = ((Time % 1) * 60);
+		mins = Math.round(mins);
+		hours = Math.round(hours);
+
+		int[] ret = {(int)hours, (int)mins};
+		return (ret);
+	}
+
 	public void setAlarm(View v)
 	{
-		// Alarm should be set for: (time_you_need_to_leave - time_you_need_to_get_ready) at latest, and at (sunrise || 8:00 || half an hour before latest alarm -> whichever is earliest) at the earliest.
-		// Eventually the app should be able to wake the user when they are in their lightest sleep somewhere between these two extremes.
+		if (location_error)
+			calculateSunrise();
+		// TODO Eventually the app should be able to wake the user when they are in their lightest sleep somewhere between these two extremes.
 
-		//Function should delete previous alarm called 'Sunrise' if available
+		//Uri gongAlarm = Uri.parse("android.resource://com.github.LJmartin94.zealotry/raw/gong.mp3");
+
+		double sunriseAlarm = hourSunrise + (minSunrise / 60.0);
+		double lastRiseAlarm = g_hours_to_leave + (g_mins_to_leave / 60.0);
+
+		double earliestAlarm;
+		double lastAlarm;
+		double medianAlarm;
+
+		lastAlarm = lastRiseAlarm;
+		if (sunriseAlarm < lastRiseAlarm)
+			earliestAlarm = sunriseAlarm;
+		else
+			earliestAlarm = lastAlarm - 0.5;
+		medianAlarm = (earliestAlarm + lastAlarm) / 2.0;
+
+
+		int time[] = convertHoursMins(earliestAlarm);
+		int hours = time[0];
+		int mins = time[1];
+		String sunriseAlarmName;
+		if (earliestAlarm == sunriseAlarm)
+			sunriseAlarmName = "Sunrise";
+		else
+			sunriseAlarmName = "First Rise";
+		//TODO Function should delete previous alarm called 'Sunrise' if available
 		Intent i = new Intent(AlarmClock.ACTION_SET_ALARM);
-			i.putExtra(AlarmClock.EXTRA_MESSAGE, "Sunrise");
-			i.putExtra(AlarmClock.EXTRA_HOUR, hourSunrise);
-			i.putExtra(AlarmClock.EXTRA_MINUTES, minSunrise);
-			//i.putExtra(AlarmClock.EXTRA_RINGTONE, )
+			i.putExtra(AlarmClock.EXTRA_MESSAGE, sunriseAlarmName);
+			i.putExtra(AlarmClock.EXTRA_HOUR, hours);
+			i.putExtra(AlarmClock.EXTRA_MINUTES, mins);
+			i.putExtra(AlarmClock.EXTRA_VIBRATE, false);
+			//i.putExtra(AlarmClock.EXTRA_RINGTONE, gongAlarm); //TODO set a ringtone for the alarm
 			//https://developer.android.com/reference/android/provider/AlarmClock#EXTRA_RINGTONE
-
-
-		//String timeText = String.format("%,.4f", sunriseTime);
-
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
 			startActivity(i);
-//			Toast showTime = Toast.makeText(this, timeText, Toast.LENGTH_SHORT);
-//			showTime.show();
 		}
+
+//		time = convertHoursMins(lastAlarm);
+//		hours = time[0];
+//		mins = time[1];
+//		//TODO Function should delete previous alarm called 'Sunrise' if available
+//		Intent j = new Intent(AlarmClock.ACTION_SET_ALARM);
+//		j.putExtra(AlarmClock.EXTRA_MESSAGE, "Last Rise");
+//		j.putExtra(AlarmClock.EXTRA_HOUR, hours);
+//		j.putExtra(AlarmClock.EXTRA_MINUTES, mins);
+//		j.putExtra(AlarmClock.EXTRA_VIBRATE, false);
+//		//i.putExtra(AlarmClock.EXTRA_RINGTONE, gongAlarm); //TODO set a ringtone for the alarm, MAKE THIS ONE LOUD!
+//		//https://developer.android.com/reference/android/provider/AlarmClock#EXTRA_RINGTONE
+//		if (i.resolveActivity(getPackageManager()) != null && j.resolveActivity(getPackageManager()) != null)
+//		{
+//			startActivity(i);
+//			startActivity(j);
+//		}
+
+
 	}
 }
