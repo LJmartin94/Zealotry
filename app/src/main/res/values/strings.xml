@@ -29,6 +29,7 @@
 	<string name="get_up">Get up</string>
 	<string name="shower">Shower</string>
 	<string name="news">News</string>
+	<string name="curtains">Open curtains</string>
 	<string name="coffee">Coffee</string>
 	<string name="smoothie">Smoothie</string>
 	<string name="water">Water</string>
@@ -41,6 +42,7 @@
 	<string name="brush_teeth">Brush teeth</string>
 	<string name="gel">Gel, cologne etc</string>
 	<string name="pack">Pack bag</string>
+	<string name="make_bed">Make bed</string>
 	<string name="bins">Take out the bins</string>
 
 	<string name="main_day_menu">Day</string>

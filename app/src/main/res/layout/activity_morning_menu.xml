@@ -50,6 +50,12 @@
 				android:text="@string/news" />
 
 			<Button
+				android:id="@+id/curtains_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/curtains" />
+
+			<Button
 				android:id="@+id/coffee_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
@@ -122,6 +128,12 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:text="@string/pack" />
+
+			<Button
+				android:id="@+id/make_bed_button"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/make_bed" />
 
 			<Button
 				android:id="@+id/bin_button"
