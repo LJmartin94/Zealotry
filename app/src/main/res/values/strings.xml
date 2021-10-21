@@ -48,9 +48,12 @@
 	<string name="main_day_menu">Day</string>
 	<string name="act_day">Good Day</string>
 
-	<string name="walk">Walk</string>
+	<string name="travel">Travel</string>
+	<string name="book">Audio-book</string>
 	<string name="work">Work</string>
 	<string name="lunch">Lunch</string>
+	<string name="working">Working</string>
+	<string name="_break">On a break</string>
 
 	<string name="main_evening_menu">Evening</string>
 	<string name="act_evening">Good Evening</string>
@@ -62,7 +65,7 @@
 	<string name="chill">Chill</string>
 	<string name="clothes">Clothes</string>
 	<string name="exercise">Exercise</string>
-	<string name="book">Audiobook</string>
+
 	<string name="sleep">Sleep</string>
 
 	<string name="act_githubsearch">GitHub Search</string>
