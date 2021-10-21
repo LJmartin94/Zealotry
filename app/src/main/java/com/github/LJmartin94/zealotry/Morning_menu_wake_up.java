@@ -365,7 +365,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		return (ret);
 	}
 
-	public void setAlarmAtTime(double alarmTime, String alarmName)
+	public Uri setAlarmAtTime(double alarmTime, String alarmName)
 	{
 		int time[] = convertHoursMins(alarmTime);
 		int hours = time[0];
@@ -384,21 +384,32 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		{
 			startActivityForResult(i, 0);
 		}
+		Uri alarmDeeplink = i.getData();
+		return (alarmDeeplink);
 	}
 
-	public void deleteOldAlarms()
+	public void deleteOldAlarms(Uri to_delete)
 	{
 		Intent i = new Intent(AlarmClock.ACTION_DISMISS_ALARM);
-		i.putExtra(AlarmClock.EXTRA_ALARM_SEARCH_MODE, AlarmClock.ALARM_SEARCH_MODE_LABEL);
-		i.putExtra(AlarmClock.ALARM_SEARCH_MODE_LABEL, "Sunrise");
+		i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//		i.putExtra(AlarmClock.EXTRA_ALARM_SEARCH_MODE, AlarmClock.ALARM_SEARCH_MODE_LABEL);
+		i.putExtra(AlarmClock.EXTRA_MESSAGE, to_delete);
+//		i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
-			startActivityForResult(i, 0);
+			startActivityForResult(i, 1);
+//			startActivity(i);
+			Toast test = Toast.makeText(this, "Tried to delete alarm", Toast.LENGTH_LONG);
+			test.show();
 		}
 
 		//TODO Function should delete previous alarm called 'Sunrise / First Rise' if available
 		//TODO Function should delete previous alarm called 'Last Rise' if available
 		//TODO Function should delete previous alarm called 'Zealotry' if available
+
+		//None of these approaches seem to work (neither using the alarm name as label, nor trying to delete it with a direct Uri).
+		//Two options remain: either write your entire own alarm manager,
+		//or see if this approach is perhaps viable after all if you use an 'Activity Result API' instead of the startActivityForResult function call.
 	}
 
 	public void setAlarm(View v)
@@ -423,18 +434,17 @@ public class Morning_menu_wake_up extends AppCompatActivity
 			earliestAlarm = lastAlarm - 0.5;
 		medianAlarm = (earliestAlarm + lastAlarm) / 2.0;
 
-		deleteOldAlarms();
 		String sunriseAlarmName;
 		if (earliestAlarm == sunriseAlarm)
 			sunriseAlarmName = "Sunrise";
 		else
 			sunriseAlarmName = "First Rise";
-		//TODO Function should delete previous alarm called 'Sunrise / First Rise' if available
-		setAlarmAtTime(earliestAlarm, sunriseAlarmName);
-		//TODO Function should delete previous alarm called 'Last Rise' if available
-		setAlarmAtTime(lastAlarm, "Last Rise");
-		//TODO Function should delete previous alarm called 'Zealotry' if available
-		setAlarmAtTime(medianAlarm, "Zealotry");
+		Uri i = setAlarmAtTime(earliestAlarm, sunriseAlarmName);
+		Uri j = setAlarmAtTime(lastAlarm, "Last Rise");
+		Uri k = setAlarmAtTime(medianAlarm, "Zealotry");
 
+//		deleteOldAlarms(i);
+//		deleteOldAlarms(j);
+//		deleteOldAlarms(k);
 	}
 }
