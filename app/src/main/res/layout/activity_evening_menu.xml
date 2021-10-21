@@ -6,4 +6,108 @@
 	android:layout_height="match_parent"
 	tools:context=".Evening_menu">
 
+	<!--	<ScrollView-->
+	<!--		android:layout_width="0dp"-->
+	<!--		android:layout_height="wrap_content"-->
+	<!--		android:scrollbarStyle="insideOverlay"-->
+	<!--		app:layout_constraintBottom_toBottomOf="parent"-->
+	<!--		app:layout_constraintEnd_toEndOf="parent"-->
+	<!--		app:layout_constraintStart_toStartOf="parent"-->
+	<!--		app:layout_constraintTop_toTopOf="parent">-->
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+		<!--			app:layout_constraintBottom_toBottomOf="parent"-->
+		<!--			app:layout_constraintEnd_toEndOf="parent"-->
+		<!--			app:layout_constraintStart_toStartOf="parent"-->
+		<!--			app:layout_constraintTop_toTopOf="parent">-->
+
+		<Button
+			android:id="@+id/unpack_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/unpack"
+			android:layout_weight="5"/>
+
+		<Button
+			android:id="@+id/laundry_button_1"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/laundry"
+			android:layout_weight="5"/>
+
+		<Button
+			android:id="@+id/set_alarms_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/set_alarms"
+			android:layout_weight="5"/>
+
+		<Button
+			android:id="@+id/exercise_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/exercise"
+			android:layout_weight="15"/>
+
+		<Button
+			android:id="@+id/shopping_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/shop"
+			android:layout_weight="30"/>
+
+		<Button
+			android:id="@+id/cooking_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/cook"
+			android:layout_weight="45"/>
+
+		<Button
+			android:id="@+id/chill_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/chill"
+			android:layout_weight="100"/>
+
+		<Button
+			android:id="@+id/laundry_button_2"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/laundry"
+			android:layout_weight="10"/>
+
+		<Button
+			android:id="@+id/dishes_button_2"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/dishes"
+			android:layout_weight="25"/>
+
+		<Button
+			android:id="@+id/teeth_button_2"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/brush_teeth"
+			android:layout_weight="10"/>
+
+		<Button
+			android:id="@+id/clothes_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/clothes"
+			android:layout_weight="5"/>
+
+		<Button
+			android:id="@+id/sleep_button"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/sleep" />
+
+	</LinearLayout>
+	<!--	</ScrollView>-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

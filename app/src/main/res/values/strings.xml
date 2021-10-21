@@ -59,14 +59,18 @@
 	<string name="act_evening">Good Evening</string>
 
 	<string name="unpack">Unpack</string>
-	<string name="journal">Journal</string>
+	<string name="laundry">Laundry</string>
+	<string name="set_alarms">Set alarms</string>
+	<string name="exercise">Exercise</string>
 	<string name="shop">Shopping</string>
 	<string name="cook">Cooking</string>
-	<string name="chill">Chill</string>
+	<string name="chill">Relax</string>
+<!--	dishes-->
+<!--	brush teeth-->
 	<string name="clothes">Clothes</string>
-	<string name="exercise">Exercise</string>
-
 	<string name="sleep">Sleep</string>
+
+	<string name="journal">Journal</string>
 
 	<string name="act_githubsearch">GitHub Search</string>
 	<string name="githubMenu">Search</string>
