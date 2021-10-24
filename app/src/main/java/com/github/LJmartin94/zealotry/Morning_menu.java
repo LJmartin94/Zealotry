@@ -3,8 +3,11 @@ package com.github.LJmartin94.zealotry;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class Morning_menu extends AppCompatActivity {

@@ -28,7 +28,8 @@
 				android:id="@+id/wakeup_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/wake_up"
+				android:drawableStart="@drawable/wake_up_small"
+				android:drawableLeft="@drawable/wake_up_small"
 				android:onClick="launchWakeUp"
 				android:text="@string/wake_up" />
 
@@ -36,21 +37,24 @@
 				android:id="@+id/get_up_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/wake_up"
+				android:drawableStart="@drawable/wake_up_small"
+				android:drawableLeft="@drawable/wake_up_small"
 				android:text="@string/get_up" />
 
 			<Button
 				android:id="@+id/shower_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/water_bath"
+				android:drawableStart="@drawable/water_bath_small"
+				android:drawableLeft="@drawable/water_bath_small"
 				android:text="@string/shower" />
 
 			<Button
 				android:id="@+id/news_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/news"
+				android:drawableStart="@drawable/news_small"
+				android:drawableLeft="@drawable/news_small"
 				android:text="@string/news" />
 
 			<Button
