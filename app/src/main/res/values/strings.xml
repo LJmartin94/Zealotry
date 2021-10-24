@@ -67,6 +67,7 @@
 	<string name="chill">Relax</string>
 <!--	dishes-->
 <!--	brush teeth-->
+	<string name="lock_up">Lock up</string>
 	<string name="clothes">Clothes</string>
 	<string name="sleep">Sleep</string>
 
