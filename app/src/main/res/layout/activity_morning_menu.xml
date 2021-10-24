@@ -61,12 +61,16 @@
 				android:id="@+id/curtains_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/curtains_small"
+				android:drawableLeft="@drawable/curtains_small"
 				android:text="@string/curtains" />
 
 			<Button
 				android:id="@+id/coffee_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/energy_rune_small"
+				android:drawableLeft="@drawable/energy_rune_small"
 				android:text="@string/coffee" />
 
 			<Button
