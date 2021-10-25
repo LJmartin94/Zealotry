@@ -77,42 +77,56 @@
 				android:id="@+id/smoothie_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/health_rune_small"
+				android:drawableLeft="@drawable/health_rune_small"
 				android:text="@string/smoothie" />
 
 			<Button
 				android:id="@+id/hydrate_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/water_alt_small"
+				android:drawableLeft="@drawable/water_alt_small"
 				android:text="@string/water" />
 
 			<Button
 				android:id="@+id/vitamins_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/asclepius_small"
+				android:drawableLeft="@drawable/asclepius_small"
 				android:text="@string/vitamins" />
 
 			<Button
 				android:id="@+id/dishes_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/posession_stone_small"
+				android:drawableLeft="@drawable/posession_stone_small"
 				android:text="@string/dishes" />
 
 			<Button
 				android:id="@+id/breakfast_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/grain_jar_small"
+				android:drawableLeft="@drawable/grain_jar_small"
 				android:text="@string/breakfast" />
 
 			<Button
 				android:id="@+id/plants_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/lotus_watered_small"
+				android:drawableLeft="@drawable/lotus_watered_small"
 				android:text="@string/water_plants" />
 
 			<Button
 				android:id="@+id/meditation_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/meditation_small"
+				android:drawableLeft="@drawable/meditation_small"
 				android:onClick="launchMeditation"
 				android:text="@string/meditation" />
 
@@ -120,6 +134,8 @@
 				android:id="@+id/lang_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/language_small"
+				android:drawableLeft="@drawable/language_small"
 				android:onClick="launchLanguage"
 				android:text="@string/language" />
 
@@ -127,12 +143,16 @@
 				android:id="@+id/teeth_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/teeth_small"
+				android:drawableLeft="@drawable/teeth_small"
 				android:text="@string/brush_teeth" />
 
 			<Button
 				android:id="@+id/gel_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/perfume_small"
+				android:drawableLeft="@drawable/perfume_small"
 				android:text="@string/gel" />
 
 			<Button
