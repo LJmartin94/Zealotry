@@ -28,22 +28,28 @@
 			android:id="@+id/unpack_button"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/unpack"
-			android:layout_weight="5"/>
+			android:layout_weight="5"
+			android:drawableStart="@drawable/unpack_alt_small"
+			android:drawableLeft="@drawable/unpack_alt_small"
+			android:text="@string/unpack" />
 
 		<Button
 			android:id="@+id/laundry_button_1"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/laundry"
-			android:layout_weight="5"/>
+			android:layout_weight="5"
+			android:drawableStart="@drawable/deer_head_small"
+			android:drawableLeft="@drawable/deer_head_small"
+			android:text="@string/laundry" />
 
 		<Button
 			android:id="@+id/set_alarms_button"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/set_alarms"
-			android:layout_weight="5"/>
+			android:layout_weight="5"
+			android:drawableStart="@drawable/wake_up_small"
+			android:drawableLeft="@drawable/wake_up_small"
+			android:text="@string/set_alarms" />
 
 		<Button
 			android:id="@+id/exercise_button"
@@ -63,8 +69,10 @@
 			android:id="@+id/cooking_button"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/cook"
-			android:layout_weight="45"/>
+			android:layout_weight="45"
+			android:drawableStart="@drawable/grain_jar_small"
+			android:drawableLeft="@drawable/grain_jar_small"
+			android:text="@string/cook" />
 
 		<Button
 			android:id="@+id/chill_button"
@@ -77,22 +85,28 @@
 			android:id="@+id/laundry_button_2"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/laundry"
-			android:layout_weight="10"/>
+			android:layout_weight="10"
+			android:drawableStart="@drawable/deer_head_small"
+			android:drawableLeft="@drawable/deer_head_small"
+			android:text="@string/laundry" />
 
 		<Button
 			android:id="@+id/dishes_button_2"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/dishes"
-			android:layout_weight="25"/>
+			android:layout_weight="25"
+			android:drawableStart="@drawable/posession_stone_small"
+			android:drawableLeft="@drawable/posession_stone_small"
+			android:text="@string/dishes" />
 
 		<Button
 			android:id="@+id/teeth_button_2"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/brush_teeth"
-			android:layout_weight="10"/>
+			android:layout_weight="10"
+			android:drawableStart="@drawable/tooth_alt_small"
+			android:drawableLeft="@drawable/tooth_alt_small"
+			android:text="@string/brush_teeth" />
 
 		<Button
 			android:id="@+id/lock_up"
@@ -112,6 +126,8 @@
 			android:id="@+id/sleep_button"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
+			android:drawableStart="@drawable/kimi_small"
+			android:drawableLeft="@drawable/kimi_small"
 			android:text="@string/sleep" />
 
 	</LinearLayout>

@@ -143,8 +143,8 @@
 				android:id="@+id/teeth_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/teeth_small"
-				android:drawableLeft="@drawable/teeth_small"
+				android:drawableStart="@drawable/tooth_alt_small"
+				android:drawableLeft="@drawable/tooth_alt_small"
 				android:text="@string/brush_teeth" />
 
 			<Button
@@ -159,12 +159,16 @@
 				android:id="@+id/pack_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/pack_small"
+				android:drawableLeft="@drawable/pack_small"
 				android:text="@string/pack" />
 
 			<Button
 				android:id="@+id/make_bed_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
+				android:drawableStart="@drawable/imix_small"
+				android:drawableLeft="@drawable/imix_small"
 				android:text="@string/make_bed" />
 
 			<Button

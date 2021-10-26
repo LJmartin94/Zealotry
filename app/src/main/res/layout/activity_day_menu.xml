@@ -49,8 +49,10 @@
 				android:id="@+id/lunch"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/lunch"
-				android:layout_weight="30"/>
+				android:layout_weight="30"
+				android:drawableStart="@drawable/grain_jar_small"
+				android:drawableLeft="@drawable/grain_jar_small"
+				android:text="@string/lunch" />
 
 			<Button
 				android:id="@+id/work_button_2"
