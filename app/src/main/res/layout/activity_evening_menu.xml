@@ -83,8 +83,10 @@
 			android:id="@+id/chill_button"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/chill"
-			android:layout_weight="100"/>
+			android:layout_weight="100"
+			android:drawableStart="@drawable/relax_small"
+			android:drawableLeft="@drawable/relax_small"
+			android:text="@string/chill" />
 
 		<Button
 			android:id="@+id/laundry_button_2"
@@ -117,8 +119,10 @@
 			android:id="@+id/lock_up"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/lock_up"
-			android:layout_weight="2"/>
+			android:layout_weight="2"
+			android:drawableStart="@drawable/keys_small"
+			android:drawableLeft="@drawable/keys_small"
+			android:text="@string/lock_up" />
 
 		<Button
 			android:id="@+id/clothes_button"
