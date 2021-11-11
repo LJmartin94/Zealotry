@@ -28,22 +28,28 @@
 				android:id="@+id/travel_button_1"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/travel"
-				android:layout_weight="20"/>
+				android:layout_weight="20"
+				android:drawableStart="@drawable/safe_travels_small"
+				android:drawableLeft="@drawable/safe_travels_small"
+				android:text="@string/travel" />
 
 			<Button
 				android:id="@+id/book_button_1"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/book"
-				android:layout_weight="20"/>
+				android:layout_weight="20"
+				android:drawableStart="@drawable/scroll_small"
+				android:drawableLeft="@drawable/scroll_small"
+				android:text="@string/book" />
 
 			<Button
 				android:id="@+id/work_button_1"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/work"
-				android:layout_weight="120"/>
+				android:layout_weight="120"
+				android:drawableStart="@drawable/moolah_small"
+				android:drawableLeft="@drawable/moolah_small"
+				android:text="@string/work" />
 
 			<Button
 				android:id="@+id/lunch"
@@ -58,29 +64,37 @@
 				android:id="@+id/work_button_2"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/work"
-				android:layout_weight="120"/>
+				android:layout_weight="120"
+				android:drawableStart="@drawable/moolah_small"
+				android:drawableLeft="@drawable/moolah_small"
+				android:text="@string/work" />
 
 			<Button
 				android:id="@+id/work_button_3"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/work"
-				android:layout_weight="120"/>
+				android:layout_weight="120"
+				android:drawableStart="@drawable/moolah_small"
+				android:drawableLeft="@drawable/moolah_small"
+				android:text="@string/work" />
 
 			<Button
 				android:id="@+id/book_button_2"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/book"
-				android:layout_weight="20"/>
+				android:layout_weight="20"
+				android:drawableStart="@drawable/scroll_small"
+				android:drawableLeft="@drawable/scroll_small"
+				android:text="@string/book" />
 
 			<Button
 				android:id="@+id/travel_button_2"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/travel"
-				android:layout_weight="20"/>
+				android:layout_weight="20"
+				android:drawableStart="@drawable/safe_travels_small"
+				android:drawableLeft="@drawable/safe_travels_small"
+				android:text="@string/travel" />
 
 		</LinearLayout>
 <!--	</ScrollView>-->
