@@ -72,8 +72,89 @@ public class MainActivity extends AppCompatActivity {
 				break;
 		}
 		//((TextView)findViewById(R.id.Day)).setText(today);
+		today = today + addDate();
 		setTitle(today);
 		return (1);
+	}
+
+	public String	suffixDate(int date)
+	{
+		//1st, 21st, 31st, 41st, etc (if ends in 1 but not 11th)
+		//2nd, 22nd, etc (if ends in 2 but not 12th)
+		//3rd, 23rd, etc (if ends in 3 but not 13th)
+		//4th - 20th (DEFAULT)
+		date = date % 100;
+		if (date >= 4 && date <= 20)
+			return ("th");
+		else if ((date % 10) == 1)
+			return ("st");
+		else if ((date % 10) == 2)
+			return ("nd");
+		else if ((date % 10) == 3)
+			return ("rd");
+		else
+			return ("th");
+	}
+
+	public String	addDate()
+	{
+		Calendar calendar = Calendar.getInstance();
+		int leap_year = ((calendar.get(Calendar.YEAR) % 4) == 0) ? 1 : 0;
+		//1st of Spring: 20th of March
+		int spring = 79 + leap_year;
+		//1st of Summer: 21st of June
+		int summer = 172 + leap_year;
+		//1st of Autumn: 22nd of September
+		int autumn = 265 + leap_year;
+		//1st of Winter: 21st of December
+		int winter = 355 + leap_year;
+
+		String date_addition;
+
+		int current_day = calendar.get(Calendar.DAY_OF_YEAR);
+		date_addition = "";
+		int day_of_season = 0;
+		if (current_day >= spring && current_day < summer)
+		{
+			date_addition = " - ";
+			day_of_season = current_day - spring + 1;
+			date_addition = date_addition + day_of_season;
+			date_addition = date_addition + suffixDate(day_of_season);
+			date_addition = date_addition + " of Spring";
+		}
+		else if (current_day >= summer && current_day < autumn)
+		{
+			date_addition = " - ";
+			day_of_season = current_day - summer + 1;
+			date_addition = date_addition + day_of_season;
+			date_addition = date_addition + suffixDate(day_of_season);
+			date_addition = date_addition + " of Summer";
+		}
+		else if (current_day >= autumn && current_day < winter)
+		{
+			date_addition = " - ";
+			day_of_season = current_day - autumn + 1;
+			date_addition = date_addition + day_of_season;
+			date_addition = date_addition + suffixDate(day_of_season);
+			date_addition = date_addition + " of Autumn";
+		}
+		else if (current_day >= winter)
+		{
+			date_addition = " - ";
+			day_of_season = current_day - winter + 1;
+			date_addition = date_addition + day_of_season;
+			date_addition = date_addition + suffixDate(day_of_season);
+			date_addition = date_addition + " of Winter";
+		}
+		else if (current_day < spring)
+		{
+			date_addition = " - ";
+			day_of_season = current_day + 10;
+			date_addition = date_addition + day_of_season;
+			date_addition = date_addition + suffixDate(day_of_season);
+			date_addition = date_addition + " of Winter";
+		}
+		return (date_addition);
 	}
 
 	public void launchWeatherForecast(View v)
