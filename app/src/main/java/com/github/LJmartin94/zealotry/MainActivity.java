@@ -112,6 +112,15 @@ public class MainActivity extends AppCompatActivity {
 		String date_addition;
 
 		int current_day = calendar.get(Calendar.DAY_OF_YEAR);
+
+		//This makes days only roll over at 4am, as per the rest of the app, and accounts for leap
+		//years on the first of January every four years.
+			if (calendar.get(Calendar.HOUR_OF_DAY) < 4)
+				current_day = current_day - 1;
+			leap_year = (((calendar.get(Calendar.YEAR) - 1) % 4) == 0) ? 1 : 0;
+			if (current_day <= 0)
+				current_day = 365 + leap_year;
+
 		date_addition = "";
 		int day_of_season = 0;
 		if (current_day >= spring && current_day < summer)
