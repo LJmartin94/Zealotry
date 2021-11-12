@@ -158,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 		else if (current_day < spring)
 		{
 			date_addition = " - ";
-			day_of_season = current_day + 10;
+			day_of_season = current_day + 11;
 			date_addition = date_addition + day_of_season;
 			date_addition = date_addition + suffixDate(day_of_season);
 			date_addition = date_addition + " of Winter";
