@@ -442,7 +442,6 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		Uri i = setAlarmAtTime(earliestAlarm, sunriseAlarmName);
 		Uri j = setAlarmAtTime(lastAlarm, "Last Rise");
 		Uri k = setAlarmAtTime(medianAlarm, "Zealotry");
-
 //		deleteOldAlarms(i);
 //		deleteOldAlarms(j);
 //		deleteOldAlarms(k);

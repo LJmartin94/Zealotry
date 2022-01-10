@@ -29,6 +29,7 @@ public class Morning_menu extends AppCompatActivity {
 		{
 			startActivity(i);
 		}
+		disable_button(v);
 	}
 
 	public void launchLanguage(View v)
@@ -43,6 +44,7 @@ public class Morning_menu extends AppCompatActivity {
 			Toast error = Toast.makeText(this, "Please download Duolingo first", Toast.LENGTH_SHORT);
 			error.show();
 		}
+		disable_button(v);
 	}
 
 	public void launchMeditation(View v)
@@ -57,6 +59,7 @@ public class Morning_menu extends AppCompatActivity {
 			Toast error = Toast.makeText(this, "Please download Headspace first", Toast.LENGTH_SHORT);
 			error.show();
 		}
+		disable_button(v);
 	}
 
 	public void disable_button(View v)

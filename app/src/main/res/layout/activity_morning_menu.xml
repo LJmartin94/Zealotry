@@ -39,6 +39,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/wake_up_small"
 				android:drawableLeft="@drawable/wake_up_small"
+				android:onClick="disable_button"
 				android:text="@string/get_up" />
 
 			<Button
@@ -47,6 +48,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/water_bath_small"
 				android:drawableLeft="@drawable/water_bath_small"
+				android:onClick="disable_button"
 				android:text="@string/shower" />
 
 			<Button
@@ -55,6 +57,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/news_small"
 				android:drawableLeft="@drawable/news_small"
+				android:onClick="disable_button"
 				android:text="@string/news" />
 
 			<Button
@@ -63,6 +66,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/curtains_small"
 				android:drawableLeft="@drawable/curtains_small"
+				android:onClick="disable_button"
 				android:text="@string/curtains" />
 
 			<Button
@@ -71,6 +75,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/energy_rune_small"
 				android:drawableLeft="@drawable/energy_rune_small"
+				android:onClick="disable_button"
 				android:text="@string/coffee" />
 
 			<Button
@@ -88,6 +93,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/water_alt_small"
 				android:drawableLeft="@drawable/water_alt_small"
+				android:onClick="disable_button"
 				android:text="@string/water" />
 
 			<Button
@@ -96,6 +102,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/asclepius_small"
 				android:drawableLeft="@drawable/asclepius_small"
+				android:onClick="disable_button"
 				android:text="@string/vitamins" />
 
 			<Button
@@ -104,6 +111,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/posession_stone_small"
 				android:drawableLeft="@drawable/posession_stone_small"
+				android:onClick="disable_button"
 				android:text="@string/dishes" />
 
 			<Button
@@ -112,6 +120,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/grain_jar_small"
 				android:drawableLeft="@drawable/grain_jar_small"
+				android:onClick="disable_button"
 				android:text="@string/breakfast" />
 
 			<Button
@@ -120,6 +129,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/lotus_watered_small"
 				android:drawableLeft="@drawable/lotus_watered_small"
+				android:onClick="disable_button"
 				android:text="@string/water_plants" />
 
 			<Button
@@ -146,6 +156,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/tooth_alt_small"
 				android:drawableLeft="@drawable/tooth_alt_small"
+				android:onClick="disable_button"
 				android:text="@string/brush_teeth" />
 
 			<Button
@@ -154,6 +165,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/perfume_small"
 				android:drawableLeft="@drawable/perfume_small"
+				android:onClick="disable_button"
 				android:text="@string/gel" />
 
 			<Button
@@ -162,6 +174,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/pack_small"
 				android:drawableLeft="@drawable/pack_small"
+				android:onClick="disable_button"
 				android:text="@string/pack" />
 
 			<Button
@@ -170,6 +183,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/imix_small"
 				android:drawableLeft="@drawable/imix_small"
+				android:onClick="disable_button"
 				android:text="@string/make_bed" />
 
 			<Button
@@ -178,6 +192,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/bins_small"
 				android:drawableLeft="@drawable/bins_small"
+				android:onClick="disable_button"
 				android:text="@string/bins" />
 		</LinearLayout>
 	</ScrollView>
