@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 			day_of_season = current_day - spring + 1;
 			date_addition = date_addition + day_of_season;
 			date_addition = date_addition + suffixDate(day_of_season);
-			date_addition = date_addition + " of Spring";
+			date_addition = date_addition + " day of Spring";
 		}
 		else if (current_day >= summer && current_day < autumn)
 		{
@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
 			day_of_season = current_day - summer + 1;
 			date_addition = date_addition + day_of_season;
 			date_addition = date_addition + suffixDate(day_of_season);
-			date_addition = date_addition + " of Summer";
+			date_addition = date_addition + " day of Summer";
 		}
 		else if (current_day >= autumn && current_day < winter)
 		{
@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
 			day_of_season = current_day - autumn + 1;
 			date_addition = date_addition + day_of_season;
 			date_addition = date_addition + suffixDate(day_of_season);
-			date_addition = date_addition + " of Autumn";
+			date_addition = date_addition + " day of Autumn";
 		}
 		else if (current_day >= winter)
 		{
@@ -153,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 			day_of_season = current_day - winter + 1;
 			date_addition = date_addition + day_of_season;
 			date_addition = date_addition + suffixDate(day_of_season);
-			date_addition = date_addition + " of Winter";
+			date_addition = date_addition + " day of Winter";
 		}
 		else if (current_day < spring)
 		{
@@ -161,8 +161,9 @@ public class MainActivity extends AppCompatActivity {
 			day_of_season = current_day + 11;
 			date_addition = date_addition + day_of_season;
 			date_addition = date_addition + suffixDate(day_of_season);
-			date_addition = date_addition + " of Winter";
+			date_addition = date_addition + " day of Winter";
 		}
+		//TODO: Make sure the final string (day + date_addition) is less than 40 chars wide
 		return (date_addition);
 	}
 
