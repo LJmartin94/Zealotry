@@ -3,6 +3,8 @@ package com.github.LJmartin94.zealotry;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -53,5 +55,11 @@ public class Morning_menu extends AppCompatActivity {
 			Toast error = Toast.makeText(this, "Please download Headspace first", Toast.LENGTH_SHORT);
 			error.show();
 		}
+	}
+
+	public void disable_button(View v)
+	{
+		v.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+		v.setClickable(false);
 	}
 }

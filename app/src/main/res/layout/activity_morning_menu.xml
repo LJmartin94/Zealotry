@@ -79,6 +79,7 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/health_rune_small"
 				android:drawableLeft="@drawable/health_rune_small"
+				android:onClick="disable_button"
 				android:text="@string/smoothie" />
 
 			<Button
