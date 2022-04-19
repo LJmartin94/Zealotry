@@ -83,6 +83,7 @@ public class WeatherForecast extends AppCompatActivity implements WF_ForecastAda
 		//		toast = Toast.makeText(this, weatherForDay, Toast.LENGTH_SHORT);
 		//		toast.show();
 		Intent i = new Intent (this, WFDetailActivity.class);
+		i.putExtra(Intent.EXTRA_TEXT, weatherForDay);
 		startActivity(i);
 	}
 
