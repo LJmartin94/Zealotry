@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -75,12 +76,14 @@ public class WeatherForecast extends AppCompatActivity implements WF_ForecastAda
 	@Override
 	public void onClick(String weatherForDay)
 	{
-		if (toast != null)
-		{
-			toast.cancel();
-		}
-		toast = Toast.makeText(this, weatherForDay, Toast.LENGTH_SHORT);
-		toast.show();
+		//		if (toast != null)
+		//		{
+		//			toast.cancel();
+		//		}
+		//		toast = Toast.makeText(this, weatherForDay, Toast.LENGTH_SHORT);
+		//		toast.show();
+		Intent i = new Intent (this, WFDetailActivity.class);
+		startActivity(i);
 	}
 
 	private void loadWeatherData()

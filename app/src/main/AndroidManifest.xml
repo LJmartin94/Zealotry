@@ -31,11 +31,17 @@
 			android:label="@string/act_WeatherForecast"
 			android:parentActivityName=".MainActivity" />
 		<activity
+			android:name=".WFDetailActivity"
+			android:label="@string/act_WeatherForecast"
+			android:parentActivityName=".WeatherForecast">
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value=".MainActivity" />
+		</activity>
+		<activity
 			android:name=".GitHubSearch"
 			android:label="@string/act_githubsearch"
 			android:parentActivityName=".MainActivity" />
-
-
 		<activity
 			android:name=".Morning_menu"
 			android:label="@string/act_morning"
@@ -44,14 +50,10 @@
 			android:name=".Morning_menu_wake_up"
 			android:label="@string/wake_up"
 			android:parentActivityName=".Morning_menu" />
-
-
 		<activity
 			android:name=".Day_menu"
 			android:label="@string/act_day"
 			android:parentActivityName=".MainActivity" />
-
-
 		<activity
 			android:name=".Evening_menu"
 			android:label="@string/act_evening"
