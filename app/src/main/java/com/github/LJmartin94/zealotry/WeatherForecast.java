@@ -5,8 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,9 +19,11 @@ import android.widget.Toast;
 
 import java.net.URL;
 
-public class WeatherForecast extends AppCompatActivity implements WF_ForecastAdapter.ForecastAdapterOnClickHandler {
+public class WeatherForecast extends AppCompatActivity implements WF_ForecastAdapter.ForecastAdapterOnClickHandler
+{
 
 //	private TextView mWeatherTextView;
+	private static final String TAG = MainActivity.class.getSimpleName();
 	private RecyclerView mRecyclerView;
 	private WF_ForecastAdapter mForecastAdapter;
 	private TextView mErrorMessageDisplay;
@@ -47,6 +51,22 @@ public class WeatherForecast extends AppCompatActivity implements WF_ForecastAda
 		loadWeatherData();
 	}
 
+	private void openLocationInMap()
+	{
+		String addressString = "Royal Observatory Edinburgh, Edinburgh EH9 3HJ, United Kingdom";
+		Uri geoLocation = Uri.parse("geo:0,0?q=" + addressString);
+
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setData(geoLocation);
+
+		if (intent.resolveActivity(getPackageManager()) != null) {
+			startActivity(intent);
+		} else {
+			Log.d(TAG, "Couldn't call " + geoLocation.toString()
+					+ ", no receiving apps installed!");
+		}
+	}
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
@@ -68,6 +88,13 @@ public class WeatherForecast extends AppCompatActivity implements WF_ForecastAda
 			loadWeatherData();
 			return true;
 		}
+
+		if (id == R.id.action_map)
+		{
+			openLocationInMap();
+			return true;
+		}
+
 		return super.onOptionsItemSelected(item);
 	}
 
