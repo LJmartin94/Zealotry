@@ -423,12 +423,18 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		double sunriseAlarm = hourSunrise + (minSunrise / 60.0);
 		double lastRiseAlarm = g_hours_to_leave + (g_mins_to_leave / 60.0);
 
+		double bedBeforeSunrise = sunriseAlarm - 6.0; //Ensure at least 6 hours of dark-sleep
+		double bedBeforeLastRise = lastRiseAlarm - 8.0;
+		double bedAlarm = (bedBeforeSunrise < bedBeforeLastRise) ? bedBeforeSunrise : bedBeforeLastRise;
+		if (bedAlarm <= 0)
+			bedAlarm = bedAlarm + 24.0;
+
 		double earliestAlarm;
 		double lastAlarm;
 		double medianAlarm;
 
 		lastAlarm = lastRiseAlarm;
-		if (sunriseAlarm < lastRiseAlarm)
+		if (sunriseAlarm <= lastAlarm - 0.5)
 			earliestAlarm = sunriseAlarm;
 		else
 			earliestAlarm = lastAlarm - 0.5;
@@ -442,6 +448,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		Uri i = setAlarmAtTime(earliestAlarm, sunriseAlarmName);
 		Uri j = setAlarmAtTime(lastAlarm, "Last Rise");
 		Uri k = setAlarmAtTime(medianAlarm, "Zealotry");
+		Uri l = setAlarmAtTime(bedAlarm, "Get ready for bed");
 //		deleteOldAlarms(i);
 //		deleteOldAlarms(j);
 //		deleteOldAlarms(k);
