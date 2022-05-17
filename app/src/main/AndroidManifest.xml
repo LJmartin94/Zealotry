@@ -39,10 +39,6 @@
 				android:value=".MainActivity" />
 		</activity>
 		<activity
-			android:name=".GitHubSearch"
-			android:label="@string/act_githubsearch"
-			android:parentActivityName=".MainActivity" />
-		<activity
 			android:name=".Morning_menu"
 			android:label="@string/act_morning"
 			android:parentActivityName=".MainActivity" />

@@ -17,36 +17,6 @@ import java.io.IOException;
 public class NetworkUtils
 {
 	/**
-	 * 	Git Hub Search variables
-	 */
-
-	final static String GITHUB_BASE_URL =
-			"https://api.github.com/search/repositories";
-	final static String PARAM_QUERY = "q";
-	// Sort by stars, forks, or updated. Default: best match.
-	final static String PARAM_SORT = "sort";
-	final static String sortBy = "stars";
-
-	/**
-	 * Builds the URL used to query GitHub.
-	 */
-
-	public static URL GHbuildUrl(String githubSearchQuery)
-	{
-		Uri builtUri = Uri.parse(GITHUB_BASE_URL).buildUpon()
-				.appendQueryParameter(PARAM_QUERY, githubSearchQuery)
-				.appendQueryParameter(PARAM_SORT, sortBy)
-				.build();
-
-		URL url = null;
-		try
-			{ url = new URL(builtUri.toString());}
-		catch (MalformedURLException e)
-			{ e.printStackTrace();}
-		return url;
-	}
-
-	/**
 	 * 	Weather Forecast variables
 	 */
 
