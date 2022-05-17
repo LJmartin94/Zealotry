@@ -10,6 +10,7 @@ import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -49,15 +50,11 @@ public class Morning_menu extends AppCompatActivity {
 
 	public void launchMeditation(View v)
 	{
-		Intent i = getPackageManager().getLaunchIntentForPackage("com.getsomeheadspace.android");
+		Intent i = new Intent(AlarmClock.ACTION_SET_TIMER);
+		i.putExtra(AlarmClock.EXTRA_MINUTES, 10);
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
-			startActivity(i);
-		}
-		else
-		{
-			Toast error = Toast.makeText(this, "Please download Headspace first", Toast.LENGTH_SHORT);
-			error.show();
+			startActivityForResult(i, 0);
 		}
 		disable_button(v);
 	}
