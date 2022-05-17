@@ -1,8 +1,10 @@
-package com.github.LJmartin94.zealotry;
+package com.github.LJmartin94.zealotry.MainMenu.Evening;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.github.LJmartin94.zealotry.R;
 
 public class Evening_menu extends AppCompatActivity {
 

@@ -4,7 +4,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".Morning_menu_wake_up">
+	tools:context=".MainMenu.Morning.Morning_menu_wake_up">
 
 <!--	<ScrollView-->
 <!--		android:id="@+id/scrollView2"-->

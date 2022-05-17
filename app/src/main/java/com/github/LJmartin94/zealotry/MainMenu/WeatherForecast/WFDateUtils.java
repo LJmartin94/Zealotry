@@ -1,7 +1,9 @@
-package com.github.LJmartin94.zealotry;
+package com.github.LJmartin94.zealotry.MainMenu.WeatherForecast;
 
 import android.content.Context;
 import android.text.format.DateUtils;
+
+import com.github.LJmartin94.zealotry.R;
 
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;

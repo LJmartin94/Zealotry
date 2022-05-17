@@ -1,4 +1,4 @@
-package com.github.LJmartin94.zealotry;
+package com.github.LJmartin94.zealotry.MainMenu.Morning;
 
 import androidx.annotation.StyleRes;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,6 +40,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.github.LJmartin94.zealotry.R;
 
 public class Morning_menu_wake_up extends AppCompatActivity
 {

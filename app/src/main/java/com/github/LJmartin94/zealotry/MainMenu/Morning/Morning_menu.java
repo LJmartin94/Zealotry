@@ -1,4 +1,4 @@
-package com.github.LJmartin94.zealotry;
+package com.github.LJmartin94.zealotry.MainMenu.Morning;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,13 +7,12 @@ import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
+
+import com.github.LJmartin94.zealotry.R;
 
 public class Morning_menu extends AppCompatActivity {
 

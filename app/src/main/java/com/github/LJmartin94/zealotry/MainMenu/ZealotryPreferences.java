@@ -1,4 +1,4 @@
-package com.github.LJmartin94.zealotry;
+package com.github.LJmartin94.zealotry.MainMenu;
 
 		import android.content.Context;
 

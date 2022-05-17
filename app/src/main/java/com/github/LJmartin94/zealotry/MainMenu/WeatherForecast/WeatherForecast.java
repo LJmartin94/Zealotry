@@ -1,4 +1,4 @@
-package com.github.LJmartin94.zealotry;
+package com.github.LJmartin94.zealotry.MainMenu.WeatherForecast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,6 +16,10 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.github.LJmartin94.zealotry.MainMenu.MainActivity;
+import com.github.LJmartin94.zealotry.MainMenu.ZealotryPreferences;
+import com.github.LJmartin94.zealotry.R;
 
 import java.net.URL;
 

@@ -1,4 +1,4 @@
-package com.github.LJmartin94.zealotry;
+package com.github.LJmartin94.zealotry.MainMenu.WeatherForecast;
 
 import android.net.Uri;
 import android.util.Log;

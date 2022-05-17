@@ -1,7 +1,10 @@
-package com.github.LJmartin94.zealotry;
+package com.github.LJmartin94.zealotry.MainMenu.WeatherForecast;
 
 import android.content.Context;
 import android.util.Log;
+
+import com.github.LJmartin94.zealotry.MainMenu.ZealotryPreferences;
+import com.github.LJmartin94.zealotry.R;
 
 /**
  * Contains useful utilities for a weather app, such as conversion between Celsius and Fahrenheit,

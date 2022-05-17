@@ -1,7 +1,10 @@
-package com.github.LJmartin94.zealotry;
+package com.github.LJmartin94.zealotry.MainMenu.WeatherForecast;
 
 import android.content.ContentValues;
 import android.content.Context;
+
+import com.github.LJmartin94.zealotry.MainMenu.WeatherForecast.WFDateUtils;
+import com.github.LJmartin94.zealotry.MainMenu.WeatherForecast.WFWeatherUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;

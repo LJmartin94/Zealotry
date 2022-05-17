@@ -18,7 +18,7 @@
 		<!-- android:name="com.google.android.actions" -->
 		<!-- android:resource="@xml/githubsearch" /> -->
 		<activity
-			android:name=".MainActivity"
+			android:name=".MainMenu.MainActivity"
 			android:label="@string/app_name">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -27,33 +27,33 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name=".WeatherForecast"
+			android:name=".MainMenu.WeatherForecast.WeatherForecast"
 			android:label="@string/act_WeatherForecast"
-			android:parentActivityName=".MainActivity" />
+			android:parentActivityName=".MainMenu.MainActivity" />
 		<activity
-			android:name=".WFDetailActivity"
+			android:name=".MainMenu.WeatherForecast.WFDetailActivity"
 			android:label="@string/act_WeatherForecast"
-			android:parentActivityName=".WeatherForecast">
+			android:parentActivityName=".MainMenu.WeatherForecast.WeatherForecast">
 			<meta-data
 				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainActivity" />
+				android:value=".MainMenu.MainActivity" />
 		</activity>
 		<activity
-			android:name=".Morning_menu"
+			android:name=".MainMenu.Morning.Morning_menu"
 			android:label="@string/act_morning"
-			android:parentActivityName=".MainActivity" />
+			android:parentActivityName=".MainMenu.MainActivity" />
 		<activity
-			android:name=".Morning_menu_wake_up"
+			android:name=".MainMenu.Morning.Morning_menu_wake_up"
 			android:label="@string/wake_up"
-			android:parentActivityName=".Morning_menu" />
+			android:parentActivityName=".MainMenu.Morning.Morning_menu" />
 		<activity
-			android:name=".Day_menu"
+			android:name=".MainMenu.Day.Day_menu"
 			android:label="@string/act_day"
-			android:parentActivityName=".MainActivity" />
+			android:parentActivityName=".MainMenu.MainActivity" />
 		<activity
-			android:name=".Evening_menu"
+			android:name=".MainMenu.Evening.Evening_menu"
 			android:label="@string/act_evening"
-			android:parentActivityName=".MainActivity" />
+			android:parentActivityName=".MainMenu.MainActivity" />
 	</application>
 
 </manifest>

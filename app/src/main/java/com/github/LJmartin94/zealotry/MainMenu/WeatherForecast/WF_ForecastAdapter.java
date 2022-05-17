@@ -1,13 +1,14 @@
-package com.github.LJmartin94.zealotry;
+package com.github.LJmartin94.zealotry.MainMenu.WeatherForecast;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.github.LJmartin94.zealotry.R;
 
 public class WF_ForecastAdapter extends RecyclerView.Adapter<WF_ForecastAdapter.ForecastAdapterViewHolder>
 {
