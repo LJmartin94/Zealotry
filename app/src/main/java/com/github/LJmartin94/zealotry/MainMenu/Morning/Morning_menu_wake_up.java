@@ -32,6 +32,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.AlarmClock;
 import android.content.Intent;
 import android.os.Bundle;
@@ -133,7 +134,10 @@ public class Morning_menu_wake_up extends AppCompatActivity
 				Criteria crit = new Criteria();
 				crit.setAccuracy(Criteria.ACCURACY_FINE);
 				String provider = lm.getBestProvider(crit, true);
-				location = lm.getLastKnownLocation(provider); // Second attempt at getting location
+				if (provider != null)
+				{
+					location = lm.getLastKnownLocation(provider); // Second attempt at getting location
+				}
 			}
 			if (location == null)
 			{
@@ -369,7 +373,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 
 	public Uri setAlarmAtTime(double alarmTime, String alarmName)
 	{
-		int time[] = convertHoursMins(alarmTime);
+		int[] time = convertHoursMins(alarmTime);
 		int hours = time[0];
 		int mins = time[1];
 
@@ -378,7 +382,8 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		i.putExtra(AlarmClock.EXTRA_MESSAGE, alarmName);
 		i.putExtra(AlarmClock.EXTRA_HOUR, hours);
 		i.putExtra(AlarmClock.EXTRA_MINUTES, mins);
-		i.putExtra(AlarmClock.EXTRA_VIBRATE, false);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+			{i.putExtra(AlarmClock.EXTRA_VIBRATE, false);}
 		i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
 		//i.putExtra(AlarmClock.EXTRA_RINGTONE, gongAlarm); //TODO set a ringtone for the alarm, MAKE IT LOUD IF LASTALARM
 		//https://developer.android.com/reference/android/provider/AlarmClock#EXTRA_RINGTONE
@@ -427,7 +432,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 
 		double bedBeforeSunrise = sunriseAlarm - 6.0; //Ensure at least 6 hours of dark-sleep
 		double bedBeforeLastRise = lastRiseAlarm - 8.0;
-		double bedAlarm = (bedBeforeSunrise < bedBeforeLastRise) ? bedBeforeSunrise : bedBeforeLastRise;
+		double bedAlarm = Math.min(bedBeforeSunrise, bedBeforeLastRise);
 		if (bedAlarm <= 0)
 			bedAlarm = bedAlarm + 24.0;
 
@@ -436,10 +441,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		double medianAlarm;
 
 		lastAlarm = lastRiseAlarm;
-		if (sunriseAlarm <= lastAlarm - 0.5)
-			earliestAlarm = sunriseAlarm;
-		else
-			earliestAlarm = lastAlarm - 0.5;
+		earliestAlarm = Math.min(sunriseAlarm, lastAlarm - 0.5);
 		medianAlarm = (earliestAlarm + lastAlarm) / 2.0;
 
 		String sunriseAlarmName;
