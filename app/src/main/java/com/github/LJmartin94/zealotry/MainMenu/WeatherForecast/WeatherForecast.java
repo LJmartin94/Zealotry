@@ -1,6 +1,11 @@
 package com.github.LJmartin94.zealotry.MainMenu.WeatherForecast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.AsyncTaskLoader;
+import androidx.loader.content.Loader;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,36 +28,33 @@ import com.github.LJmartin94.zealotry.R;
 
 import java.net.URL;
 
-public class WeatherForecast extends AppCompatActivity implements WF_ForecastAdapter.ForecastAdapterOnClickHandler
+public class WeatherForecast extends AppCompatActivity implements
+		WF_ForecastAdapter.ForecastAdapterOnClickHandler,
+		LoaderManager.LoaderCallbacks<String[]>
 {
-
-//	private TextView mWeatherTextView;
 	private static final String TAG = MainActivity.class.getSimpleName();
 	private RecyclerView mRecyclerView;
 	private WF_ForecastAdapter mForecastAdapter;
 	private TextView mErrorMessageDisplay;
 	private ProgressBar mLoadingIndicator;
+	private static final int FORECAST_LOADER_ID = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_weatherforecast);
-
-//		mWeatherTextView = (TextView)findViewById(R.id.tv_weather_data);
 		mRecyclerView = (RecyclerView)findViewById(R.id.recyclerview_forecast);
 		LinearLayoutManager layoutManager
 				= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 		mRecyclerView.setLayoutManager(layoutManager);
 		mRecyclerView.setHasFixedSize(true);
-
 		mForecastAdapter = new WF_ForecastAdapter(this);
 		mRecyclerView.setAdapter(mForecastAdapter);
-
 		mErrorMessageDisplay = (TextView)findViewById(R.id.tv_error_message_display);
-
 		mLoadingIndicator = (ProgressBar)findViewById(R.id.pb_loading_indicator);
-		loadWeatherData();
+		LoaderManager.LoaderCallbacks<String[]> callback = WeatherForecast.this;
+		LoaderManager.getInstance(this).initLoader(FORECAST_LOADER_ID, null, callback); // Ensures there's an active loader initialised
 	}
 
 	private void openLocationInMap()
@@ -63,9 +65,10 @@ public class WeatherForecast extends AppCompatActivity implements WF_ForecastAda
 		Intent intent = new Intent(Intent.ACTION_VIEW);
 		intent.setData(geoLocation);
 
-		if (intent.resolveActivity(getPackageManager()) != null) {
-			startActivity(intent);
-		} else {
+		if (intent.resolveActivity(getPackageManager()) != null)
+		{	startActivity(intent); }
+		else
+		{
 			Log.d(TAG, "Couldn't call " + geoLocation.toString()
 					+ ", no receiving apps installed!");
 		}
@@ -89,7 +92,7 @@ public class WeatherForecast extends AppCompatActivity implements WF_ForecastAda
 		if (id == R.id.action_refresh)
 		{
 			mForecastAdapter.setWeatherData(null);
-			loadWeatherData();
+			LoaderManager.getInstance(this).restartLoader(FORECAST_LOADER_ID, null, this);
 			return true;
 		}
 
@@ -102,33 +105,18 @@ public class WeatherForecast extends AppCompatActivity implements WF_ForecastAda
 		return super.onOptionsItemSelected(item);
 	}
 
-	Toast toast = null;
-
 	@Override
 	public void onClick(String weatherForDay)
 	{
-		//		if (toast != null)
-		//		{
-		//			toast.cancel();
-		//		}
-		//		toast = Toast.makeText(this, weatherForDay, Toast.LENGTH_SHORT);
-		//		toast.show();
 		Intent i = new Intent (this, WFDetailActivity.class);
 		i.putExtra(Intent.EXTRA_TEXT, weatherForDay);
 		startActivity(i);
 	}
 
-	private void loadWeatherData()
-	{
-		showWeatherDataView();
-		String location = ZealotryPreferences.getPreferredWeatherLocation(this);
-		new FetchWeatherTask().execute(location);
-	}
-
 	private void showWeatherDataView()
 	{
-		mRecyclerView.setVisibility(View.VISIBLE);
 		mErrorMessageDisplay.setVisibility(View.INVISIBLE);
+		mRecyclerView.setVisibility(View.VISIBLE);
 	}
 
 	private void showErrorMessage()
@@ -137,50 +125,75 @@ public class WeatherForecast extends AppCompatActivity implements WF_ForecastAda
 		mErrorMessageDisplay.setVisibility(View.VISIBLE);
 	}
 
-	public class FetchWeatherTask extends AsyncTask<String, Void, String[]>
+	@NonNull
+	@Override
+	public Loader<String[]> onCreateLoader(int id, @Nullable Bundle args)
 	{
-		@Override
-		protected void onPreExecute()
+		AsyncTaskLoader<String[]> Loader = new AsyncTaskLoader<String[]>(this)
 		{
-			super.onPreExecute();
-			mLoadingIndicator.setVisibility(View.VISIBLE);
-		}
+			String[] mWeatherData = null;
 
-		@Override
-		protected String[] doInBackground(String... params)
-		{
-			if (params.length == 0)
-			{ return null;}
-			String location = params[0];
-			URL weatherRequestUrl = NetworkUtils.WFbuildUrl(location);
-			try
+			@Override
+			protected void onStartLoading()
 			{
-				String jsonWeatherResponse = NetworkUtils
-						.getResponseFromHttpUrl(weatherRequestUrl);
-				String[] simpleJsonWeatherData = OpenWeatherJsonUtils
-						.getSimpleWeatherStringsFromJson(WeatherForecast.this, jsonWeatherResponse);
-				return simpleJsonWeatherData;
+				if (mWeatherData != null)
+					{deliverResult(mWeatherData);}
+				else
+				{
+					mLoadingIndicator.setVisibility(View.VISIBLE);
+					forceLoad();
+				}
 			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-				return null;
-			}
-		}
 
-		@Override
-		protected void onPostExecute(String[] weatherData)
-		{
-			mLoadingIndicator.setVisibility(View.INVISIBLE);
-			if (weatherData != null)
+			@Override
+			public String[] loadInBackground()
 			{
-				showWeatherDataView();
-				mForecastAdapter.setWeatherData(weatherData);
+				String locationQuery = ZealotryPreferences
+						.getPreferredWeatherLocation(WeatherForecast.this);
+				URL weatherRequestUrl = NetworkUtils.WFbuildUrl(locationQuery);
+				try
+				{
+					String jsonWeatherResponse = NetworkUtils
+							.getResponseFromHttpUrl(weatherRequestUrl);
+					String[] simpleJsonWeatherData = OpenWeatherJsonUtils
+							.getSimpleWeatherStringsFromJson(WeatherForecast.this, jsonWeatherResponse);
+					return simpleJsonWeatherData;
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+					return null;
+				}
 			}
-			else
+
+			public void deliverResult(String[] data)
 			{
-				showErrorMessage();
+				mWeatherData = data;
+				super.deliverResult(data);
 			}
-		}
+		};
+		return(Loader);
+	}
+
+	@Override
+	public void onLoadFinished(@NonNull Loader<String[]> loader, String[] data)
+	{
+		mLoadingIndicator.setVisibility(View.INVISIBLE);
+		mForecastAdapter.setWeatherData(data);
+
+		if (data != null)
+			{showWeatherDataView();}
+		else
+			{showErrorMessage();}
+	}
+
+	@Override
+	public void onLoaderReset(@NonNull Loader<String[]> loader)
+	{
+		/**
+		 * Called when a previously created loader is being reset, and thus
+		 * making its data unavailable.  The application should at this point
+		 * remove any references it has to the Loader's data.
+		 */
 	}
 }
