@@ -14,10 +14,11 @@ import android.widget.Toast;
 
 import com.github.LJmartin94.zealotry.R;
 
-public class Morning_menu extends AppCompatActivity {
-
+public class Morning_menu extends AppCompatActivity
+{
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_morning_menu);
 	}

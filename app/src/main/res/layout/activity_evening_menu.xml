@@ -32,6 +32,7 @@
 			android:layout_weight="5"
 			android:drawableStart="@drawable/unpack_alt_small"
 			android:drawableLeft="@drawable/unpack_alt_small"
+			android:onClick="disable_button"
 			android:text="@string/unpack" />
 
 		<Button
@@ -41,6 +42,7 @@
 			android:layout_weight="5"
 			android:drawableStart="@drawable/deer_head_small"
 			android:drawableLeft="@drawable/deer_head_small"
+			android:onClick="disable_button"
 			android:text="@string/laundry" />
 
 		<Button
@@ -50,6 +52,7 @@
 			android:layout_weight="5"
 			android:drawableStart="@drawable/wake_up_small"
 			android:drawableLeft="@drawable/wake_up_small"
+			android:onClick="disable_button"
 			android:text="@string/set_alarms" />
 
 		<Button
@@ -59,6 +62,7 @@
 			android:layout_weight="15"
 			android:drawableStart="@drawable/weights_small"
 			android:drawableLeft="@drawable/weights_small"
+			android:onClick="disable_button"
 			android:text="@string/exercise" />
 
 		<Button
@@ -68,6 +72,7 @@
 			android:layout_weight="30"
 			android:drawableStart="@drawable/shop_small"
 			android:drawableLeft="@drawable/shop_small"
+			android:onClick="disable_button"
 			android:text="@string/shop" />
 
 		<Button
@@ -77,6 +82,7 @@
 			android:layout_weight="45"
 			android:drawableStart="@drawable/grain_jar_small"
 			android:drawableLeft="@drawable/grain_jar_small"
+			android:onClick="disable_button"
 			android:text="@string/cook" />
 
 		<Button
@@ -86,6 +92,7 @@
 			android:layout_weight="100"
 			android:drawableStart="@drawable/relax_small"
 			android:drawableLeft="@drawable/relax_small"
+			android:onClick="disable_button"
 			android:text="@string/chill" />
 
 		<Button
@@ -95,6 +102,7 @@
 			android:layout_weight="10"
 			android:drawableStart="@drawable/deer_head_small"
 			android:drawableLeft="@drawable/deer_head_small"
+			android:onClick="disable_button"
 			android:text="@string/laundry" />
 
 		<Button
@@ -104,6 +112,7 @@
 			android:layout_weight="25"
 			android:drawableStart="@drawable/posession_stone_small"
 			android:drawableLeft="@drawable/posession_stone_small"
+			android:onClick="disable_button"
 			android:text="@string/dishes" />
 
 		<Button
@@ -113,6 +122,7 @@
 			android:layout_weight="10"
 			android:drawableStart="@drawable/tooth_alt_small"
 			android:drawableLeft="@drawable/tooth_alt_small"
+			android:onClick="disable_button"
 			android:text="@string/brush_teeth" />
 
 		<Button
@@ -122,6 +132,7 @@
 			android:layout_weight="2"
 			android:drawableStart="@drawable/keys_small"
 			android:drawableLeft="@drawable/keys_small"
+			android:onClick="disable_button"
 			android:text="@string/lock_up" />
 
 		<Button
@@ -131,6 +142,7 @@
 			android:layout_weight="5"
 			android:drawableStart="@drawable/hide_small"
 			android:drawableLeft="@drawable/hide_small"
+			android:onClick="disable_button"
 			android:text="@string/clothes" />
 
 		<Button
@@ -139,6 +151,7 @@
 			android:layout_height="wrap_content"
 			android:drawableStart="@drawable/kimi_small"
 			android:drawableLeft="@drawable/kimi_small"
+			android:onClick="disable_button"
 			android:text="@string/sleep" />
 
 	</LinearLayout>

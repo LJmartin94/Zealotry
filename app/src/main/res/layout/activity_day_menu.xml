@@ -31,6 +31,7 @@
 				android:layout_weight="20"
 				android:drawableStart="@drawable/safe_travels_small"
 				android:drawableLeft="@drawable/safe_travels_small"
+				android:onClick="disable_button"
 				android:text="@string/travel" />
 
 			<Button
@@ -40,6 +41,7 @@
 				android:layout_weight="20"
 				android:drawableStart="@drawable/scroll_small"
 				android:drawableLeft="@drawable/scroll_small"
+				android:onClick="disable_button"
 				android:text="@string/book" />
 
 			<Button
@@ -49,6 +51,7 @@
 				android:layout_weight="120"
 				android:drawableStart="@drawable/moolah_small"
 				android:drawableLeft="@drawable/moolah_small"
+				android:onClick="disable_button"
 				android:text="@string/work" />
 
 			<Button
@@ -58,6 +61,7 @@
 				android:layout_weight="30"
 				android:drawableStart="@drawable/grain_jar_small"
 				android:drawableLeft="@drawable/grain_jar_small"
+				android:onClick="disable_button"
 				android:text="@string/lunch" />
 
 			<Button
@@ -67,6 +71,7 @@
 				android:layout_weight="120"
 				android:drawableStart="@drawable/moolah_small"
 				android:drawableLeft="@drawable/moolah_small"
+				android:onClick="disable_button"
 				android:text="@string/work" />
 
 			<Button
@@ -76,6 +81,7 @@
 				android:layout_weight="120"
 				android:drawableStart="@drawable/moolah_small"
 				android:drawableLeft="@drawable/moolah_small"
+				android:onClick="disable_button"
 				android:text="@string/work" />
 
 			<Button
@@ -85,6 +91,7 @@
 				android:layout_weight="20"
 				android:drawableStart="@drawable/scroll_small"
 				android:drawableLeft="@drawable/scroll_small"
+				android:onClick="disable_button"
 				android:text="@string/book" />
 
 			<Button
@@ -94,6 +101,7 @@
 				android:layout_weight="20"
 				android:drawableStart="@drawable/safe_travels_small"
 				android:drawableLeft="@drawable/safe_travels_small"
+				android:onClick="disable_button"
 				android:text="@string/travel" />
 
 		</LinearLayout>
