@@ -59,8 +59,8 @@
 				android:background="@drawable/morning_button_clickable"
 				android:onClick="launchMorningMenu"
 				android:text="@string/main_morning_menu"
-				android:paddingTop="140dp"
-				android:paddingBottom="10dp"
+				android:gravity="bottom|center"
+				android:elegantTextHeight="true"
 				android:fontFamily="@font/quaver"
 				android:textAllCaps="false"
 				android:textSize="36sp"/>
@@ -73,8 +73,8 @@
 				android:background="@drawable/day_button_clickable"
 				android:onClick="launchDayMenu"
 				android:fontFamily="@font/quaver"
-				android:paddingTop="140dp"
-				android:paddingBottom="10dp"
+				android:gravity="bottom|center"
+				android:elegantTextHeight="true"
 				android:textAllCaps="false"
 				android:text="@string/main_day_menu"
 				android:textSize="36sp"/>
@@ -87,8 +87,8 @@
 				android:background="@drawable/evening_button_clickable"
 				android:onClick="launchEveningMenu"
 				android:fontFamily="@font/quaver"
-				android:paddingTop="140dp"
-				android:paddingBottom="10dp"
+				android:gravity="bottom|center"
+				android:elegantTextHeight="true"
 				android:textAllCaps="false"
 				android:text="@string/main_evening_menu"
 				android:textSize="36sp"/>
