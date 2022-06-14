@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 				break;
 		}
 		//((TextView)findViewById(R.id.Day)).setText(today);
-		today = today + addDate();
+		today = today + addDate(today.length());
 		setTitle(today);
 		return (1);
 	}
@@ -97,7 +97,41 @@ public class MainActivity extends AppCompatActivity {
 			return ("th");
 	}
 
-	public String	addDate()
+	public String	shortenDateAddition(int dayStringLen, String dateAddition, String season)
+	{
+		// " - 87th day of Spring"
+		if ((dayStringLen + dateAddition.length()) >= 40)
+			dateAddition = dateAddition.replace(" day ", " ");
+
+		// " - 87th of Spring"
+		if ((dayStringLen + dateAddition.length()) >= 40)
+		{
+			dateAddition = dateAddition.replace((" of " + season), "");
+			dateAddition = dateAddition.replace( " -", (" - " + season));
+		}
+
+		// " - Spring 87th"
+		if ((dayStringLen + dateAddition.length()) >= 40)
+		{
+			dateAddition = dateAddition.replace(("th" + season), "");
+			dateAddition = dateAddition.replace(("rd" + season), "");
+			dateAddition = dateAddition.replace(("nd" + season), "");
+			dateAddition = dateAddition.replace(("st" + season), "");
+		}
+
+		// " - Spring 87"
+		if ((dayStringLen + dateAddition.length()) >= 40)
+			dateAddition = " - " + season;
+
+		// " - Spring"
+		if ((dayStringLen + dateAddition.length()) >= 40)
+			dateAddition = "";
+
+		// ""
+		return (dateAddition);
+	}
+
+	public String	addDate(int dayStringLen)
 	{
 		Calendar calendar = Calendar.getInstance();
 		int leap_year = ((calendar.get(Calendar.YEAR) % 4) == 0) ? 1 : 0;
@@ -110,7 +144,8 @@ public class MainActivity extends AppCompatActivity {
 		//1st of Winter: 21st of December
 		int winter = 355 + leap_year;
 
-		String date_addition;
+		String date_addition = "";
+		String season = "this season";
 
 		int current_day = calendar.get(Calendar.DAY_OF_YEAR);
 
@@ -122,7 +157,6 @@ public class MainActivity extends AppCompatActivity {
 			if (current_day <= 0)
 				current_day = 365 + leap_year;
 
-		date_addition = "";
 		int day_of_season = 0;
 		if (current_day >= spring && current_day < summer)
 		{
@@ -131,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
 			date_addition = date_addition + day_of_season;
 			date_addition = date_addition + suffixDate(day_of_season);
 			date_addition = date_addition + " day of Spring";
+			season = "Spring";
 		}
 		else if (current_day >= summer && current_day < autumn)
 		{
@@ -139,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
 			date_addition = date_addition + day_of_season;
 			date_addition = date_addition + suffixDate(day_of_season);
 			date_addition = date_addition + " day of Summer";
+			season = "Summer";
 		}
 		else if (current_day >= autumn && current_day < winter)
 		{
@@ -147,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
 			date_addition = date_addition + day_of_season;
 			date_addition = date_addition + suffixDate(day_of_season);
 			date_addition = date_addition + " day of Autumn";
+			season = "Autumn";
 		}
 		else if (current_day >= winter)
 		{
@@ -155,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
 			date_addition = date_addition + day_of_season;
 			date_addition = date_addition + suffixDate(day_of_season);
 			date_addition = date_addition + " day of Winter";
+			season = "Winter";
 		}
 		else if (current_day < spring)
 		{
@@ -163,8 +201,9 @@ public class MainActivity extends AppCompatActivity {
 			date_addition = date_addition + day_of_season;
 			date_addition = date_addition + suffixDate(day_of_season);
 			date_addition = date_addition + " day of Winter";
+			season = "Winter";
 		}
-		//TODO: Make sure the final string (day + date_addition) is less than 40 chars wide
+		date_addition = shortenDateAddition(dayStringLen, date_addition, season);
 		return (date_addition);
 	}
 
