@@ -15,8 +15,8 @@ import com.github.LJmartin94.zealotry.R;
 
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity
+{
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
