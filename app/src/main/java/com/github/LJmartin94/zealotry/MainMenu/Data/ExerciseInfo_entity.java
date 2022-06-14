@@ -21,7 +21,7 @@ public class ExerciseInfo_entity
 		this.mID = ID;
 	};
 
-	
+
 	// Accessors
 	public String getID(){return this.mID;}
 
