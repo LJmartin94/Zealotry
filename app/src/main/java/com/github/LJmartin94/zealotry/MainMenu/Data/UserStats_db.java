@@ -8,13 +8,17 @@ package com.github.LJmartin94.zealotry.MainMenu.Data;
 //
 //	//EXERCISE:
 //	//LastDayExercised
+//	//ExerciseDayZero (start of the streak)
 //	//PushUpWeek
 //	//PushUpDay
 //	//PushUpMax
+//	//PushUpPromotion
 //	//SitUpWeek
 //	//SitUpDay
 //	//SitUpMax
+//	//SitUpPromotion
 //	//SquatWeek
 //	//SquatDay
 //	//SquatMax
+//	//SquatPromotion
 //}

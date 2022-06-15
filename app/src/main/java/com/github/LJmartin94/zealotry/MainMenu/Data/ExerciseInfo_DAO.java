@@ -27,6 +27,6 @@ public interface ExerciseInfo_DAO
 	void deleteAll();
 
 	@Query("SELECT * FROM exercise_table ORDER BY ID ASC")
-	LiveData<List<ExerciseInfo_entity>> getAlphabetizedWords();
+	LiveData<List<ExerciseInfo_entity>> getOrderedExercises();
 
 }

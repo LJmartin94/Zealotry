@@ -12,6 +12,9 @@ import java.util.concurrent.Executors;
 // here to avoid a build warning. In a real app, you should consider setting a
 // directory for Room to use to export the schema so you can check the
 // current schema into your version control system.
+
+//TODO Can maybe just have one db for this app, instead of separate dbs for separate information groups
+
 @Database(entities = {ExerciseInfo_entity.class}, version = 1, exportSchema = false)
 public abstract class ExerciseInfo_db extends RoomDatabase
 {
