@@ -10,7 +10,18 @@
 		<item name="android:textAllCaps">true</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
+	<style name="ExerciseRecyclerViewStyle">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_marginBottom">8dp</item>
+		<item name="android:paddingLeft">8dp</item>
+		<item name="android:background">@color/colorPrimary</item>
+		<item name="android:textAppearance">@android:style/TextAppearance.Large</item>
+		<item name="fontFamily">@font/quaver</item>
+		<item name="android:fontFamily">@font/quaver</item>
+		<item name="android:textAllCaps">true</item>
+	</style>
+
+	<style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

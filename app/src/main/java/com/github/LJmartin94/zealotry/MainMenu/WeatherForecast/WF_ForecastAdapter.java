@@ -52,7 +52,7 @@ public class WF_ForecastAdapter extends RecyclerView.Adapter<WF_ForecastAdapter.
 	public ForecastAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType)
 	{
 		Context context = viewGroup.getContext();
-		int layoutIdForListItem = R.layout.wf_list_item;
+		int layoutIdForListItem = R.layout.recyclerItem_weatherforecast;
 		LayoutInflater inflater = LayoutInflater.from(context);
 		boolean attachImmediately = false;
 

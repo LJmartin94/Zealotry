@@ -52,7 +52,7 @@
 			android:layout_weight="5"
 			android:drawableStart="@drawable/wake_up_small"
 			android:drawableLeft="@drawable/wake_up_small"
-			android:onClick="disable_button"
+			android:onClick="launchSetAlarms"
 			android:text="@string/set_alarms" />
 
 		<Button
@@ -62,7 +62,7 @@
 			android:layout_weight="15"
 			android:drawableStart="@drawable/weights_small"
 			android:drawableLeft="@drawable/weights_small"
-			android:onClick="disable_button"
+			android:onClick="launchExercise"
 			android:text="@string/exercise" />
 
 		<Button

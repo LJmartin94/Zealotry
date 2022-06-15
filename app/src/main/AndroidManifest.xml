@@ -14,6 +14,7 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
+		<activity android:name=".MainMenu.Evening.ExerciseTest_Activity"></activity>
 		<!-- <meta-data -->
 		<!-- android:name="com.google.android.actions" -->
 		<!-- android:resource="@xml/githubsearch" /> -->
