@@ -10,13 +10,13 @@ import com.github.LJmartin94.zealotry.MainMenu.Data.ExerciseRepository;
 
 import java.util.List;
 
-public class ExerciseViewModel extends AndroidViewModel
+public class Exercise_ViewModel extends AndroidViewModel
 {
 	private ExerciseRepository mRepository;
 
 	private final LiveData<List<ExerciseInfo_entity>> mAllExercises;
 
-	public ExerciseViewModel(Application application)
+	public Exercise_ViewModel(Application application)
 	{
 		super(application);
 		mRepository = new ExerciseRepository(application);
