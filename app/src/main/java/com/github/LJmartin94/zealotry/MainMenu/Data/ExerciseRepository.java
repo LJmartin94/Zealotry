@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
+//TODO Rename to Exercise_Repo with refactor
+
 public class ExerciseRepository
 {
 	private ExerciseInfo_DAO mExerciseDao;

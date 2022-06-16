@@ -5,6 +5,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+//TODO Rename to Exercise_roomEntity with refactor
+
 @Entity(tableName = "exercise_table")
 public class ExerciseInfo_entity
 {

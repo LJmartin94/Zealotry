@@ -10,6 +10,8 @@ import androidx.room.Query;
 
 import java.util.List;
 
+//TODO Rename to Exercise_roomDAO with refactor
+
 @Dao
 public interface ExerciseInfo_DAO
 {
