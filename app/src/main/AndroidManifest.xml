@@ -14,7 +14,6 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
-		<activity android:name=".MainMenu.Evening.ExerciseTest_Activity"></activity>
 		<!-- <meta-data -->
 		<!-- android:name="com.google.android.actions" -->
 		<!-- android:resource="@xml/githubsearch" /> -->
@@ -27,6 +26,7 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
+
 		<activity
 			android:name=".MainMenu.WeatherForecast.WeatherForecast"
 			android:label="@string/act_WeatherForecast"
@@ -39,6 +39,7 @@
 				android:name="android.support.PARENT_ACTIVITY"
 				android:value=".MainMenu.MainActivity" />
 		</activity>
+
 		<activity
 			android:name=".MainMenu.Morning.Morning_menu"
 			android:label="@string/act_morning"
@@ -47,14 +48,19 @@
 			android:name=".MainMenu.Morning.Morning_menu_wake_up"
 			android:label="@string/wake_up"
 			android:parentActivityName=".MainMenu.Morning.Morning_menu" />
+
 		<activity
 			android:name=".MainMenu.Day.Day_menu"
 			android:label="@string/act_day"
 			android:parentActivityName=".MainMenu.MainActivity" />
+
 		<activity
 			android:name=".MainMenu.Evening.Evening_menu"
 			android:label="@string/act_evening"
 			android:parentActivityName=".MainMenu.MainActivity" />
+		<activity android:name=".MainMenu.Evening.ExerciseTest_Activity"
+			android:label="@string/exercise"
+			android:parentActivityName=".MainMenu.Evening.Evening_menu" />
 	</application>
 
 </manifest>
