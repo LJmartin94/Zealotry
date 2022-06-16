@@ -25,7 +25,7 @@
 		<item name="colorPrimary">@color/colorPrimary</item>
 		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 		<item name="colorAccent">@color/colorAccent</item>
-		<item name="colorSecondary">@color/colorAccent</item>
+		<item name="colorSecondary">@color/LightGrey</item>
 		<item name="fontFamily">@font/quaver</item>
 		<item name="android:fontFamily">@font/quaver</item>
 		<item name="android:textAllCaps">true</item>
