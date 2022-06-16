@@ -18,9 +18,9 @@ public class ExerciseInfo_entity
 
 
 	// Constructor
-	public ExerciseInfo_entity(@NonNull String ID)
+	public ExerciseInfo_entity(@NonNull String mID)
 	{
-		this.mID = ID;
+		this.mID = mID;
 	};
 
 
