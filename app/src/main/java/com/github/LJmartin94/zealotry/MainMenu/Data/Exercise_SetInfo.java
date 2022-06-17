@@ -217,8 +217,93 @@ public class Exercise_SetInfo
 			thresholdVals = new int[]{16, 21, 26};
 			exWeek week3 = new exWeek(type, info, link, 4, thresholdVals, all_weekdays);
 
+		//WEEK 4
+			//Day1(a)
+			sets = new String[]{"12", "14", "11", "10", "16+"};
+			light = new exSets("A04aL", 60, 5, sets);
+			sets = new String[]{"18", "22", "16", "16", "25+"};
+			medium = new exSets("A04aM", 60, 5, sets);
+			sets = new String[]{"21", "25", "21", "21", "32+"};
+			heavy = new exSets("A04aH", 60, 5, sets);
+			all_modes = new exSets[]{light, medium, heavy};
+			exDay A04a = new exDay(3, all_modes);
+
+			//Day2(b)
+			sets = new String[]{"14", "16", "12", "12", "18+"};
+			light = new exSets("A04bL", 90, 5, sets);
+			sets = new String[]{"20", "25", "20", "20", "28+"};
+			medium = new exSets("A04bM", 90, 5, sets);
+			sets = new String[]{"25", "29", "25", "25", "36+"};
+			heavy = new exSets("A04bH", 90, 5, sets);
+			all_modes = new exSets[]{light, medium, heavy};
+			exDay A04b = new exDay(3, all_modes);
+
+			//Day3(c)
+			sets = new String[]{"16", "18", "13", "13", "20+"};
+			light = new exSets("A04cL", 120, 5, sets);
+			sets = new String[]{"23", "28", "23", "23", "33+"};
+			medium = new exSets("A04cM", 120, 5, sets);
+			sets = new String[]{"29", "33", "29", "29", "40+"};
+			heavy = new exSets("A04cH", 120, 5, sets);
+			all_modes = new exSets[]{light, medium, heavy};
+			exDay A04c = new exDay(3, all_modes);
+
+			//Day4(d)
+			sets = new String[]{"Try and do as many good form push-ups as you can!\nTo challenge yourself, see if you can do at least 31+"};
+			light = new exSets("A04dLMH", 0, 1, sets);
+			all_modes = new exSets[]{light};
+			exDay A04d = new exDay(1, all_modes);
+
+			//Week
+			all_weekdays = new exDay[]{A04a, A04b, A04c, A04d};
+			thresholdVals = new int[]{16, 21, 26};
+			exWeek week4 = new exWeek(type, info, link, 4, thresholdVals, all_weekdays);
+
+		//WEEK 5
+			//Day1(a)
+			sets = new String[]{"17", "19", "15", "15", "20+"};
+			light = new exSets("A05aL", 60, 5, sets);
+			sets = new String[]{"28", "35", "25", "22", "35+"};
+			medium = new exSets("A05aM", 60, 5, sets);
+			sets = new String[]{"36", "40", "30", "24", "40+"};
+			heavy = new exSets("A05aH", 60, 5, sets);
+			all_modes = new exSets[]{light, medium, heavy};
+			exDay A05a = new exDay(3, all_modes);
+
+			//Day2(b)
+			sets = new String[]{"10", "10", "13", "13", "10", "10", "9", "25+"};
+			light = new exSets("A05bL", 45, 8, sets);
+			sets = new String[]{"18", "18", "20", "20", "14", "14", "16", "40+"};
+			medium = new exSets("A05bM", 45, 8, sets);
+			sets = new String[]{"19", "19", "22", "22", "18", "18", "22", "45+"};
+			heavy = new exSets("A05bH", 45, 8, sets);
+			all_modes = new exSets[]{light, medium, heavy};
+			exDay A05b = new exDay(3, all_modes);
+
+			//Day3(c)
+			sets = new String[]{"13", "13", "15", "15", "12", "12", "10", "30+"};
+			light = new exSets("A05cL", 45, 8, sets);
+			sets = new String[]{"18", "18", "20", "20", "17", "17", "20", "45+"};
+			medium = new exSets("A05cM", 45, 8, sets);
+			sets = new String[]{"20", "20", "24", "24", "20", "20", "22", "50+"};
+			heavy = new exSets("A05cH", 45, 8, sets);
+			all_modes = new exSets[]{light, medium, heavy};
+			exDay A05c = new exDay(3, all_modes);
+
+			//Day4(d)
+			sets = new String[]{"Try and do as many good form push-ups as you can!\nTo challenge yourself, see if you can do at least 46+"};
+			light = new exSets("A05dLMH", 0, 1, sets);
+			all_modes = new exSets[]{light};
+			exDay A05d = new exDay(1, all_modes);
+
+			//Week
+			all_weekdays = new exDay[]{A05a, A05b, A05c, A05d};
+			thresholdVals = new int[]{31, 36, 41};
+			exWeek week5 = new exWeek(type, info, link, 4, thresholdVals, all_weekdays);
+
+
 		// RETURN VAL
-		exWeek[]	all_training_weeks = {week0, week1, week2, week3};
+		exWeek[]	all_training_weeks = {week0, week1, week2, week3, week4, week5};
 		exType		arms = new exType("Arms", 8, all_training_weeks);
 		return (arms);
 	}
