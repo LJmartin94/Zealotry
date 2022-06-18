@@ -1,5 +1,9 @@
 package com.github.LJmartin94.zealotry.MainMenu.Evening;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,7 +19,6 @@ import com.google.android.material.floatingactionbutton.ExtendedFloatingActionBu
 
 public class ExerciseTest_Activity extends AppCompatActivity
 {
-	public static final int NEW_EXERCISE_ACTIVITY_REQUEST_CODE = 1;
 	private Exercise_ViewModel mViewModel;
 
 	@Override
@@ -34,26 +37,32 @@ public class ExerciseTest_Activity extends AppCompatActivity
 			adapter.submitList(exerciseInfo_entities);
 		});
 
-		//TODO Replace deprecated startActivityForResult
+		ActivityResultLauncher<Intent> completedActivityResultLauncher =
+				registerForActivityResult(
+				new ActivityResultContracts.StartActivityForResult(),
+				new ActivityResultCallback<ActivityResult>()
+				{
+					@Override
+					public void onActivityResult(ActivityResult result)
+					{
+							if (result.getResultCode() == RESULT_OK)
+							{
+								Intent data = result.getData();
+								Exercise_Entity exercise = new Exercise_Entity(data.getStringExtra(ExerciseTest_NewExercise_Activity.EXTRA_REPLY));
+								mViewModel.insert(exercise);
+							}
+							else
+							{
+								Toast.makeText( getApplicationContext(), "Empty string not saved.", Toast.LENGTH_LONG).show();
+							}
+					}
+				});
+
 		ExtendedFloatingActionButton fabCompleted = findViewById(R.id.completedfab);
 		fabCompleted.setOnClickListener( view ->
 		{
 			Intent intent = new Intent(ExerciseTest_Activity.this, ExerciseTest_NewExercise_Activity.class);
-			startActivityForResult(intent, NEW_EXERCISE_ACTIVITY_REQUEST_CODE);
+			completedActivityResultLauncher.launch(intent);
 		});
-	}
-
-	public void onActivityResult(int requestCode, int resultCode, Intent data)
-	{
-		super.onActivityResult(requestCode, resultCode, data);
-		if (requestCode == NEW_EXERCISE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK)
-		{
-			Exercise_Entity exercise = new Exercise_Entity(data.getStringExtra(ExerciseTest_NewExercise_Activity.EXTRA_REPLY));
-			mViewModel.insert(exercise);
-		}
-		else
-		{
-			Toast.makeText( getApplicationContext(), "Empty string not saved.", Toast.LENGTH_LONG).show();
-		}
 	}
 }

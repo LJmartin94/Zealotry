@@ -54,8 +54,7 @@ public class Morning_menu extends AppCompatActivity
 		i.putExtra(AlarmClock.EXTRA_MINUTES, 10);
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
-			//TODO Replace deprecated startActivityForResult
-			startActivityForResult(i, 0);
+			startActivity(i);
 		}
 		disable_button(v);
 	}

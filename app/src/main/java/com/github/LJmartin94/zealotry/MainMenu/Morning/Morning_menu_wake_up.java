@@ -391,6 +391,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		{
 			//TODO Replace deprecated startActivityForResult
 			startActivityForResult(i, 0);
+//			startActivity(i);
 		}
 		Uri alarmDeeplink = i.getData();
 		return (alarmDeeplink);
@@ -407,7 +408,6 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		{
 			//TODO Replace deprecated startActivityForResult
 			startActivityForResult(i, 1);
-//			startActivity(i);
 			Toast test = Toast.makeText(this, "Tried to delete alarm", Toast.LENGTH_LONG);
 			test.show();
 		}
