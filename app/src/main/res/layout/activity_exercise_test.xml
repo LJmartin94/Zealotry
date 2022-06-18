@@ -28,6 +28,7 @@
 		app:layout_constraintBottom_toTopOf="@+id/tried">
 
 		<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+			android:id="@+id/completedfab"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="8dp"
@@ -49,6 +50,7 @@
 		app:layout_constraintBottom_toTopOf="@+id/skip">
 
 		<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+			android:id="@+id/triedfab"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="8dp"
@@ -70,6 +72,7 @@
 		app:layout_constraintBottom_toBottomOf="parent">
 
 		<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+			android:id="@+id/skipfab"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_margin="8dp"

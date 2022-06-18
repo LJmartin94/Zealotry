@@ -1,66 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.github.LJmartin94.zealotry">
+    package="com.github.LJmartin94.zealotry" >
 
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-	<uses-permission android:name="android.permission.INTERNET" />
-	<uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
-	<uses-permission android:name="android.permission-group.DEVICE_ALARMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission-group.DEVICE_ALARMS" />
 
-	<application
-		android:allowBackup="true"
-		android:icon="@mipmap/ic_ziggurat2"
-		android:label="@string/app_name"
-		android:roundIcon="@mipmap/ic_launcher_round"
-		android:supportsRtl="true"
-		android:theme="@style/AppTheme">
-		<!-- <meta-data -->
-		<!-- android:name="com.google.android.actions" -->
-		<!-- android:resource="@xml/githubsearch" /> -->
-		<activity
-			android:name=".MainMenu.MainActivity"
-			android:label="@string/app_name">
-			<intent-filter>
-				<action android:name="android.intent.action.MAIN" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_ziggurat2"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.actions" -->
+        <!-- android:resource="@xml/githubsearch" /> -->
+        <activity
+            android:name=".MainMenu.MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-				<category android:name="android.intent.category.LAUNCHER" />
-			</intent-filter>
-		</activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-		<activity
-			android:name=".MainMenu.WeatherForecast.WeatherForecast"
-			android:label="@string/act_WeatherForecast"
-			android:parentActivityName=".MainMenu.MainActivity" />
-		<activity
-			android:name=".MainMenu.WeatherForecast.WFDetailActivity"
-			android:label="@string/act_WeatherForecast"
-			android:parentActivityName=".MainMenu.WeatherForecast.WeatherForecast">
-			<meta-data
-				android:name="android.support.PARENT_ACTIVITY"
-				android:value=".MainMenu.MainActivity" />
-		</activity>
+        <activity
+            android:name=".MainMenu.WeatherForecast.WeatherForecast"
+            android:label="@string/act_WeatherForecast"
+            android:parentActivityName=".MainMenu.MainActivity" />
+        <activity
+            android:name=".MainMenu.WeatherForecast.WFDetailActivity"
+            android:label="@string/act_WeatherForecast"
+            android:parentActivityName=".MainMenu.WeatherForecast.WeatherForecast" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainMenu.MainActivity" />
+        </activity>
 
-		<activity
-			android:name=".MainMenu.Morning.Morning_menu"
-			android:label="@string/act_morning"
-			android:parentActivityName=".MainMenu.MainActivity" />
-		<activity
-			android:name=".MainMenu.Morning.Morning_menu_wake_up"
-			android:label="@string/wake_up"
-			android:parentActivityName=".MainMenu.Morning.Morning_menu" />
+        <activity
+            android:name=".MainMenu.Morning.Morning_menu"
+            android:label="@string/act_morning"
+            android:parentActivityName=".MainMenu.MainActivity" />
+        <activity
+            android:name=".MainMenu.Morning.Morning_menu_wake_up"
+            android:label="@string/wake_up"
+            android:parentActivityName=".MainMenu.Morning.Morning_menu" />
 
-		<activity
-			android:name=".MainMenu.Day.Day_menu"
-			android:label="@string/act_day"
-			android:parentActivityName=".MainMenu.MainActivity" />
+        <activity
+            android:name=".MainMenu.Day.Day_menu"
+            android:label="@string/act_day"
+            android:parentActivityName=".MainMenu.MainActivity" />
 
+        <activity
+            android:name=".MainMenu.Evening.Evening_menu"
+            android:label="@string/act_evening"
+            android:parentActivityName=".MainMenu.MainActivity" />
+        <activity
+            android:name=".MainMenu.Evening.ExerciseTest_Activity"
+            android:label="@string/exercise"
+            android:parentActivityName=".MainMenu.Evening.Evening_menu" />
 		<activity
-			android:name=".MainMenu.Evening.Evening_menu"
-			android:label="@string/act_evening"
-			android:parentActivityName=".MainMenu.MainActivity" />
-		<activity android:name=".MainMenu.Evening.ExerciseTest_Activity"
+			android:name=".MainMenu.Evening.ExerciseTest_NewExercise_Activity"
 			android:label="@string/exercise"
-			android:parentActivityName=".MainMenu.Evening.Evening_menu" />
-	</application>
+			android:parentActivityName=".MainMenu.Evening.ExerciseTest_Activity"/>
+		
+    </application>
 
 </manifest>
