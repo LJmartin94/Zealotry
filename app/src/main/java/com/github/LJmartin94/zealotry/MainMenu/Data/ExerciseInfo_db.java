@@ -19,11 +19,11 @@ import java.util.concurrent.Executors;
 //TODO Can maybe just have one db for this app, instead of separate dbs for separate information groups
 //TODO Rename to Exercise_roomDB with refactor
 
-@Database(entities = {ExerciseInfo_entity.class}, version = 1, exportSchema = false)
+@Database(entities = {Exercise_Entity.class}, version = 1, exportSchema = false)
 public abstract class ExerciseInfo_db extends RoomDatabase
 {
 
-	public abstract ExerciseInfo_DAO eiDAO();
+	public abstract Exercise_DAO eiDAO();
 
 	private static volatile ExerciseInfo_db INSTANCE;
 	private static final int NUMBER_OF_THREADS = 4;
@@ -58,12 +58,12 @@ public abstract class ExerciseInfo_db extends RoomDatabase
 			//This code block deletes and resets database on app reinstall
 			databaseWriteExecutor.execute(() ->
 			{
-				ExerciseInfo_DAO dao = INSTANCE.eiDAO();
+				Exercise_DAO dao = INSTANCE.eiDAO();
 				dao.deleteAll();
 
-				ExerciseInfo_entity ex00 = new ExerciseInfo_entity("ex00");
+				Exercise_Entity ex00 = new Exercise_Entity("ex00");
 				dao.insert(ex00);
-				ExerciseInfo_entity ex01 = new ExerciseInfo_entity("ex01");
+				Exercise_Entity ex01 = new Exercise_Entity("ex01");
 				dao.insert(ex01);
 			});
 

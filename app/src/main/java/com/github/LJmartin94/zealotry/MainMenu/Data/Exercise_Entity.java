@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 //TODO Rename to Exercise_roomEntity with refactor
 
 @Entity(tableName = "exercise_table")
-public class ExerciseInfo_entity
+public class Exercise_Entity
 {
 	// Member variables
 	@PrimaryKey
@@ -18,7 +18,7 @@ public class ExerciseInfo_entity
 
 
 	// Constructor
-	public ExerciseInfo_entity(@NonNull String mID)
+	public Exercise_Entity(@NonNull String mID)
 	{
 		this.mID = mID;
 	};

@@ -9,10 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.github.LJmartin94.zealotry.MainMenu.Data.ExerciseInfo_entity;
+import com.github.LJmartin94.zealotry.MainMenu.Data.Exercise_Entity;
 import com.github.LJmartin94.zealotry.R;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ExerciseTest_Activity extends AppCompatActivity
 {
@@ -49,7 +48,7 @@ public class ExerciseTest_Activity extends AppCompatActivity
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == NEW_EXERCISE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK)
 		{
-			ExerciseInfo_entity exercise = new ExerciseInfo_entity(data.getStringExtra(ExerciseTest_NewExercise_Activity.EXTRA_REPLY));
+			Exercise_Entity exercise = new Exercise_Entity(data.getStringExtra(ExerciseTest_NewExercise_Activity.EXTRA_REPLY));
 			mViewModel.insert(exercise);
 		}
 		else

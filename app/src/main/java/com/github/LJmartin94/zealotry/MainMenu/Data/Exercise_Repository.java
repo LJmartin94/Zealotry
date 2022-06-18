@@ -8,12 +8,12 @@ import java.util.List;
 
 //TODO Rename to Exercise_Repo with refactor
 
-public class ExerciseRepository
+public class Exercise_Repository
 {
-	private ExerciseInfo_DAO mExerciseDao;
-	private LiveData<List<ExerciseInfo_entity>> mAllExercises;
+	private Exercise_DAO mExerciseDao;
+	private LiveData<List<Exercise_Entity>> mAllExercises;
 
-	public ExerciseRepository(Application application)
+	public Exercise_Repository(Application application)
 	{
 		ExerciseInfo_db db = ExerciseInfo_db.getDatabase(application);
 		mExerciseDao = db.eiDAO();
@@ -22,14 +22,14 @@ public class ExerciseRepository
 
 	// Room executes all queries on a separate thread.
 	// Observed LiveData will notify the observer when the data has changed.
-	public LiveData<List<ExerciseInfo_entity>> getAllExercises()
+	public LiveData<List<Exercise_Entity>> getAllExercises()
 	{
 		return mAllExercises;
 	}
 
 	// You must call this on a non-UI thread or your app will throw an exception. Room ensures
 	// that you're not doing any long running operations on the main thread, blocking the UI.
-	public void insert(ExerciseInfo_entity exercise)
+	public void insert(Exercise_Entity exercise)
 	{
 		ExerciseInfo_db.databaseWriteExecutor.execute(() ->
 		{

@@ -5,30 +5,30 @@ import android.app.Application;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
-import com.github.LJmartin94.zealotry.MainMenu.Data.ExerciseInfo_entity;
-import com.github.LJmartin94.zealotry.MainMenu.Data.ExerciseRepository;
+import com.github.LJmartin94.zealotry.MainMenu.Data.Exercise_Entity;
+import com.github.LJmartin94.zealotry.MainMenu.Data.Exercise_Repository;
 
 import java.util.List;
 
 public class Exercise_ViewModel extends AndroidViewModel
 {
-	private ExerciseRepository mRepository;
+	private Exercise_Repository mRepository;
 
-	private final LiveData<List<ExerciseInfo_entity>> mAllExercises;
+	private final LiveData<List<Exercise_Entity>> mAllExercises;
 
 	public Exercise_ViewModel(Application application)
 	{
 		super(application);
-		mRepository = new ExerciseRepository(application);
+		mRepository = new Exercise_Repository(application);
 		mAllExercises = mRepository.getAllExercises();
 	}
 
-	LiveData<List<ExerciseInfo_entity>> getAllExercises()
+	LiveData<List<Exercise_Entity>> getAllExercises()
 	{
 		return mAllExercises;
 	}
 
-	public void insert(ExerciseInfo_entity exercise)
+	public void insert(Exercise_Entity exercise)
 	{
 		mRepository.insert(exercise);
 	}

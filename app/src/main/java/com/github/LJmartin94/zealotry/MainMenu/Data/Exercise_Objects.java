@@ -66,9 +66,7 @@ class exType
 	}
 }
 
-
-//TODO Rename Exercise planning.
-public class Exercise_SetInfo
+public class Exercise_Objects
 {
 	public exType createAProgramme()
 	{

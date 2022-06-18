@@ -13,7 +13,7 @@ import java.util.List;
 //TODO Rename to Exercise_roomDAO with refactor
 
 @Dao
-public interface ExerciseInfo_DAO
+public interface Exercise_DAO
 {
 	// allowing the insert of the same word multiple times by passing a conflict
 	// resolution strategy
@@ -23,12 +23,12 @@ public interface ExerciseInfo_DAO
 	//	for deleting and updating rows.
 
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	void insert(ExerciseInfo_entity exercise);
+	void insert(Exercise_Entity exercise);
 
 	@Query("DELETE FROM exercise_table")
 	void deleteAll();
 
 	@Query("SELECT * FROM exercise_table ORDER BY ID ASC")
-	LiveData<List<ExerciseInfo_entity>> getOrderedExercises();
+	LiveData<List<Exercise_Entity>> getOrderedExercises();
 
 }
