@@ -1,9 +1,12 @@
 package com.github.LJmartin94.zealotry.MainMenu.Data;
 
 import android.content.Context;
+
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -37,6 +40,7 @@ public abstract class ExerciseInfo_db extends RoomDatabase
 				{
 					INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
 							ExerciseInfo_db.class, "exercise_database")
+							.addCallback(sRoomDatabaseCallback)
 							.build();
 				}
 			}
@@ -44,46 +48,69 @@ public abstract class ExerciseInfo_db extends RoomDatabase
 		return INSTANCE;
 	}
 
- 	//Exercise type
-	//Exercise week
-	//Exercise day
-	//SetType
-	//Rest period
+	private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback()
+	{
+		@Override
+		public void onCreate(@NonNull SupportSQLiteDatabase db)
+		{
+			super.onCreate(db);
 
-	//L_SetThreshold
-	//L_Set1
-	//L_Set2
-	//L_Set3
-	//L_Set4
-	//L_Set5
-	//L_Set6
-	//L_Set7
-	//L_Set8
-	//L_Set9
-	//L_Set10
+			//This code block deletes and resets database on app reinstall
+			databaseWriteExecutor.execute(() ->
+			{
+				ExerciseInfo_DAO dao = INSTANCE.eiDAO();
+				dao.deleteAll();
 
-	//M_SetThreshold
-	//M_Set1
-	//M_Set2
-	//M_Set3
-	//M_Set4
-	//M_Set5
-	//M_Set6
-	//M_Set7
-	//M_Set8
-	//M_Set9
-	//M_Set10
+				ExerciseInfo_entity ex00 = new ExerciseInfo_entity("ex00");
+				dao.insert(ex00);
+				ExerciseInfo_entity ex01 = new ExerciseInfo_entity("ex01");
+				dao.insert(ex01);
+			});
 
-	//H_SetThreshold
-	//H_Set1
-	//H_Set2
-	//H_Set3
-	//H_Set4
-	//H_Set5
-	//H_Set6
-	//H_Set7
-	//H_Set8
-	//H_Set9
-	//H_Set10
-
+		}
+	};
 }
+
+
+//Exercise type
+//Exercise week
+//Exercise day
+//SetType
+//Rest period
+
+//L_SetThreshold
+//L_Set1
+//L_Set2
+//L_Set3
+//L_Set4
+//L_Set5
+//L_Set6
+//L_Set7
+//L_Set8
+//L_Set9
+//L_Set10
+
+//M_SetThreshold
+//M_Set1
+//M_Set2
+//M_Set3
+//M_Set4
+//M_Set5
+//M_Set6
+//M_Set7
+//M_Set8
+//M_Set9
+//M_Set10
+
+//H_SetThreshold
+//H_Set1
+//H_Set2
+//H_Set3
+//H_Set4
+//H_Set5
+//H_Set6
+//H_Set7
+//H_Set8
+//H_Set9
+//H_Set10
+
