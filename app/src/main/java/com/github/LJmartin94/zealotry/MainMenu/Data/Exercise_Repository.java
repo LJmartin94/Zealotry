@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-//TODO Rename to Exercise_Repo with refactor
+//TODO Rename to App_Repository with refactor
 
 public class Exercise_Repository
 {

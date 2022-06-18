@@ -17,7 +17,7 @@ import java.util.concurrent.Executors;
 // current schema into your version control system.
 
 //TODO Can maybe just have one db for this app, instead of separate dbs for separate information groups
-//TODO Rename to Exercise_roomDB with refactor
+//TODO Rename to App_DataBase with refactor
 
 @Database(entities = {Exercise_Entity.class}, version = 1, exportSchema = false)
 public abstract class ExerciseInfo_db extends RoomDatabase
