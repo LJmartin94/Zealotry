@@ -97,21 +97,25 @@ public class MainActivity extends AppCompatActivity
 			return ("th");
 	}
 
+
+	// Saturn's day - 91st day of Spri...
 	public String	shortenDateAddition(int dayStringLen, String dateAddition, String season)
 	{
+		int title_max_chars = 31;
+
 		// " - 87th day of Spring"
-		if ((dayStringLen + dateAddition.length()) >= 40)
+		if ((dayStringLen + dateAddition.length()) > title_max_chars)
 			dateAddition = dateAddition.replace(" day ", " ");
 
 		// " - 87th of Spring"
-		if ((dayStringLen + dateAddition.length()) >= 40)
+		if ((dayStringLen + dateAddition.length()) > title_max_chars)
 		{
 			dateAddition = dateAddition.replace((" of " + season), "");
 			dateAddition = dateAddition.replace( " -", (" - " + season));
 		}
 
 		// " - Spring 87th"
-		if ((dayStringLen + dateAddition.length()) >= 40)
+		if ((dayStringLen + dateAddition.length()) > title_max_chars)
 		{
 			dateAddition = dateAddition.replace(("th" + season), "");
 			dateAddition = dateAddition.replace(("rd" + season), "");
@@ -120,11 +124,11 @@ public class MainActivity extends AppCompatActivity
 		}
 
 		// " - Spring 87"
-		if ((dayStringLen + dateAddition.length()) >= 40)
+		if ((dayStringLen + dateAddition.length()) > title_max_chars)
 			dateAddition = " - " + season;
 
 		// " - Spring"
-		if ((dayStringLen + dateAddition.length()) >= 40)
+		if ((dayStringLen + dateAddition.length()) > title_max_chars)
 			dateAddition = "";
 
 		// ""
