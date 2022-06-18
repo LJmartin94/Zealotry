@@ -389,6 +389,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		//https://developer.android.com/reference/android/provider/AlarmClock#EXTRA_RINGTONE
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
+			//TODO Replace deprecated startActivityForResult
 			startActivityForResult(i, 0);
 		}
 		Uri alarmDeeplink = i.getData();
@@ -404,6 +405,7 @@ public class Morning_menu_wake_up extends AppCompatActivity
 //		i.putExtra(AlarmClock.EXTRA_SKIP_UI, true);
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
+			//TODO Replace deprecated startActivityForResult
 			startActivityForResult(i, 1);
 //			startActivity(i);
 			Toast test = Toast.makeText(this, "Tried to delete alarm", Toast.LENGTH_LONG);
