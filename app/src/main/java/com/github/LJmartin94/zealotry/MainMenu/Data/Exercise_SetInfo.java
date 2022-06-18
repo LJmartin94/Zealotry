@@ -354,18 +354,20 @@ public class Exercise_SetInfo
 			thresholdVals = new int[]{75};
 			exWeek week7 = new exWeek(type, info, link, 4, thresholdVals, all_weekdays);
 
+			//TODO Add week 8 misc exercises, with push-up reassessment at the end to check for demotion.
+
 		// RETURN VAL
 		exWeek[]	all_training_weeks = {week0, week1, week2, week3, week4, week5, week6, week7};
 		exType		arms = new exType("Arms", 8, all_training_weeks);
 		return (arms);
 	}
-	
+
 	public exType createCProgramme()
 	{
-
+		return createAProgramme();
 	}
 	public exType createLProgramme()
 	{
-
+		return createAProgramme();
 	}
 }
