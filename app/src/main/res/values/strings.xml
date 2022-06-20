@@ -79,6 +79,7 @@
 
 	<string name="act_Overview">Overview</string>
 	<string name="act_WeatherForecast">Weather Forecast</string>
+	<string name="act_ManageBackups">App Data Management</string>
 	<string name="today">Today</string>
 	<string name="tomorrow">Tomorrow</string>
 	<string name="action_refresh">Refresh</string>
