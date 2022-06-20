@@ -45,8 +45,8 @@
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
 				android:layout_weight="10"
-				android:onClick="launchWeatherForecast"
-				android:text="@string/act_WeatherForecast"
+				android:onClick="launchOverviewMenu"
+				android:text="@string/act_Overview"
 				android:fontFamily="@font/quaver"
 				android:textAllCaps="false"
 				android:textSize="20sp"/>

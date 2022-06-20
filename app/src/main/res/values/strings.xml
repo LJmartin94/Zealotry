@@ -77,6 +77,7 @@
 	<string name="githubMenu">Search</string>
 	<string name="searchFailed">Failed to get results, please try again.</string>
 
+	<string name="act_Overview">Overview</string>
 	<string name="act_WeatherForecast">Weather Forecast</string>
 	<string name="today">Today</string>
 	<string name="tomorrow">Tomorrow</string>

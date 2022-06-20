@@ -1,4 +1,4 @@
-package com.github.LJmartin94.zealotry.MainMenu.WeatherForecast;
+package com.github.LJmartin94.zealotry.MainMenu.Overview.WeatherForecast;
 
 import android.content.Context;
 import android.util.Log;

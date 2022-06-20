@@ -10,7 +10,8 @@ import android.view.View;
 import com.github.LJmartin94.zealotry.MainMenu.Day.Day_menu;
 import com.github.LJmartin94.zealotry.MainMenu.Evening.Evening_menu;
 import com.github.LJmartin94.zealotry.MainMenu.Morning.Morning_menu;
-import com.github.LJmartin94.zealotry.MainMenu.WeatherForecast.WeatherForecast;
+import com.github.LJmartin94.zealotry.MainMenu.Overview.Overview_menu;
+import com.github.LJmartin94.zealotry.MainMenu.Overview.WeatherForecast.WeatherForecast;
 import com.github.LJmartin94.zealotry.R;
 
 import java.util.Calendar;
@@ -211,10 +212,10 @@ public class MainActivity extends AppCompatActivity
 		return (date_addition);
 	}
 
-	public void launchWeatherForecast(View v)
+	public void launchOverviewMenu(View v)
 	{
 		//launch new activity
-		Intent i = new Intent(this, WeatherForecast.class);
+		Intent i = new Intent(this, Overview_menu.class);
 		startActivity(i);
 	}
 

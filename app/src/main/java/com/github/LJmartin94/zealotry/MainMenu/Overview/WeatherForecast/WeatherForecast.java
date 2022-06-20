@@ -1,4 +1,4 @@
-package com.github.LJmartin94.zealotry.MainMenu.WeatherForecast;
+package com.github.LJmartin94.zealotry.MainMenu.Overview.WeatherForecast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,7 +19,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.github.LJmartin94.zealotry.MainMenu.MainActivity;
 import com.github.LJmartin94.zealotry.MainMenu.ZealotryPreferences;
