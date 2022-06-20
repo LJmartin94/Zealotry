@@ -30,7 +30,7 @@ public abstract class ExerciseInfo_db extends RoomDatabase
 	static final ExecutorService databaseWriteExecutor =
 			Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-	static ExerciseInfo_db getDatabase(final Context context)
+	public static ExerciseInfo_db getDatabase(final Context context)
 	{
 		if (INSTANCE == null)
 		{
