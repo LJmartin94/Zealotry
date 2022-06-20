@@ -1,6 +1,7 @@
 package com.github.LJmartin94.zealotry.MainMenu.Data;
 
 import android.content.Context;
+import android.os.Environment;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -39,7 +40,7 @@ public abstract class ExerciseInfo_db extends RoomDatabase
 				if (INSTANCE == null)
 				{
 					INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-							ExerciseInfo_db.class, "exercise_database")
+							ExerciseInfo_db.class, "Zealotry_Database")
 							.addCallback(sRoomDatabaseCallback)
 							.build();
 				}
