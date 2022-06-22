@@ -110,7 +110,6 @@ public class BackupManagement extends AppCompatActivity
 		try
 		{
 			InputStream input = new FileInputStream(dbInstance);
-//			OutputStream output = new FileOutputStream();
 			OutputStream output = getContentResolver().openOutputStream(fileUri);
 			int buffersize = 1024; //TODO: Maybe find a way to set this to the exact db size.
 			byte[] b = new byte[buffersize];
@@ -119,6 +118,9 @@ public class BackupManagement extends AppCompatActivity
 			{
 				output.write(b, 0, bytes_read);
 			}
+			output.flush();
+			input.close();
+			output.close();
 		}
 		catch (Exception e)
 		{
