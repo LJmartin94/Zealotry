@@ -28,7 +28,11 @@ import com.github.LJmartin94.zealotry.R;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 public class BackupManagement extends AppCompatActivity
 {
@@ -66,11 +70,8 @@ public class BackupManagement extends AppCompatActivity
 
 	public void initiateDatabaseBackup(View view)
 	{
-		Context context = this;
-		ExerciseInfo_db appDatabase = ExerciseInfo_db.getDatabase(context);
-		appDatabase.close();
-		File dbInstance = context.getDatabasePath("Zealotry_Database");
-		Uri pickerInitialUri = Uri.fromFile(dbInstance); // MIGHT NOT WORK BUT WHATEVER
+		// Should set the directory the picker initially suggests, but doesn't seem to do anything
+		Uri pickerInitialUri = Uri.fromFile(Environment.getDownloadCacheDirectory());
 
 		String timeStamp = String.valueOf(System.currentTimeMillis());
 		String backupFileName = "Zealotry_Database_Backup" + timeStamp;
@@ -98,46 +99,23 @@ public class BackupManagement extends AppCompatActivity
 
 	public void resumeDatabaseBackup(Uri fileUri)
 	{
-		Toast.makeText( getApplicationContext(), "TEST", Toast.LENGTH_LONG).show();
+		String filePath = fileUri.getPath();
+		Toast.makeText( getApplicationContext(), "File path: " + filePath, Toast.LENGTH_LONG).show();
 
-		
-//		String dlpath = Environment.getDownloadCacheDirectory().getAbsolutePath();
-//		dlpath = Environment.getStorageDirectory().getAbsolutePath();
-//		dlpath = Environment.getDataDirectory().getAbsolutePath();
-////		dlpath = Environment.DIRECTORY_DOWNLOADS;
-//		dlpath = "Android/data/com.github.LJmartin94.zealotry/";
-//
-//		//https://developer.android.com/guide/topics/providers/document-provider
-//
-//		File sdir = new File(dlpath, "backup");
-//
-//		String backupFileName = "Zealotry_Database_Backup" + timeStamp;
-//		String sfpath = sdir.getAbsolutePath() + File.separator + backupFileName;
-//		if (!sdir.exists())
-//		{
-//			Toast.makeText(context, "This directory did not exist: " + sdir.getAbsolutePath(), Toast.LENGTH_LONG).show();
-//			sdir.mkdirs();
-//		}
-//		if (sdir.exists())
-//		{
-//			Toast.makeText(context, "This directory DOES exist: " + sdir.getAbsolutePath(), Toast.LENGTH_LONG).show();
-//		}
-//
-//		if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//			ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-//		}
-//		File backupFile = new File(sfpath);
-//		try
-//		{
-//			Toast.makeText(context, "Trying to create: " + sfpath, Toast.LENGTH_LONG).show();
-//			backupFile.createNewFile();
-//		}
-//		catch (IOException e)
-//		{
-//			Toast.makeText(context, "IO exception", Toast.LENGTH_LONG).show();
-//			e.printStackTrace();
-//		}
-//		if (backupFile.exists())
-//			Toast.makeText(context, "Made backup file: " + sfpath, Toast.LENGTH_LONG).show();
+		Context context = this;
+		ExerciseInfo_db appDatabase = ExerciseInfo_db.getDatabase(context);
+		appDatabase.close();
+		File dbInstance = context.getDatabasePath("Zealotry_Database");
+
+		try
+		{
+			InputStream input = new FileInputStream(dbInstance);
+//			OutputStream output = new FileOutputStream();
+		}
+		catch (Exception e)
+		{
+			Toast.makeText( getApplicationContext(), "Encountered error whilst trying to back up database", Toast.LENGTH_LONG).show();
+			e.printStackTrace();
+		}
 	}
 }
