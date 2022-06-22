@@ -99,8 +99,8 @@ public class BackupManagement extends AppCompatActivity
 
 	public void resumeDatabaseBackup(Uri fileUri)
 	{
-		String filePath = fileUri.getPath();
-		Toast.makeText( getApplicationContext(), "File path: " + filePath, Toast.LENGTH_LONG).show();
+//		String filePath = fileUri.getPath();
+//		Toast.makeText( getApplicationContext(), "File path: " + filePath, Toast.LENGTH_LONG).show();
 
 		Context context = this;
 		ExerciseInfo_db appDatabase = ExerciseInfo_db.getDatabase(context);
@@ -111,6 +111,14 @@ public class BackupManagement extends AppCompatActivity
 		{
 			InputStream input = new FileInputStream(dbInstance);
 //			OutputStream output = new FileOutputStream();
+			OutputStream output = getContentResolver().openOutputStream(fileUri);
+			int buffersize = 1024; //TODO: Maybe find a way to set this to the exact db size.
+			byte[] b = new byte[buffersize];
+			int bytes_read;
+			while ((bytes_read = input.read(b, 0, buffersize)) > 0)
+			{
+				output.write(b, 0, bytes_read);
+			}
 		}
 		catch (Exception e)
 		{
