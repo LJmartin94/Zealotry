@@ -53,6 +53,9 @@ public class BackupManagement extends AppCompatActivity
 								Intent data = result.getData();
 								String fileCreated = data.getDataString();
 								Toast.makeText( getApplicationContext(), "Created: " + fileCreated, Toast.LENGTH_LONG).show();
+
+								Uri fileLocation = Uri.parse(fileCreated);
+								resumeDatabaseBackup(fileLocation);
 							}
 							else
 							{
@@ -61,7 +64,20 @@ public class BackupManagement extends AppCompatActivity
 						}
 					});
 
-	private void createFile(Uri pickerInitialUri, String fileName)
+	public void initiateDatabaseBackup(View view)
+	{
+		Context context = this;
+		ExerciseInfo_db appDatabase = ExerciseInfo_db.getDatabase(context);
+		appDatabase.close();
+		File dbInstance = context.getDatabasePath("Zealotry_Database");
+		Uri pickerInitialUri = Uri.fromFile(dbInstance); // MIGHT NOT WORK BUT WHATEVER
+
+		String timeStamp = String.valueOf(System.currentTimeMillis());
+		String backupFileName = "Zealotry_Database_Backup" + timeStamp;
+		createFileForBackup(pickerInitialUri, backupFileName);
+	}
+
+	private void createFileForBackup(Uri pickerInitialUri, String fileName)
 	{
 		Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
 		intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -80,39 +96,11 @@ public class BackupManagement extends AppCompatActivity
 		fileCreationARL.launch(intent);
 	}
 
-	private static final int PICK_PDF_FILE = 2;
-
-	private void openFile(Uri pickerInitialUri)
+	public void resumeDatabaseBackup(Uri fileUri)
 	{
-		Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-		intent.addCategory(Intent.CATEGORY_OPENABLE);
-		intent.setType("Zealotry/zb");
+		Toast.makeText( getApplicationContext(), "TEST", Toast.LENGTH_LONG).show();
 
-		// Optionally, specify a URI for the file that should appear in the
-		// system file picker when it loads.
-		intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, pickerInitialUri);
-
-
-		startActivityForResult(intent, PICK_PDF_FILE);
-	}
-
-	public void initiateDatabaseBackup(View view)
-	{
-		Context context = this;
-		ExerciseInfo_db appDatabase = ExerciseInfo_db.getDatabase(context);
-		appDatabase.close();
-		File dbInstance = context.getDatabasePath("Zealotry_Database");
-		String path = dbInstance.getAbsolutePath(); //DEBUG
-
-		Uri pickerInitialUri = Uri.fromFile(dbInstance); // MIGHT NOT WORK BUT WHATEVER
-		String timeStamp = String.valueOf(System.currentTimeMillis());
-		String backupFileName = "Zealotry_Database_Backup" + timeStamp;
-		createFile(pickerInitialUri, backupFileName);
-//		openFile(pickerInitialUri);
-
-
-
-
+		
 //		String dlpath = Environment.getDownloadCacheDirectory().getAbsolutePath();
 //		dlpath = Environment.getStorageDirectory().getAbsolutePath();
 //		dlpath = Environment.getDataDirectory().getAbsolutePath();
@@ -151,10 +139,5 @@ public class BackupManagement extends AppCompatActivity
 //		}
 //		if (backupFile.exists())
 //			Toast.makeText(context, "Made backup file: " + sfpath, Toast.LENGTH_LONG).show();
-//
-//
-//
-//		//DEBUG:
-////		Toast.makeText(context, path, Toast.LENGTH_LONG).show();
 	}
 }
