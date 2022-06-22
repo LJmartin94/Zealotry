@@ -40,11 +40,6 @@ public class BackupManagement extends AppCompatActivity
 		setContentView(R.layout.activity_backup_management);
 	}
 
-	public void launchBackupDatabase(View view)
-	{
-		backupDatabase(this);
-	}
-
 	ActivityResultLauncher<Intent> fileCreationARL =
 			registerForActivityResult(
 					new ActivityResultContracts.StartActivityForResult(),
@@ -82,16 +77,7 @@ public class BackupManagement extends AppCompatActivity
 		// the system file picker when your app creates the document.
 		intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, pickerInitialUri);
 
-//		ExtendedFloatingActionButton fabCompleted = findViewById(R.id.completedfab);
-//		fabCompleted.setOnClickListener( view ->
-//		{
-//			Intent intent = new Intent(ExerciseTest_Activity.this, ExerciseTest_NewExercise_Activity.class);
-//			completedActivityResultLauncher.launch(intent);
-//		});
-
 		fileCreationARL.launch(intent);
-//		startActivityForResult(intent, CREATE_FILE);
-//		onActivityResult(); // to write in created file
 	}
 
 	private static final int PICK_PDF_FILE = 2;
@@ -106,17 +92,19 @@ public class BackupManagement extends AppCompatActivity
 		// system file picker when it loads.
 		intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, pickerInitialUri);
 
+
 		startActivityForResult(intent, PICK_PDF_FILE);
 	}
 
-	public void backupDatabase(Context context)
+	public void initiateDatabaseBackup(View view)
 	{
+		Context context = this;
 		ExerciseInfo_db appDatabase = ExerciseInfo_db.getDatabase(context);
 		appDatabase.close();
 		File dbInstance = context.getDatabasePath("Zealotry_Database");
-		String path = dbInstance.getAbsolutePath();
+		String path = dbInstance.getAbsolutePath(); //DEBUG
 
-		Uri pickerInitialUri = Uri.fromFile(dbInstance);
+		Uri pickerInitialUri = Uri.fromFile(dbInstance); // MIGHT NOT WORK BUT WHATEVER
 		String timeStamp = String.valueOf(System.currentTimeMillis());
 		String backupFileName = "Zealotry_Database_Backup" + timeStamp;
 		createFile(pickerInitialUri, backupFileName);

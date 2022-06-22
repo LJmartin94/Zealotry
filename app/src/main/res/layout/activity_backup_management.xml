@@ -14,5 +14,5 @@
 		android:paddingBottom="50dp"
 		app:layout_constraintTop_toTopOf="parent"
 		android:text="Make Backup"
-		android:onClick="launchBackupDatabase"/>
+		android:onClick="initiateDatabaseBackup"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
