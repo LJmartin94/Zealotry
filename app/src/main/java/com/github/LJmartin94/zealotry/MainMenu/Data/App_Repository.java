@@ -6,16 +6,14 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-//TODO Rename to App_Repository with refactor
-
-public class Exercise_Repository
+public class App_Repository
 {
 	private Exercise_DAO mExerciseDao;
 	private LiveData<List<Exercise_Entity>> mAllExercises;
 
-	public Exercise_Repository(Application application)
+	public App_Repository(Application application)
 	{
-		ExerciseInfo_db db = ExerciseInfo_db.getDatabase(application);
+		App_DataBase db = App_DataBase.getDatabase(application);
 		mExerciseDao = db.eiDAO();
 		mAllExercises = mExerciseDao.getOrderedExercises();
 	}
@@ -31,7 +29,7 @@ public class Exercise_Repository
 	// that you're not doing any long running operations on the main thread, blocking the UI.
 	public void insert(Exercise_Entity exercise)
 	{
-		ExerciseInfo_db.databaseWriteExecutor.execute(() ->
+		App_DataBase.databaseWriteExecutor.execute(() ->
 		{
 			mExerciseDao.insert(exercise);
 		});

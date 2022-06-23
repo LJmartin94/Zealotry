@@ -5,28 +5,19 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
-import android.provider.DocumentsProvider;
 import android.view.View;
 import android.widget.Toast;
 
-import com.github.LJmartin94.zealotry.MainMenu.Data.ExerciseInfo_db;
-import com.github.LJmartin94.zealotry.MainMenu.Data.Exercise_Entity;
-import com.github.LJmartin94.zealotry.MainMenu.Evening.ExerciseTest_Activity;
-import com.github.LJmartin94.zealotry.MainMenu.Evening.ExerciseTest_NewExercise_Activity;
+import com.github.LJmartin94.zealotry.MainMenu.Data.App_DataBase;
 import com.github.LJmartin94.zealotry.R;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -89,7 +80,7 @@ public class BackupManagement extends AppCompatActivity
 	public void resumeDatabaseBackup(Uri fileUri)
 	{
 		Context context = this;
-		ExerciseInfo_db appDatabase = ExerciseInfo_db.getDatabase(context);
+		App_DataBase appDatabase = App_DataBase.getDatabase(context);
 		appDatabase.close();
 		File dbInstance = context.getDatabasePath("Zealotry_Database");
 
@@ -166,7 +157,7 @@ public class BackupManagement extends AppCompatActivity
 			if (this.getContentResolver().getType(fileLocation).equals("Zealotry/zb"))
 			{
 				//Valid file type
-				ExerciseInfo_db appDatabase = ExerciseInfo_db.getDatabase(this);
+				App_DataBase appDatabase = App_DataBase.getDatabase(this);
 				appDatabase.close();
 				File oldDB = this.getDatabasePath("Zealotry_Database");
 				if (newDB != null)
@@ -211,7 +202,7 @@ public class BackupManagement extends AppCompatActivity
 		toChannel.close();
 	}
 
-	public void reopenDB(ExerciseInfo_db db)
+	public void reopenDB(App_DataBase db)
 	{
 //		if (db == null)
 //		{

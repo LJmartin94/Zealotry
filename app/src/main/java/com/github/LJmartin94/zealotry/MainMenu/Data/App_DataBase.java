@@ -1,7 +1,6 @@
 package com.github.LJmartin94.zealotry.MainMenu.Data;
 
 import android.content.Context;
-import android.os.Environment;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -21,26 +20,26 @@ import java.util.concurrent.Executors;
 //TODO Rename to App_DataBase with refactor
 
 @Database(entities = {Exercise_Entity.class}, version = 1, exportSchema = false)
-public abstract class ExerciseInfo_db extends RoomDatabase
+public abstract class App_DataBase extends RoomDatabase
 {
 
 	public abstract Exercise_DAO eiDAO();
 
-	private static volatile ExerciseInfo_db INSTANCE;
+	private static volatile App_DataBase INSTANCE;
 	private static final int NUMBER_OF_THREADS = 4;
 	static final ExecutorService databaseWriteExecutor =
 			Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-	public static ExerciseInfo_db getDatabase(final Context context)
+	public static App_DataBase getDatabase(final Context context)
 	{
 		if (INSTANCE == null)
 		{
-			synchronized (ExerciseInfo_db.class)
+			synchronized (App_DataBase.class)
 			{
 				if (INSTANCE == null)
 				{
 					INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-							ExerciseInfo_db.class, "Zealotry_Database")
+							App_DataBase.class, "Zealotry_Database")
 							.addCallback(sRoomDatabaseCallback)
 							.build();
 				}
