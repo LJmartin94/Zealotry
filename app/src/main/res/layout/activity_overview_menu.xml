@@ -13,9 +13,11 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:onClick="launchWeatherForecast"
-		android:paddingTop="50dp"
-		android:paddingBottom="50dp"
+		android:paddingTop="25dp"
+		android:paddingBottom="25dp"
 		app:layout_constraintTop_toTopOf="parent"
+		android:drawableStart="@drawable/ic_baseline_nights_stay_24"
+		android:drawableLeft="@drawable/ic_baseline_nights_stay_24"
 		android:text="@string/act_WeatherForecast" />
 
 	<Button
@@ -23,9 +25,11 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:text="@string/act_ManageBackups"
-		android:paddingTop="50dp"
-		android:paddingBottom="50dp"
+		android:paddingTop="25dp"
+		android:paddingBottom="25dp"
 		app:layout_constraintTop_toBottomOf="@+id/WeatherForecast"
+		android:drawableStart="@drawable/ic_baseline_memory_24"
+		android:drawableLeft="@drawable/ic_baseline_memory_24"
 		android:onClick="launchDataBackup"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

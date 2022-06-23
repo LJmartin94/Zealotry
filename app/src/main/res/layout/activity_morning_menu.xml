@@ -163,10 +163,12 @@
 				android:id="@+id/gel_button"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/perfume_small"
-				android:drawableLeft="@drawable/perfume_small"
+				android:drawableStart="@drawable/ic_baseline_flare_24"
+				android:drawableLeft="@drawable/ic_baseline_flare_24"
 				android:onClick="disable_button"
 				android:text="@string/gel" />
+<!--			android:drawableStart="@drawable/perfume_small"-->
+<!--			android:drawableLeft="@drawable/perfume_small"-->
 
 			<Button
 				android:id="@+id/pack_button"
