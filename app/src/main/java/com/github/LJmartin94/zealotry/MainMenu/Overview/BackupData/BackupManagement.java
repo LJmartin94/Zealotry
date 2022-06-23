@@ -99,9 +99,6 @@ public class BackupManagement extends AppCompatActivity
 
 	public void resumeDatabaseBackup(Uri fileUri)
 	{
-//		String filePath = fileUri.getPath();
-//		Toast.makeText( getApplicationContext(), "File path: " + filePath, Toast.LENGTH_LONG).show();
-
 		Context context = this;
 		ExerciseInfo_db appDatabase = ExerciseInfo_db.getDatabase(context);
 		appDatabase.close();
@@ -127,5 +124,10 @@ public class BackupManagement extends AppCompatActivity
 			Toast.makeText( getApplicationContext(), "Encountered error whilst trying to back up database", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
+	}
+
+	public void initiateDatabaseRestore(View view)
+	{
+		Toast.makeText( getApplicationContext(), "Restoring database to prior state from back-up", Toast.LENGTH_LONG).show();
 	}
 }
