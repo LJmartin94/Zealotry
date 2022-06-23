@@ -56,7 +56,7 @@ public class BackupManagement extends AppCompatActivity
 							{
 								Intent data = result.getData();
 								String fileCreated = data.getDataString();
-								Toast.makeText( getApplicationContext(), "Created: " + fileCreated, Toast.LENGTH_LONG).show();
+								Toast.makeText( getApplicationContext(), "Created back-up file" , Toast.LENGTH_LONG).show();
 
 								Uri fileLocation = Uri.parse(fileCreated);
 								resumeDatabaseBackup(fileLocation);
@@ -70,28 +70,16 @@ public class BackupManagement extends AppCompatActivity
 
 	public void initiateDatabaseBackup(View view)
 	{
-		// Should set the directory the picker initially suggests, but doesn't seem to do anything
-		Uri pickerInitialUri = Uri.fromFile(Environment.getDownloadCacheDirectory());
-
 		String timeStamp = String.valueOf(System.currentTimeMillis());
 		String backupFileName = "Zealotry_Database_Backup" + timeStamp;
-		createFileForBackup(pickerInitialUri, backupFileName);
-	}
 
-	private void createFileForBackup(Uri pickerInitialUri, String fileName)
-	{
 		Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
 		intent.addCategory(Intent.CATEGORY_OPENABLE);
 		intent.setType("Zealotry/zb");
-		intent.putExtra(Intent.EXTRA_TITLE, fileName);
+		intent.putExtra(Intent.EXTRA_TITLE, backupFileName);
 
-		//TODO Apply intent filter so that Android automatically opens *.zb files with Zealotry and processes them
-		// https://stackoverflow.com/questions/34300452/android-associate-app-with-custom-file-type
-		// https://stackoverflow.com/questions/1733195/android-intent-filter-for-a-particular-file-extension
-		// https://stackoverflow.com/questions/3760276/android-intent-filter-associate-app-with-file-extension
-
-		// Optionally, specify a URI for the directory that should be opened in
-		// the system file picker when your app creates the document.
+		// Should set the directory the picker initially suggests, but doesn't seem to do anything
+		Uri pickerInitialUri = Uri.fromFile(Environment.getDownloadCacheDirectory());
 		intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, pickerInitialUri);
 
 		fileCreationARL.launch(intent);
@@ -129,8 +117,44 @@ public class BackupManagement extends AppCompatActivity
 		}
 	}
 
+	ActivityResultLauncher<Intent> fileRestoreARL =
+			registerForActivityResult(
+					new ActivityResultContracts.StartActivityForResult(),
+					new ActivityResultCallback<ActivityResult>()
+					{
+						@Override
+						public void onActivityResult(ActivityResult result)
+						{
+							if (result.getResultCode() == RESULT_OK)
+							{
+								Intent data = result.getData();
+								String fileSpecified = data.getDataString();
+								Toast.makeText( getApplicationContext(), "User specified: " + fileSpecified, Toast.LENGTH_LONG).show();
+
+//								Uri fileLocation = Uri.parse(fileCreated);
+//								resumeDatabaseBackup(fileLocation);
+							}
+							else
+							{
+								Toast.makeText( getApplicationContext(), "Could not restore database from file.", Toast.LENGTH_LONG).show();
+							}
+						}
+					});
+
 	public void initiateDatabaseRestore(View view)
 	{
 		Toast.makeText( getApplicationContext(), "Restoring database to prior state from back-up", Toast.LENGTH_LONG).show();
+		Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+		i.setType("Zealotry/zb");
+		Intent toLaunch = Intent.createChooser(i, "Select back-up file to revert to.");
+		fileRestoreARL.launch(toLaunch);
+	}
+
+	public void resumeDatabaseBackup()
+	{
+		//TODO Apply intent filter so that Android automatically opens *.zb files with Zealotry and processes them
+		// https://stackoverflow.com/questions/34300452/android-associate-app-with-custom-file-type
+		// https://stackoverflow.com/questions/1733195/android-intent-filter-for-a-particular-file-extension
+		// https://stackoverflow.com/questions/3760276/android-intent-filter-associate-app-with-file-extension
 	}
 }
