@@ -9,6 +9,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -33,10 +34,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.channels.FileChannel;
+
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
 public class BackupManagement extends AppCompatActivity
 {
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -114,6 +117,7 @@ public class BackupManagement extends AppCompatActivity
 			Toast.makeText( getApplicationContext(), "Encountered error whilst trying to back up database", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
+		reopenDB(appDatabase);
 	}
 
 	public void initiateDatabaseRestore(View view)
@@ -158,7 +162,7 @@ public class BackupManagement extends AppCompatActivity
 
 		try
 		{
-			InputStream newDB = getContentResolver().openInputStream(fileLocation);
+			FileInputStream newDB = (FileInputStream) getContentResolver().openInputStream(fileLocation);
 			if (this.getContentResolver().getType(fileLocation).equals("Zealotry/zb"))
 			{
 				//Valid file type
@@ -169,7 +173,7 @@ public class BackupManagement extends AppCompatActivity
 				{
 					try
 					{
-						copyContents(newDB, oldDB);
+						copyContents(newDB, new FileOutputStream(oldDB));
 						Toast.makeText(getApplicationContext(), "Database successfully restored", Toast.LENGTH_LONG).show();
 					}
 					catch (Exception e)
@@ -177,18 +181,19 @@ public class BackupManagement extends AppCompatActivity
 						Toast.makeText( getApplicationContext(), "Encountered error whilst trying restore database from back-up", Toast.LENGTH_LONG).show();
 						e.printStackTrace();
 					}
-					newDB.close();
 				}
 				else
 				{
 					Toast.makeText( getApplicationContext(), "Input file is NULL", Toast.LENGTH_LONG).show();
 				}
+				reopenDB(appDatabase);
 			}
 			else
 			{
 				//Invalid file type? (shouldn't be possible really)
 				Toast.makeText( getApplicationContext(), "Invalid back-up file supplied.", Toast.LENGTH_LONG).show();
 			}
+			newDB.close();
 		}
 		catch (Exception e)
 		{
@@ -197,23 +202,46 @@ public class BackupManagement extends AppCompatActivity
 		}
 	}
 
-	public void copyContents(src, dst)
+	public void copyContents(FileInputStream src, FileOutputStream dst) throws IOException
 	{
-		//			OutputStream output = getContentResolver().openOutputStream(fileUri);
-//			long buffersizeL = dbInstance.length();
-//			buffersizeL = Math.min(buffersizeL, Integer.MAX_VALUE);
-//			buffersizeL = (buffersizeL <= 0) ? Integer.MAX_VALUE : buffersizeL;
-//			int buffersize = (int)buffersizeL;
-//			byte[] b = new byte[buffersize];
-//			int bytes_read;
-//			while ((bytes_read = input.read(b, 0, buffersize)) > 0)
-//			{
-//				output.write(b, 0, bytes_read);
-//			}
+		FileChannel fromChannel = src.getChannel();
+		FileChannel toChannel = dst.getChannel();
+		fromChannel.transferTo(0, fromChannel.size(), toChannel);
+		fromChannel.close();
+		toChannel.close();
+	}
 
-//			output.flush();
-//			input.close();
-//			output.close();
-//			Toast.makeText( getApplicationContext(), "Created back-up file" , Toast.LENGTH_LONG).show();
+	public void reopenDB(ExerciseInfo_db db)
+	{
+//		if (db == null)
+//		{
+//			db = ExerciseInfo_db.getDatabase(this);
+//			Toast.makeText( getApplicationContext(), "DB PASSED OVERWRITTEN", Toast.LENGTH_LONG).show();
+//		}
+//		if (db != null)
+//		{
+//			if (!db.isOpen())
+//			{
+//				db.getOpenHelper().getWritableDatabase();
+//				Toast.makeText( getApplicationContext(), "Reopened DB", Toast.LENGTH_LONG).show();
+//			}
+//		}
+		Intent intent = new Intent(this, BackupManagement.class);
+		phoenix(this, intent);
+	}
+
+	private static final String KEY_RESTART_INTENT = "PHOENIX";
+
+	public static void phoenix(Context context, Intent nextIntent)
+	{
+		Intent intent = new Intent(context, BackupManagement.class);
+		intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+		intent.putExtra(KEY_RESTART_INTENT, nextIntent);
+		context.startActivity(intent);
+		if (context instanceof Activity)
+		{
+			((Activity) context).finish();
+		}
+		Runtime.getRuntime().exit(0);
 	}
 }
