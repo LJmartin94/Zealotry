@@ -73,8 +73,6 @@ public class BackupManagement extends AppCompatActivity
 							{
 								Intent data = result.getData();
 								String fileCreated = data.getDataString();
-								Toast.makeText( getApplicationContext(), "Created back-up file" , Toast.LENGTH_LONG).show();
-
 								Uri fileLocation = Uri.parse(fileCreated);
 								resumeDatabaseBackup(fileLocation);
 							}
@@ -109,6 +107,7 @@ public class BackupManagement extends AppCompatActivity
 			output.flush();
 			input.close();
 			output.close();
+			Toast.makeText( getApplicationContext(), "Created back-up file" , Toast.LENGTH_LONG).show();
 		}
 		catch (Exception e)
 		{
@@ -138,10 +137,8 @@ public class BackupManagement extends AppCompatActivity
 							{
 								Intent data = result.getData();
 								String fileSpecified = data.getDataString();
-								Toast.makeText( getApplicationContext(), "User specified: " + fileSpecified, Toast.LENGTH_LONG).show();
-
-//								Uri fileLocation = Uri.parse(fileCreated);
-//								resumeDatabaseBackup(fileLocation);
+								Uri fileLocation = Uri.parse(fileSpecified);
+								resumeDatabaseRestore(fileLocation);
 							}
 							else
 							{
@@ -150,11 +147,53 @@ public class BackupManagement extends AppCompatActivity
 						}
 					});
 
-	public void resumeDatabaseBackup()
+	public void resumeDatabaseRestore(Uri fileLocation)
 	{
 		//TODO Apply intent filter so that Android automatically opens *.zb files with Zealotry and processes them
 		// https://stackoverflow.com/questions/34300452/android-associate-app-with-custom-file-type
 		// https://stackoverflow.com/questions/1733195/android-intent-filter-for-a-particular-file-extension
 		// https://stackoverflow.com/questions/3760276/android-intent-filter-associate-app-with-file-extension
+
+		try
+		{
+			InputStream input = getContentResolver().openInputStream(fileLocation);
+			if (this.getContentResolver().getType(fileLocation).equals("Zealotry/zb"))
+			{
+				//Valid file type
+				Toast.makeText( getApplicationContext(), "VALID", Toast.LENGTH_LONG).show();
+			}
+			else
+			{
+				//Invalid file type? (shouldn't be possible really)
+				Toast.makeText( getApplicationContext(), "Invalid back-up file supplied.", Toast.LENGTH_LONG).show();
+			}
+		}
+		catch (Exception e)
+		{
+			Toast.makeText( getApplicationContext(), "Encountered error whilst trying restore database from back-up", Toast.LENGTH_LONG).show();
+			e.printStackTrace();
+		}
+
+		//			OutputStream output = getContentResolver().openOutputStream(fileUri);
+//			long buffersizeL = dbInstance.length();
+//			buffersizeL = Math.min(buffersizeL, Integer.MAX_VALUE);
+//			buffersizeL = (buffersizeL <= 0) ? Integer.MAX_VALUE : buffersizeL;
+//			int buffersize = (int)buffersizeL;
+//			byte[] b = new byte[buffersize];
+//			int bytes_read;
+//			while ((bytes_read = input.read(b, 0, buffersize)) > 0)
+//			{
+//				output.write(b, 0, bytes_read);
+//			}
+//			output.flush();
+//			input.close();
+//			output.close();
+//			Toast.makeText( getApplicationContext(), "Created back-up file" , Toast.LENGTH_LONG).show();
+
+		//		Context context = this;
+//		ExerciseInfo_db appDatabase = ExerciseInfo_db.getDatabase(context);
+//		appDatabase.close();
+//		File dbInstance = context.getDatabasePath("Zealotry_Database");
+//
 	}
 }
