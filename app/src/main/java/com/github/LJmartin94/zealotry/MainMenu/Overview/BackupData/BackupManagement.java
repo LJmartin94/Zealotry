@@ -44,6 +44,23 @@ public class BackupManagement extends AppCompatActivity
 		setContentView(R.layout.activity_backup_management);
 	}
 
+	public void initiateDatabaseBackup(View view)
+	{
+		String timeStamp = String.valueOf(System.currentTimeMillis());
+		String backupFileName = "Zealotry_Database_Backup" + timeStamp;
+
+		Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
+		intent.addCategory(Intent.CATEGORY_OPENABLE);
+		intent.setType("Zealotry/zb");
+		intent.putExtra(Intent.EXTRA_TITLE, backupFileName);
+
+		// Should set the directory the picker initially suggests, but doesn't seem to do anything
+		Uri pickerInitialUri = Uri.fromFile(Environment.getDownloadCacheDirectory());
+		intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, pickerInitialUri);
+
+		fileCreationARL.launch(intent);
+	}
+
 	ActivityResultLauncher<Intent> fileCreationARL =
 			registerForActivityResult(
 					new ActivityResultContracts.StartActivityForResult(),
@@ -67,23 +84,6 @@ public class BackupManagement extends AppCompatActivity
 							}
 						}
 					});
-
-	public void initiateDatabaseBackup(View view)
-	{
-		String timeStamp = String.valueOf(System.currentTimeMillis());
-		String backupFileName = "Zealotry_Database_Backup" + timeStamp;
-
-		Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
-		intent.addCategory(Intent.CATEGORY_OPENABLE);
-		intent.setType("Zealotry/zb");
-		intent.putExtra(Intent.EXTRA_TITLE, backupFileName);
-
-		// Should set the directory the picker initially suggests, but doesn't seem to do anything
-		Uri pickerInitialUri = Uri.fromFile(Environment.getDownloadCacheDirectory());
-		intent.putExtra(DocumentsContract.EXTRA_INITIAL_URI, pickerInitialUri);
-
-		fileCreationARL.launch(intent);
-	}
 
 	public void resumeDatabaseBackup(Uri fileUri)
 	{
@@ -117,6 +117,15 @@ public class BackupManagement extends AppCompatActivity
 		}
 	}
 
+	public void initiateDatabaseRestore(View view)
+	{
+		Toast.makeText( getApplicationContext(), "Restoring database to prior state from back-up", Toast.LENGTH_LONG).show();
+		Intent i = new Intent(Intent.ACTION_GET_CONTENT);
+		i.setType("Zealotry/zb");
+		Intent toLaunch = Intent.createChooser(i, "Select back-up file to revert to.");
+		fileRestoreARL.launch(toLaunch);
+	}
+
 	ActivityResultLauncher<Intent> fileRestoreARL =
 			registerForActivityResult(
 					new ActivityResultContracts.StartActivityForResult(),
@@ -140,15 +149,6 @@ public class BackupManagement extends AppCompatActivity
 							}
 						}
 					});
-
-	public void initiateDatabaseRestore(View view)
-	{
-		Toast.makeText( getApplicationContext(), "Restoring database to prior state from back-up", Toast.LENGTH_LONG).show();
-		Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-		i.setType("Zealotry/zb");
-		Intent toLaunch = Intent.createChooser(i, "Select back-up file to revert to.");
-		fileRestoreARL.launch(toLaunch);
-	}
 
 	public void resumeDatabaseBackup()
 	{
