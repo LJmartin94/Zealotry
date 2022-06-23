@@ -108,8 +108,9 @@ public class BackupManagement extends AppCompatActivity
 		{
 			InputStream input = new FileInputStream(dbInstance);
 			OutputStream output = getContentResolver().openOutputStream(fileUri);
-			long buffersizeL = Math.abs(dbInstance.length());
-			Math.min(buffersizeL, Integer.MAX_VALUE);
+			long buffersizeL = dbInstance.length();
+			buffersizeL = Math.min(buffersizeL, Integer.MAX_VALUE);
+			buffersizeL = (buffersizeL <= 0) ? Integer.MAX_VALUE : buffersizeL;
 			int buffersize = (int)buffersizeL;
 			byte[] b = new byte[buffersize];
 			int bytes_read;
