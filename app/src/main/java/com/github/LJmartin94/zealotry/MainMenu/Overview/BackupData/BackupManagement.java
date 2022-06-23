@@ -149,6 +149,8 @@ public class BackupManagement extends AppCompatActivity
 
 	public void resumeDatabaseRestore(Uri fileLocation)
 	{
+		//TODO Make pop-up dialogue confirming user wants to restore from this file, as it will overwrite existing data.
+
 		//TODO Apply intent filter so that Android automatically opens *.zb files with Zealotry and processes them
 		// https://stackoverflow.com/questions/34300452/android-associate-app-with-custom-file-type
 		// https://stackoverflow.com/questions/1733195/android-intent-filter-for-a-particular-file-extension
@@ -156,11 +158,31 @@ public class BackupManagement extends AppCompatActivity
 
 		try
 		{
-			InputStream input = getContentResolver().openInputStream(fileLocation);
+			InputStream newDB = getContentResolver().openInputStream(fileLocation);
 			if (this.getContentResolver().getType(fileLocation).equals("Zealotry/zb"))
 			{
 				//Valid file type
-				Toast.makeText( getApplicationContext(), "VALID", Toast.LENGTH_LONG).show();
+				ExerciseInfo_db appDatabase = ExerciseInfo_db.getDatabase(this);
+				appDatabase.close();
+				File oldDB = this.getDatabasePath("Zealotry_Database");
+				if (newDB != null)
+				{
+					try
+					{
+						copyContents(newDB, oldDB);
+						Toast.makeText(getApplicationContext(), "Database successfully restored", Toast.LENGTH_LONG).show();
+					}
+					catch (Exception e)
+					{
+						Toast.makeText( getApplicationContext(), "Encountered error whilst trying restore database from back-up", Toast.LENGTH_LONG).show();
+						e.printStackTrace();
+					}
+					newDB.close();
+				}
+				else
+				{
+					Toast.makeText( getApplicationContext(), "Input file is NULL", Toast.LENGTH_LONG).show();
+				}
 			}
 			else
 			{
@@ -170,10 +192,13 @@ public class BackupManagement extends AppCompatActivity
 		}
 		catch (Exception e)
 		{
-			Toast.makeText( getApplicationContext(), "Encountered error whilst trying restore database from back-up", Toast.LENGTH_LONG).show();
+			Toast.makeText( getApplicationContext(), "Could not open input stream from specified file", Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
+	}
 
+	public void copyContents(src, dst)
+	{
 		//			OutputStream output = getContentResolver().openOutputStream(fileUri);
 //			long buffersizeL = dbInstance.length();
 //			buffersizeL = Math.min(buffersizeL, Integer.MAX_VALUE);
@@ -185,15 +210,10 @@ public class BackupManagement extends AppCompatActivity
 //			{
 //				output.write(b, 0, bytes_read);
 //			}
+
 //			output.flush();
 //			input.close();
 //			output.close();
 //			Toast.makeText( getApplicationContext(), "Created back-up file" , Toast.LENGTH_LONG).show();
-
-		//		Context context = this;
-//		ExerciseInfo_db appDatabase = ExerciseInfo_db.getDatabase(context);
-//		appDatabase.close();
-//		File dbInstance = context.getDatabasePath("Zealotry_Database");
-//
 	}
 }
