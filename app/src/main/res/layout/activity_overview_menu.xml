@@ -17,8 +17,8 @@
 		app:layout_constraintTop_toTopOf="parent"
 		android:drawableStart="@drawable/ic_baseline_money_24"
 		android:drawableLeft="@drawable/ic_baseline_money_24"
-		android:text="User Stats" />
-<!--	android:onClick="launchWeatherForecast"-->
+		android:text="User Stats"
+		android:onClick="launchStatsPage"/>
 
 	<Button
 		android:id="@+id/WeatherForecast"

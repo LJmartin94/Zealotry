@@ -5,7 +5,10 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:orientation="vertical"
-		tools:context=".MainMenu.Overview.Stats.StatsOverviewPage">
+		tools:context=".MainMenu.Overview.Stats.StatsOverviewPage"
+		android:paddingBottom="50dp"
+		android:paddingLeft="10dp"
+		android:paddingRight="5dp">
 
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:id="@+id/HP_CONTAINER"
@@ -23,9 +26,9 @@
 			android:text="HP"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintLeft_toLeftOf="parent"
-			android:textSize="48sp"
+			android:textSize="32sp"
 			android:textColor="@color/darkGrey"
-			android:padding="16dp"/>
+			android:padding="8dp"/>
 
 		<com.google.android.material.imageview.ShapeableImageView
 			android:id="@+id/HP_BOX"
@@ -71,9 +74,9 @@
 			android:text="STR"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintLeft_toLeftOf="parent"
-			android:textSize="48sp"
+			android:textSize="32sp"
 			android:textColor="@color/darkGrey"
-			android:padding="16dp"/>
+			android:padding="8dp"/>
 
 		<com.google.android.material.imageview.ShapeableImageView
 			android:id="@+id/STR_BOX"
@@ -119,9 +122,9 @@
 			android:text="DEF"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintLeft_toLeftOf="parent"
-			android:textSize="48sp"
+			android:textSize="32sp"
 			android:textColor="@color/darkGrey"
-			android:padding="16dp"/>
+			android:padding="8dp"/>
 
 		<com.google.android.material.imageview.ShapeableImageView
 			android:id="@+id/DEF_BOX"
@@ -167,9 +170,9 @@
 			android:text="MAG"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintLeft_toLeftOf="parent"
-			android:textSize="48sp"
+			android:textSize="32sp"
 			android:textColor="@color/darkGrey"
-			android:padding="16dp"/>
+			android:padding="8dp"/>
 
 		<com.google.android.material.imageview.ShapeableImageView
 			android:id="@+id/MAG_BOX"
@@ -215,9 +218,9 @@
 			android:text="C.SPL"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintLeft_toLeftOf="parent"
-			android:textSize="48sp"
+			android:textSize="32sp"
 			android:textColor="@color/darkGrey"
-			android:padding="16dp"/>
+			android:padding="8dp"/>
 
 		<com.google.android.material.imageview.ShapeableImageView
 			android:id="@+id/C.SPL_BOX"
@@ -263,9 +266,9 @@
 			android:text="SPD"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintLeft_toLeftOf="parent"
-			android:textSize="48sp"
+			android:textSize="32sp"
 			android:textColor="@color/darkGrey"
-			android:padding="16dp"/>
+			android:padding="8dp"/>
 
 		<com.google.android.material.imageview.ShapeableImageView
 			android:id="@+id/SPD_BOX"
@@ -310,9 +313,9 @@
 			android:text="DEX"
 			app:layout_constraintTop_toTopOf="parent"
 			app:layout_constraintLeft_toLeftOf="parent"
-			android:textSize="48sp"
+			android:textSize="32sp"
 			android:textColor="@color/darkGrey"
-			android:padding="16dp"/>
+			android:padding="8dp"/>
 
 		<com.google.android.material.imageview.ShapeableImageView
 			android:id="@+id/DEX_BOX"
@@ -339,6 +342,53 @@
 			app:layout_constraintBottom_toBottomOf="@id/DEX_BOX"
 			app:layout_constraintLeft_toLeftOf="@id/DEX_BOX"
 			app:layout_constraintRight_toRightOf="@id/DEX_BOX"
+			android:padding="2dp"/>
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/NAT_CONTAINER"
+		android:layout_weight="1"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		app:layout_constraintTop_toBottomOf="parent"
+		app:layout_constraintLeft_toLeftOf="parent">
+		<TextView
+			android:id="@+id/NAT_TEXT"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="NAT"
+			app:layout_constraintTop_toTopOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			android:textSize="32sp"
+			android:textColor="@color/darkGrey"
+			android:padding="8dp"/>
+
+		<com.google.android.material.imageview.ShapeableImageView
+			android:id="@+id/NAT_BOX"
+			app:layout_constraintTop_toBottomOf="@id/NAT_TEXT"
+			android:layout_width="match_parent"
+			android:layout_height="24dp"
+			android:layout_margin="2dp"
+			android:background="@color/darkGrey"
+			app:shapeAppearanceOverlay="@style/Stat_Bar"
+			/>
+
+		<ProgressBar
+			android:id="@+id/NATdeterminateBar"
+			style="@android:style/Widget.ProgressBar.Horizontal"
+			android:progressTint="@color/NAT_DRK_GREEN"
+			android:progressBackgroundTint="@color/LightGrey"
+			android:backgroundTint="@color/colorPrimary"
+			android:progressBackgroundTintMode="screen"
+			android:layout_margin="2dp"
+			android:layout_width="match_parent"
+			android:layout_height="24dp"
+			android:progress="25"
+			app:layout_constraintTop_toTopOf="@id/NAT_BOX"
+			app:layout_constraintBottom_toBottomOf="@id/NAT_BOX"
+			app:layout_constraintLeft_toLeftOf="@id/NAT_BOX"
+			app:layout_constraintRight_toRightOf="@id/NAT_BOX"
 			android:padding="2dp"/>
 	</androidx.constraintlayout.widget.ConstraintLayout>
 
