@@ -5,4 +5,13 @@
     <color name="colorAccent">#ec8622</color>
 	<color name="darkGrey">#333533</color>
 	<color name="LightGrey">#EEE</color>
+
+	<color name="HP_GREEN">#4ce051</color>
+	<color name="STR_RED">#e04c4c</color>
+	<color name="DEF_BROWN">#b37e0c</color>
+	<color name="MAG_BLUE">#4e4ce0</color>
+	<color name="RITUAL_PURPLE">#c74ce0</color>
+	<color name="SPD_YELLOW">#f0e932</color>
+	<color name="DEX_ORANGE">#edb12f</color>
+
 </resources>

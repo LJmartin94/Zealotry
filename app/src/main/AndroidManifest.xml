@@ -15,11 +15,12 @@
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
+
 		<!-- <meta-data -->
 		<!-- android:name="com.google.android.actions" -->
 		<!-- android:resource="@xml/githubsearch" /> -->
 
-		<!--MAIN MENU-->
+		<!-- MAIN MENU -->
 		<activity
 			android:name=".MainMenu.MainActivity"
 			android:label="@string/app_name">
@@ -30,11 +31,14 @@
 			</intent-filter>
 		</activity>
 
-		<!--OVERVIEW MENU-->
+		<!-- OVERVIEW MENU -->
 		<activity
 			android:name=".MainMenu.Overview.Overview_menu"
 			android:label="@string/act_Overview"
-			android:parentActivityName=".MainMenu.MainActivity"/>
+			android:parentActivityName=".MainMenu.MainActivity" />
+		<activity android:name=".MainMenu.Overview.Stats.StatsOverviewPage"
+			android:label="STATS"
+			android:parentActivityName=".MainMenu.Overview.Overview_menu" />
 		<activity
 			android:name=".MainMenu.Overview.WeatherForecast.WeatherForecast"
 			android:label="@string/act_WeatherForecast"
@@ -47,12 +51,12 @@
 				android:name="android.support.PARENT_ACTIVITY"
 				android:value=".MainMenu.MainActivity" />
 		</activity>
-		<activity android:name=".MainMenu.Overview.BackupData.BackupManagement"
+		<activity
+			android:name=".MainMenu.Overview.BackupData.BackupManagement"
 			android:label="@string/act_ManageBackups"
-			android:parentActivityName=".MainMenu.Overview.Overview_menu"/>
-<!--		android:requestLegacyExternalStorage="true"-->
+			android:parentActivityName=".MainMenu.Overview.Overview_menu" />
 
-		<!--MORNING MENU-->
+		<!-- MORNING MENU -->
 		<activity
 			android:name=".MainMenu.Morning.Morning_menu"
 			android:label="@string/act_morning"
@@ -62,13 +66,13 @@
 			android:label="@string/wake_up"
 			android:parentActivityName=".MainMenu.Morning.Morning_menu" />
 
-		<!--DAY MENU-->
+		<!-- DAY MENU -->
 		<activity
 			android:name=".MainMenu.Day.Day_menu"
 			android:label="@string/act_day"
 			android:parentActivityName=".MainMenu.MainActivity" />
 
-		<!--EVENING MENU-->
+		<!-- EVENING MENU -->
 		<activity
 			android:name=".MainMenu.Evening.Evening_menu"
 			android:label="@string/act_evening"
@@ -81,7 +85,6 @@
 			android:name=".MainMenu.Evening.ExerciseTest_NewExercise_Activity"
 			android:label="@string/exercise"
 			android:parentActivityName=".MainMenu.Evening.ExerciseTest_Activity" />
-
 	</application>
 
 </manifest>
