@@ -40,6 +40,16 @@
 			app:shapeAppearanceOverlay="@style/Stat_Bar"
 			/>
 
+		<TextView
+			android:id="@+id/LEVEL_INDICATOR_HP"
+			app:layout_constraintBottom_toTopOf="@id/HP_BOX"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent"
+			android:text="LVL: 1"
+			android:textSize="24sp"
+			android:padding="5dp"/>
+
 		<ProgressBar
 			android:id="@+id/HPdeterminateBar"
 			style="@android:style/Widget.ProgressBar.Horizontal"
@@ -87,6 +97,16 @@
 			android:background="@color/darkGrey"
 			app:shapeAppearanceOverlay="@style/Stat_Bar"
 			/>
+
+		<TextView
+			android:id="@+id/LEVEL_INDICATOR_STR"
+			app:layout_constraintBottom_toTopOf="@id/STR_BOX"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent"
+			android:text="LVL: 1"
+			android:textSize="24sp"
+			android:padding="5dp"/>
 
 		<ProgressBar
 			android:id="@+id/STRdeterminateBar"
@@ -136,6 +156,16 @@
 			app:shapeAppearanceOverlay="@style/Stat_Bar"
 			/>
 
+		<TextView
+			android:id="@+id/LEVEL_INDICATOR_DEF"
+			app:layout_constraintBottom_toTopOf="@id/DEF_BOX"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent"
+			android:text="LVL: 1"
+			android:textSize="24sp"
+			android:padding="5dp"/>
+
 		<ProgressBar
 			android:id="@+id/DEFdeterminateBar"
 			style="@android:style/Widget.ProgressBar.Horizontal"
@@ -183,6 +213,16 @@
 			android:background="@color/darkGrey"
 			app:shapeAppearanceOverlay="@style/Stat_Bar"
 			/>
+
+		<TextView
+			android:id="@+id/LEVEL_INDICATOR_MAG"
+			app:layout_constraintBottom_toTopOf="@id/MAG_BOX"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent"
+			android:text="LVL: 1"
+			android:textSize="24sp"
+			android:padding="5dp"/>
 
 		<ProgressBar
 			android:id="@+id/MAGdeterminateBar"
@@ -232,6 +272,16 @@
 			app:shapeAppearanceOverlay="@style/Stat_Bar"
 			/>
 
+		<TextView
+			android:id="@+id/LEVEL_INDICATOR_C.SPL"
+			app:layout_constraintBottom_toTopOf="@id/C.SPL_BOX"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent"
+			android:text="LVL: 1"
+			android:textSize="24sp"
+			android:padding="5dp"/>
+
 		<ProgressBar
 			android:id="@+id/C.SPLdeterminateBar"
 			style="@android:style/Widget.ProgressBar.Horizontal"
@@ -280,6 +330,16 @@
 			app:shapeAppearanceOverlay="@style/Stat_Bar"
 			/>
 
+		<TextView
+			android:id="@+id/LEVEL_INDICATOR_SPD"
+			app:layout_constraintBottom_toTopOf="@id/SPD_BOX"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent"
+			android:text="LVL: 1"
+			android:textSize="24sp"
+			android:padding="5dp"/>
+
 		<ProgressBar
 			android:id="@+id/SPDdeterminateBar"
 			style="@android:style/Widget.ProgressBar.Horizontal"
@@ -327,6 +387,16 @@
 			app:shapeAppearanceOverlay="@style/Stat_Bar"
 			/>
 
+		<TextView
+			android:id="@+id/LEVEL_INDICATOR_DEX"
+			app:layout_constraintBottom_toTopOf="@id/DEX_BOX"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent"
+			android:text="LVL: 1"
+			android:textSize="24sp"
+			android:padding="5dp"/>
+
 		<ProgressBar
 			android:id="@+id/DEXdeterminateBar"
 			style="@android:style/Widget.ProgressBar.Horizontal"
@@ -373,6 +443,16 @@
 			android:background="@color/darkGrey"
 			app:shapeAppearanceOverlay="@style/Stat_Bar"
 			/>
+
+		<TextView
+			android:id="@+id/LEVEL_INDICATOR_NAT"
+			app:layout_constraintBottom_toTopOf="@id/NAT_BOX"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintEnd_toEndOf="parent"
+			android:text="LVL: 1"
+			android:textSize="24sp"
+			android:padding="5dp"/>
 
 		<ProgressBar
 			android:id="@+id/NATdeterminateBar"
