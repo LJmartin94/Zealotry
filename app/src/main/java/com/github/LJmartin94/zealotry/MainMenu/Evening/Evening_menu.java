@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.github.LJmartin94.zealotry.MainMenu.Morning.Morning_menu_wake_up;
+import com.github.LJmartin94.zealotry.MainMenu.Morning.Wake_up;
 import com.github.LJmartin94.zealotry.R;
 
 public class Evening_menu extends AppCompatActivity
@@ -26,7 +26,7 @@ public class Evening_menu extends AppCompatActivity
 
 	public void launchSetAlarms(View v)
 	{
-		Intent i = new Intent(this, Morning_menu_wake_up.class);
+		Intent i = new Intent(this, Wake_up.class);
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
 			startActivity(i);

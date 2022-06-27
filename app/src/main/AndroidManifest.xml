@@ -59,7 +59,7 @@
 			android:label="@string/act_morning"
 			android:parentActivityName=".MainMenu.MainActivity" />
 		<activity
-			android:name=".MainMenu.Morning.Morning_menu_wake_up"
+			android:name=".MainMenu.Morning.Wake_up"
 			android:label="@string/wake_up"
 			android:parentActivityName=".MainMenu.Morning.Morning_menu" />
 

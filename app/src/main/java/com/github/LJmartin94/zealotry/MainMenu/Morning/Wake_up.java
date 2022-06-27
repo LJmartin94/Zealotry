@@ -37,7 +37,7 @@ import android.widget.Toast;
 
 import com.github.LJmartin94.zealotry.R;
 
-public class Morning_menu_wake_up extends AppCompatActivity
+public class Wake_up extends AppCompatActivity
 {
 	private final int LAT_LONG_REQUEST_CODE = 0;
 	int	hourSunrise = 10;

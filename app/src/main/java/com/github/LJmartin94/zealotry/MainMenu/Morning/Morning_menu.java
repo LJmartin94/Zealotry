@@ -27,7 +27,7 @@ public class Morning_menu extends AppCompatActivity
 
 	public void launchWakeUp(View v)
 	{
-		Intent i = new Intent(this, Morning_menu_wake_up.class);
+		Intent i = new Intent(this, Wake_up.class);
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
 			startActivity(i);
