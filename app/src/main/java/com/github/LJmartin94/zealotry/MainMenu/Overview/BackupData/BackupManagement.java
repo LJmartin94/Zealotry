@@ -4,6 +4,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -13,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.DocumentsContract;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -234,5 +236,17 @@ public class BackupManagement extends AppCompatActivity
 			((Activity) context).finish();
 		}
 		Runtime.getRuntime().exit(0);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(@NonNull MenuItem item)
+	{
+		switch (item.getItemId())
+		{
+			case android.R.id.home:
+				this.finish();
+				return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

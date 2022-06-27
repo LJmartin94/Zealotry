@@ -87,19 +87,21 @@ public class WeatherForecast extends AppCompatActivity implements
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
-		if (id == R.id.action_refresh)
+		switch (id)
 		{
-			mForecastAdapter.setWeatherData(null);
-			LoaderManager.getInstance(this).restartLoader(FORECAST_LOADER_ID, null, this);
-			return true;
-		}
+			case R.id.action_refresh:
+				mForecastAdapter.setWeatherData(null);
+				LoaderManager.getInstance(this).restartLoader(FORECAST_LOADER_ID, null, this);
+				return true;
 
-		if (id == R.id.action_map)
-		{
-			openLocationInMap();
-			return true;
-		}
+			case R.id.action_map:
+				openLocationInMap();
+				return true;
 
+			case android.R.id.home:
+				this.finish();
+				return true;
+		}
 		return super.onOptionsItemSelected(item);
 	}
 

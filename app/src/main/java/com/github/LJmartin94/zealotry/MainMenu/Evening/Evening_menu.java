@@ -1,5 +1,6 @@
 package com.github.LJmartin94.zealotry.MainMenu.Evening;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.github.LJmartin94.zealotry.MainMenu.Morning.Morning_menu_wake_up;
@@ -28,6 +30,7 @@ public class Evening_menu extends AppCompatActivity
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
 			startActivity(i);
+			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 		}
 		disable_button(v);
 	}
@@ -38,6 +41,7 @@ public class Evening_menu extends AppCompatActivity
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
 			startActivity(i);
+			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 		}
 		disable_button(v);
 	}
@@ -47,5 +51,17 @@ public class Evening_menu extends AppCompatActivity
 		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
 		v.getBackground().setColorFilter(filter);
 		v.setClickable(false);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(@NonNull MenuItem item)
+	{
+		switch (item.getItemId())
+		{
+			case android.R.id.home:
+				this.finish();
+				return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

@@ -1,9 +1,11 @@
 package com.github.LJmartin94.zealotry.MainMenu.Overview;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.github.LJmartin94.zealotry.MainMenu.Overview.BackupData.BackupManagement;
@@ -41,6 +43,18 @@ public class Overview_menu extends AppCompatActivity
 		//launch new activity
 		Intent i = new Intent(this, BackupManagement.class);
 		startActivity(i);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(@NonNull MenuItem item)
+	{
+		switch (item.getItemId())
+		{
+			case android.R.id.home:
+				this.finish();
+				return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	@Override

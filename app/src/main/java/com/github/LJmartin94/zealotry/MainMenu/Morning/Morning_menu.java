@@ -1,5 +1,6 @@
 package com.github.LJmartin94.zealotry.MainMenu.Morning;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.os.Bundle;
 import android.provider.AlarmClock;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -65,5 +67,17 @@ public class Morning_menu extends AppCompatActivity
 		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
 		v.getBackground().setColorFilter(filter);
 		v.setClickable(false);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(@NonNull MenuItem item)
+	{
+		switch (item.getItemId())
+		{
+			case android.R.id.home:
+				this.finish();
+				return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

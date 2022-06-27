@@ -1,6 +1,9 @@
 package com.github.LJmartin94.zealotry.MainMenu.Morning;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
@@ -25,6 +28,7 @@ import android.os.Build;
 import android.provider.AlarmClock;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -64,6 +68,9 @@ public class Morning_menu_wake_up extends AppCompatActivity
 		hourSunrise = (int)sunriseTime[0];
 		minSunrise = (int)sunriseTime[1];
 		leaveTimeButton = (Button)findViewById(R.id.button_spinner_wake_up);
+
+		ActionBar actionBar = getSupportActionBar();
+		actionBar.setDisplayHomeAsUpEnabled(true);
 	}
 
 	@Override
@@ -447,6 +454,18 @@ public class Morning_menu_wake_up extends AppCompatActivity
 //		deleteOldAlarms(i);
 //		deleteOldAlarms(j);
 //		deleteOldAlarms(k);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(@NonNull MenuItem item)
+	{
+		switch (item.getItemId())
+		{
+			case android.R.id.home:
+				this.finish();
+				return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	@Override
