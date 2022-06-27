@@ -39,8 +39,52 @@
 				android:layout_height="wrap_content"
 				android:drawableStart="@drawable/wake_up_small"
 				android:drawableLeft="@drawable/wake_up_small"
-				android:onClick="disable_button"
+				android:onClick="launchGetUp"
+				android:textAlignment="center"
+				android:layout_gravity="center_horizontal"
 				android:text="@string/get_up" />
+
+			<LinearLayout
+				android:id="@+id/GetUp_Menu"
+				android:theme="@style/MaterialGworl"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="0dp"
+				app:layout_constraintRight_toRightOf="parent"
+				app:layout_constraintBottom_toTopOf="@+id/tried"
+				android:visibility="gone"
+				android:orientation="vertical">
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/wordlefab"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Try the daily wordle."
+					android:text="Try the daily wordle."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="GetUpWordle"
+					app:icon="@drawable/wake_up_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/completedfab"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Got out of bed."
+					android:text="Got out of bed."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="disableGetUp"
+					app:icon="@drawable/wake_up_small"
+					/>
+			</LinearLayout>
 
 			<Button
 				android:id="@+id/shower_button"

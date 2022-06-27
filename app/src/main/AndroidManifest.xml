@@ -57,7 +57,17 @@
 		<activity
 			android:name=".MainMenu.Morning.Morning_menu"
 			android:label="@string/act_morning"
-			android:parentActivityName=".MainMenu.MainActivity" />
+			android:parentActivityName=".MainMenu.MainActivity">
+			<intent-filter android:autoVerify="true">
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+
+				<data android:scheme="https" />
+				<data android:scheme="http" />
+				<data android:host="wwww.nytimes.com" />
+			</intent-filter>
+		</activity>
 		<activity
 			android:name=".MainMenu.Morning.Wake_up"
 			android:label="@string/wake_up"

@@ -4,14 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.BlendMode;
+import android.graphics.BlendModeColorFilter;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.AlarmClock;
+import android.text.Layout;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.github.LJmartin94.zealotry.R;
@@ -34,6 +39,45 @@ public class Morning_menu extends AppCompatActivity
 			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 		}
 		disable_button(v);
+	}
+
+	public void launchGetUp(View v)
+	{
+		View getUpMenu = findViewById(R.id.GetUp_Menu);
+		if (getUpMenu.getVisibility() == View.GONE)
+			getUpMenu.setVisibility(View.VISIBLE);
+		else
+			getUpMenu.setVisibility(View.GONE);
+	}
+
+	public void GetUpWordle(View v)
+	{
+		String url = "https://www.nytimes.com/games/wordle/index.html";
+		Uri uri = Uri.parse(url);
+		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+		if (intent.resolveActivity(getPackageManager()) != null)
+		{
+			Toast.makeText(this, "Host: " + uri.getHost(), Toast.LENGTH_LONG).show();
+			v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
+			v.setBackgroundColor(Color.GRAY);
+			v.setClickable(false);
+			startActivity(intent);
+			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+		}
+	}
+
+	public void disableGetUp(View v)
+	{
+		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+		View m = findViewById(R.id.GetUp_Menu);
+		Button b = findViewById(R.id.get_up_button);
+
+		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
+		v.setBackgroundColor(Color.GRAY);
+		v.setClickable(false);
+		m.setVisibility(View.GONE);
+		b.getBackground().setColorFilter(filter);
+		b.setClickable(false);
 	}
 
 	public void launchLanguage(View v)
