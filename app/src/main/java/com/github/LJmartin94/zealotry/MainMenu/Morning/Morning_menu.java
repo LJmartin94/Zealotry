@@ -29,6 +29,7 @@ public class Morning_menu extends AppCompatActivity
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
 			startActivity(i);
+			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 		}
 		disable_button(v);
 	}

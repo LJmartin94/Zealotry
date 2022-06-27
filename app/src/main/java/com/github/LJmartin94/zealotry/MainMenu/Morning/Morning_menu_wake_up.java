@@ -1,23 +1,15 @@
 package com.github.LJmartin94.zealotry.MainMenu.Morning;
 
-import androidx.annotation.StyleRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
-import android.app.AlarmManager;
-import android.app.AlertDialog;
-import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.content.ContentResolver;
 import android.content.Context;
 
-import java.io.File;
 import java.lang.Math;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -25,12 +17,9 @@ import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 import android.content.pm.PackageManager;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.Resources;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.AlarmClock;
@@ -458,5 +447,12 @@ public class Morning_menu_wake_up extends AppCompatActivity
 //		deleteOldAlarms(i);
 //		deleteOldAlarms(j);
 //		deleteOldAlarms(k);
+	}
+
+	@Override
+	public void finish()
+	{
+		super.finish();
+		overridePendingTransition(R.anim.slide_in_from_left, R.anim.slide_out_to_right);
 	}
 }

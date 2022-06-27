@@ -217,6 +217,7 @@ public class MainActivity extends AppCompatActivity
 		//launch new activity
 		Intent i = new Intent(this, Overview_menu.class);
 		startActivity(i);
+		overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 	}
 
 	public void launchMorningMenu(View v)

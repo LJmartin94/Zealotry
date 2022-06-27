@@ -16,10 +16,6 @@
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
 
-		<!-- <meta-data -->
-		<!-- android:name="com.google.android.actions" -->
-		<!-- android:resource="@xml/githubsearch" /> -->
-
 		<!-- MAIN MENU -->
 		<activity
 			android:name=".MainMenu.MainActivity"
@@ -36,7 +32,8 @@
 			android:name=".MainMenu.Overview.Overview_menu"
 			android:label="@string/act_Overview"
 			android:parentActivityName=".MainMenu.MainActivity" />
-		<activity android:name=".MainMenu.Overview.Stats.StatsOverviewPage"
+		<activity
+			android:name=".MainMenu.Overview.Stats.StatsOverviewPage"
 			android:label="STATS"
 			android:parentActivityName=".MainMenu.Overview.Overview_menu" />
 		<activity
