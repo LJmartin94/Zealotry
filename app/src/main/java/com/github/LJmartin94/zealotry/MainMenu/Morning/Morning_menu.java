@@ -3,6 +3,7 @@ package com.github.LJmartin94.zealotry.MainMenu.Morning;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.BlendMode;
 import android.graphics.BlendModeColorFilter;
@@ -16,6 +17,9 @@ import android.provider.AlarmClock;
 import android.text.Layout;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -176,6 +180,62 @@ public class Morning_menu extends AppCompatActivity
 		m.setVisibility(View.GONE);
 		b.getBackground().setColorFilter(filter);
 		b.setClickable(false);
+	}
+
+	public void launchNews(View v)
+	{
+		String url = "https://tunein.com/embed/player/s96218/";
+		View news_player = findViewById(R.id.news_player);
+		news_player.setVisibility(View.VISIBLE);
+		WebView webView = (WebView) findViewById(R.id.news_player_wv);
+
+		ProgressDialog progDailog;
+		progDailog = ProgressDialog.show(this, "Loading","Please wait...", true);
+		progDailog.setCancelable(false);
+
+
+		webView.getSettings().setJavaScriptEnabled(true);
+		webView.getSettings().setLoadWithOverviewMode(true);
+		webView.getSettings().setUseWideViewPort(true);
+		webView.getSettings().setDomStorageEnabled(true);
+		webView.setWebChromeClient(new WebChromeClient());
+		webView.setWebViewClient(new WebViewClient()
+		{
+			@Override
+			public boolean shouldOverrideUrlLoading(WebView view, String url)
+			{
+				progDailog.show();
+				view.loadUrl(url);
+				return true;
+			}
+			@Override
+			public void onPageFinished(WebView view, final String url)
+			{
+				progDailog.dismiss();
+			}
+		});
+
+		webView.loadUrl(url);
+
+
+//		//		<iframe src="https://tunein.com/embed/player/s96218/" style="width:100%; height:100px;" scrolling="no" frameborder="no"></iframe>
+//		Uri uri = Uri.parse(url);
+//		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//		if (intent.resolveActivity(getPackageManager()) != null)
+//		{
+//			Toast.makeText(this, "Host: " + uri.getHost(), Toast.LENGTH_LONG).show();
+//			v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
+//			v.setBackgroundColor(Color.GRAY);
+//			v.setClickable(false);
+//			startActivity(intent);
+//			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+//		}
+
+
+//		Intent i = new Intent();
+//		i.setAction(android.content.Intent.ACTION_VIEW);
+//		i.setDataAndType()
+
 	}
 
 	public void launchLanguage(View v)
