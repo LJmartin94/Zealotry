@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.github.LJmartin94.zealotry.MainMenu.Utils.WebView_Util_Activity;
 import com.github.LJmartin94.zealotry.R;
 
 public class Morning_menu extends AppCompatActivity
@@ -52,16 +53,15 @@ public class Morning_menu extends AppCompatActivity
 
 	public void GetUpWordle(View v)
 	{
-		String url = "https://www.nytimes.com/games/wordle/index.html";
-		Uri uri = Uri.parse(url);
-		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-		if (intent.resolveActivity(getPackageManager()) != null)
+		Intent i = new Intent(this, WebView_Util_Activity.class);
+		i.putExtra("URL_NAME", "https://www.nytimes.com/games/wordle/index.html");
+		i.putExtra("ACTIVITY_NAME", "Wordle");
+		if (i.resolveActivity(getPackageManager()) != null)
 		{
-			Toast.makeText(this, "Host: " + uri.getHost(), Toast.LENGTH_LONG).show();
 			v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
 			v.setBackgroundColor(Color.GRAY);
 			v.setClickable(false);
-			startActivity(intent);
+			startActivity(i);
 			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 		}
 	}

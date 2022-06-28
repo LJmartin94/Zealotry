@@ -16,6 +16,7 @@
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
 
+
 		<!-- MAIN MENU -->
 		<activity
 			android:name=".MainMenu.MainActivity"
@@ -58,15 +59,6 @@
 			android:name=".MainMenu.Morning.Morning_menu"
 			android:label="@string/act_morning"
 			android:parentActivityName=".MainMenu.MainActivity">
-			<intent-filter android:autoVerify="true">
-				<action android:name="android.intent.action.VIEW" />
-				<category android:name="android.intent.category.DEFAULT" />
-				<category android:name="android.intent.category.BROWSABLE" />
-
-				<data android:scheme="https" />
-				<data android:scheme="http" />
-				<data android:host="wwww.nytimes.com" />
-			</intent-filter>
 		</activity>
 		<activity
 			android:name=".MainMenu.Morning.Wake_up"
@@ -92,6 +84,21 @@
 			android:name=".MainMenu.Evening.ExerciseTest_NewExercise_Activity"
 			android:label="@string/exercise"
 			android:parentActivityName=".MainMenu.Evening.ExerciseTest_Activity" />
+
+		<!-- UTILS -->
+		<activity android:name=".MainMenu.Utils.WebView_Util_Activity"
+			android:label="Webview">
+			<intent-filter android:autoVerify="true">
+				<action android:name="android.intent.action.VIEW" />
+				<category android:name="android.intent.category.DEFAULT" />
+				<category android:name="android.intent.category.BROWSABLE" />
+
+				<data android:scheme="https" />
+				<data android:scheme="http" />
+
+				<data android:host="www.nytimes.com" />
+			</intent-filter>
+		</activity>
 	</application>
 
 </manifest>
