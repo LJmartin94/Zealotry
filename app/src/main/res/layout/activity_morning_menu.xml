@@ -62,11 +62,41 @@
 					android:layout_margin="4dp"
 					android:layout_gravity="start"
 					android:layout_weight="1"
-					android:contentDescription="Try the daily wordle."
-					android:text="Try the daily wordle."
+					android:contentDescription="Try the daily Wordle."
+					android:text="Try the daily Wordle."
 					android:textAllCaps="false"
 					android:textAlignment="viewStart"
 					android:onClick="GetUpWordle"
+					app:icon="@drawable/wake_up_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/xordlefab"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Try today's Xordle."
+					android:text="Try today's Xordle."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="GetUpXordle"
+					app:icon="@drawable/wake_up_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/worLdlefab"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Take on the WorLdle."
+					android:text="Take on the WorLdle."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="GetUpWorLdle"
 					app:icon="@drawable/wake_up_small"
 					/>
 

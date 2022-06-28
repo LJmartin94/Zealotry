@@ -66,6 +66,36 @@ public class Morning_menu extends AppCompatActivity
 		}
 	}
 
+	public void GetUpXordle(View v)
+	{
+		Intent i = new Intent(this, WebView_Util_Activity.class);
+		i.putExtra("URL_NAME", "https://xordle.xyz/");
+		i.putExtra("ACTIVITY_NAME", "Xordle");
+		if (i.resolveActivity(getPackageManager()) != null)
+		{
+			v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
+			v.setBackgroundColor(Color.GRAY);
+			v.setClickable(false);
+			startActivity(i);
+			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+		}
+	}
+
+	public void GetUpWorLdle(View v)
+	{
+		Intent i = new Intent(this, WebView_Util_Activity.class);
+		i.putExtra("URL_NAME", "https://worldle.teuteuf.fr/");
+		i.putExtra("ACTIVITY_NAME", "WorLdle");
+		if (i.resolveActivity(getPackageManager()) != null)
+		{
+			v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
+			v.setBackgroundColor(Color.GRAY);
+			v.setClickable(false);
+			startActivity(i);
+			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+		}
+	}
+
 	public void disableGetUp(View v)
 	{
 		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
