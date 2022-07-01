@@ -72,6 +72,9 @@ dependencies
 	implementation "androidx.appcompat:appcompat:$rootProject.appCompatVersion"
 	implementation "org.jetbrains:annotations-java5:$rootProject.annotationVersion"
 
+	// Internet browser
+	implementation 'androidx.browser:browser:1.4.0'
+
 	// Navigation components
 	implementation "androidx.navigation:navigation-fragment:$rootProject.navigationVersion"
 	implementation "androidx.navigation:navigation-ui:$rootProject.navigationVersion"
