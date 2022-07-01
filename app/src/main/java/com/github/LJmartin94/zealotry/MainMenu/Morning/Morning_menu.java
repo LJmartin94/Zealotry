@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.CookieManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -182,10 +183,9 @@ public class Morning_menu extends AppCompatActivity
 
 	public void launchNews(View v)
 	{
-		String url = "https://tunein.com/embed/player/s96218/";
-//		String url = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
-		final String tutorialURL = "<iframe src=\"https://tunein.com/embed/player/s96218/\" style=\"width:100%; height:100px;\" scrolling=\"no\" frameborder=\"no\"></iframe>";
-		String html1 = "<script>" +
+		//TODO Let users save their own preferred radio station from radio.net.
+		String unchanged_player =
+				"<script>" +
 				"(function(d, s)" +
 				"{" +
 					"if(!window.rel)" +
@@ -200,93 +200,54 @@ public class Morning_menu extends AppCompatActivity
 					"}" +
 				"}" +
 				"(document));" +
-				"</script>";
-		String html2 = "<div class=\"ng-app-embedded\"><div ui-view class=\"microsite embedded-radio-player\" data-playerwidth=\"340px\" data-playertype=\"web_embedded\" data-playstation=\"bbcradioscotland\" data-autoplay=\"true\" data-apikey=\"df04ff67dd3339a6fc19c9b8be164d5b5245ae93\"></div></div><noscript><a href=\"https://www.radio.net/s/bbcradioscotland\" target=\"_blank\">BBC Radio Scotland on radio.net</a></noscript>";
+				"</script>" +
+				"<div class=\"ng-app-embedded\"><div ui-view class=\"microsite embedded-radio-player\" data-playerwidth=\"340px\" data-playertype=\"web_embedded\" data-playstation=\"bbcradioscotland\" data-autoplay=\"true\" data-apikey=\"df04ff67dd3339a6fc19c9b8be164d5b5245ae93\"></div></div><noscript><a href=\"https://www.radio.net/s/bbcradioscotland\" target=\"_blank\">BBC Radio Scotland on radio.net</a></noscript>";
 
-			//RESOURCES
-		// https://www.youtube.com/watch?v=Vx7USzVp41o
-		// https://programer27android.blogspot.com/2018/12/play-audio-video-from-url-use-webview.html
+		//TODO make sure use input string has 'data-playerwidth="100%"' not any other value set to that key.
+		String width_adjusted_player =
+				"<script>" +
+				"(function(d, s)" +
+				"{" +
+				"if(!window.rel)" +
+				"{" +
+				"s = d.createElement(\"script\");" +
+				"s.type = \"text/javascript\";" +
+				"s.async = true;" +
+				"s.id = \"radio-de-embedded\";" +
+				"s.src = \"https://www.radio.net/inc/microsite/js/full.js\";" +
+				"d.getElementsByTagName(\"head\")[0].appendChild(s);" +
+				"window.rel = true;" +
+				"}" +
+				"}" +
+				"(document));" +
+				"</script> " +
+				"<div class=\"ng-app-embedded\">" +
+				"<div ui-view class=\"microsite embedded-radio-player\" " +
+				"data-playerwidth=\"100%\" " +
+				"data-playertype=\"web_embedded\" " +
+				"data-playstation=\"bbcradioscotland\" " +
+				"data-autoplay=\"true\" " +
+				"data-apikey=\"df04ff67dd3339a6fc19c9b8be164d5b5245ae93\">" +
+				"</div>" +
+				"</div>" +
+				"<noscript>" +
+				"<a href=\"https://www.radio.net/s/bbcradioscotland\" target=\"_blank\">" +
+				"BBC Radio Scotland on radio.net</a>" +
+				"</noscript>";
 
-//		https://stackoverflow.com/questions/36857146/how-to-play-audio-on-webview-in-android
-//		https://stackoverflow.com/questions/58756837/how-to-request-audiofocus-for-android-devices-above-api-level-20
-//		https://developer.android.com/guide/topics/media-apps/audio-focus
-//		https://stackoverflow.com/questions/48542978/webview-wont-play-any-sound
-//		https://www.tutorialspoint.com/android/android_audiomanager.htm
-//		https://github.com/HaarigerHarald/android-youtubeExtractor/issues/139
-//		https://developer.android.com/reference/android/media/MediaCodecInfo.AudioCapabilities
-//		https://developer.android.com/reference/android/media/AudioFocusRequest
-//		https://developer.android.com/reference/android/media/AudioManager
-//		https://www.google.com/search?q=unsupported+mime+audio%2Fx-ima&client=ubuntu&hs=OUu&channel=fs&sxsrf=ALiCzsa79abY9zT7NcP9j47hLYEEO5cqYQ%3A1656422635340&ei=6wC7YpGrFIrZsAf6h4ToCQ&oq=unsupported+mime+x&gs_lcp=Cgdnd3Mtd2l6EAMYADIGCAAQHhAWMgYIABAeEBYyBggAEB4QFjIGCAAQHhAWMgYIABAeEBYyBggAEB4QFjoHCAAQRxCwA0oECEEYAEoECEYYAFD9F1j9F2DXJ2gCcAF4AIABS4gBS5IBATGYAQCgAQHIAQjAAQE&sclient=gws-wiz
-//		https://tunein.com/radio/BBC-Radio-Scotland-930-s96218/
-		
-
-
-		//WEBVIEW APPROACH
 		View news_player = findViewById(R.id.news_player);
 		news_player.setVisibility(View.VISIBLE);
 		WebView webView = (WebView) findViewById(R.id.news_player_wv);
 
-		ProgressDialog progDailog;
-		progDailog = ProgressDialog.show(this, "Loading","Please wait...", true);
-		progDailog.setCancelable(false);
-
-
 		WebSettings settings = webView.getSettings();
 		settings.setJavaScriptEnabled(true);
-		settings.setLoadWithOverviewMode(true);
-		settings.setUseWideViewPort(true);
+		settings.setLoadWithOverviewMode(false);
+		settings.setUseWideViewPort(false);
 		settings.setDomStorageEnabled(true);
-//		settings.setUserAgentString("Mozilla/5.0 (Linux; Android 4.4; Nexus 5 Build/_BuildID_) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36");
-//		settings.setMediaPlaybackRequiresUserGesture(false);
-//		settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
-		webView.setWebChromeClient(new WebChromeClient());
-		webView.setWebViewClient(new WebViewClient()
-		{
-			@Override
-			public boolean shouldOverrideUrlLoading(WebView view, String url)
-			{
-				progDailog.show();
-				view.loadUrl(url);
-				return true;
-			}
-			@Override
-			public void onPageFinished(WebView view, final String url)
-			{
-				progDailog.dismiss();
-			}
-		});
+		settings.setSupportZoom(true);
 
-		String data = html1 + html2;
-//		webView.loadData(html1+html2, "text/html", "utf-8");
-//		webView.loadUrl(url);
-//		webView.loadUrl(url, );
-				webView.loadDataWithBaseURL("https://www.radio.net/inc/microsite/js/full.js", data, "text/html", "utf-8", null);
-
-
-
-////		OPEN IN NEW TAB
-//		CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-//		CustomTabsIntent customTabsIntent = builder.build();
-//		customTabsIntent.launchUrl(this, Uri.parse(url));
-
-//		//		<iframe src="https://tunein.com/embed/player/s96218/" style="width:100%; height:100px;" scrolling="no" frameborder="no"></iframe>
-//		Uri uri = Uri.parse(url);
-//		Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-//		if (intent.resolveActivity(getPackageManager()) != null)
-//		{
-//			Toast.makeText(this, "Host: " + uri.getHost(), Toast.LENGTH_LONG).show();
-//			v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
-//			v.setBackgroundColor(Color.GRAY);
-//			v.setClickable(false);
-//			startActivity(intent);
-//			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
-//		}
-
-
-//		Intent i = new Intent();
-//		i.setAction(android.content.Intent.ACTION_VIEW);
-//		i.setDataAndType()
-
+		String data = width_adjusted_player;
+		webView.loadDataWithBaseURL("https://www.radio.net/inc/microsite/js/full.js", data, "text/html", "utf-8", null);
 	}
 
 	public void launchLanguage(View v)
