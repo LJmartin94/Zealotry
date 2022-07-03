@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.BlendMode;
 import android.graphics.Color;
@@ -12,6 +13,7 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
 import android.os.Bundle;
 import android.provider.AlarmClock;
+import android.text.Layout;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.CookieManager;
@@ -20,6 +22,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.github.LJmartin94.zealotry.MainMenu.Utils.WebView_Util_Activity;
@@ -236,7 +239,6 @@ public class Morning_menu extends AppCompatActivity
 				"</noscript>";
 
 		View news_player = findViewById(R.id.news_player);
-		news_player.setVisibility(View.VISIBLE);
 		WebView webView = (WebView) findViewById(R.id.news_player_wv);
 
 		WebSettings settings = webView.getSettings();
@@ -245,6 +247,23 @@ public class Morning_menu extends AppCompatActivity
 		settings.setUseWideViewPort(false);
 		settings.setDomStorageEnabled(true);
 		settings.setSupportZoom(true);
+
+		webView.setWebViewClient(new WebViewClient()
+		{
+			@Override
+			public void onPageFinished(WebView webview, String url)
+			{
+				super.onPageFinished(webview, url);
+//				Toast.makeText(appContext, "PING", Toast.LENGTH_LONG).show();
+				webView.invalidate();
+				webView.forceLayout();
+				news_player.invalidate();
+				webView.forceLayout();
+				news_player.requestLayout();
+				webView.forceLayout();
+				news_player.setVisibility(View.VISIBLE);
+			}
+		});
 
 		String data = width_adjusted_player;
 		webView.loadDataWithBaseURL("https://www.radio.net/inc/microsite/js/full.js", data, "text/html", "utf-8", null);
