@@ -37,6 +37,7 @@ public class Morning_menu extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_morning_menu);
+		loadRadioPlayer();
 	}
 
 	public void launchWakeUp(View v)
@@ -184,7 +185,7 @@ public class Morning_menu extends AppCompatActivity
 		b.setClickable(false);
 	}
 
-	public void launchNews(View v)
+	public void loadRadioPlayer()
 	{
 		//TODO Let users save their own preferred radio station from radio.net.
 		String unchanged_player =
@@ -238,7 +239,6 @@ public class Morning_menu extends AppCompatActivity
 				"BBC Radio Scotland on radio.net</a>" +
 				"</noscript>";
 
-		View news_player = findViewById(R.id.news_player);
 		WebView webView = (WebView) findViewById(R.id.news_player_wv);
 
 		WebSettings settings = webView.getSettings();
@@ -248,25 +248,61 @@ public class Morning_menu extends AppCompatActivity
 		settings.setDomStorageEnabled(true);
 		settings.setSupportZoom(true);
 
-		webView.setWebViewClient(new WebViewClient()
-		{
-			@Override
-			public void onPageFinished(WebView webview, String url)
-			{
-				super.onPageFinished(webview, url);
-//				Toast.makeText(appContext, "PING", Toast.LENGTH_LONG).show();
-				webView.invalidate();
-				webView.forceLayout();
-				news_player.invalidate();
-				webView.forceLayout();
-				news_player.requestLayout();
-				webView.forceLayout();
-				news_player.setVisibility(View.VISIBLE);
-			}
-		});
+//		webView.setWebViewClient(new WebViewClient()
+//		{
+//			@Override
+//			public void onPageFinished(WebView webview, String url)
+//			{
+//				super.onPageFinished(webview, url);
+////				Toast.makeText(appContext, "PING", Toast.LENGTH_LONG).show();
+//				webView.invalidate();
+//				webView.forceLayout();
+//				news_player.invalidate();
+//				webView.forceLayout();
+//				news_player.requestLayout();
+//				webView.forceLayout();
+//
+//			}
+//		});
 
 		String data = width_adjusted_player;
 		webView.loadDataWithBaseURL("https://www.radio.net/inc/microsite/js/full.js", data, "text/html", "utf-8", null);
+	}
+
+	public void launchNews(View v)
+	{
+		View news_player = findViewById(R.id.news_player);
+		WebView webView = (WebView) findViewById(R.id.news_player_wv);
+
+		news_player.invalidate();
+		news_player.requestLayout();
+		webView.invalidate();
+		webView.requestLayout();
+
+		news_player.invalidate();
+		news_player.requestLayout();
+		webView.invalidate();
+		webView.requestLayout();
+
+
+		// could try loading the link when user presses news and displaying the player when user presses the fab under news
+		// need to figure out why its happening though
+		// https://stackoverflow.com/questions/26709703/error-android-xmlplacing-a-webview-in-a-parent-element-that-uses-a-wrap-cont
+
+
+		news_player.setVisibility(View.VISIBLE);
+
+		news_player.invalidate();
+		news_player.requestLayout();
+		webView.invalidate();
+		webView.requestLayout();
+
+		news_player.invalidate();
+		news_player.requestLayout();
+		webView.invalidate();
+		webView.requestLayout();
+
+		news_player.setVisibility(View.VISIBLE);
 	}
 
 	public void launchLanguage(View v)
