@@ -219,6 +219,63 @@
 				android:onClick="launchNews"
 				android:text="@string/news" />
 
+			<LinearLayout
+				android:id="@+id/News_Menu"
+				android:theme="@style/MaterialGworl"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="0dp"
+				android:visibility="gone"
+				android:orientation="vertical">
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/OpenPlayer"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Listen to the news."
+					android:text="Listen to the news."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="openRadioPlayer"
+					app:icon="@drawable/news_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/ChangeChannel"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Change the channel."
+					android:text="Change the channel."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="changeRadioChannel"
+					app:icon="@drawable/ic_baseline_radio_24"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/NewsSkipped"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Skip."
+					android:text="Skip."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="NewsSkip"
+					app:icon="@drawable/ic_baseline_fast_forward_24"
+					/>
+			</LinearLayout>
+
+
+
 			<Button
 				android:id="@+id/curtains_button"
 				android:layout_width="match_parent"
@@ -412,9 +469,9 @@
 				android:text="Close player"
 				android:textAllCaps="false"
 				android:textAlignment="viewStart"
+				android:onClick="closeRadioPlayer"
 				app:icon="@drawable/ic_baseline_close_24"
 				/>
-			<!--			android:onClick=""-->
 
 		</LinearLayout>
 	</LinearLayout>

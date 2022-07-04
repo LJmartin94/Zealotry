@@ -186,6 +186,15 @@ public class Morning_menu extends AppCompatActivity
 		b.setClickable(false);
 	}
 
+	public void launchNews(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.News_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
 	public void loadRadioPlayer(View v)
 	{
 		//TODO Let users save their own preferred radio station from radio.net.
@@ -249,28 +258,13 @@ public class Morning_menu extends AppCompatActivity
 		settings.setDomStorageEnabled(true);
 		settings.setSupportZoom(true);
 
-//		webView.setWebViewClient(new WebViewClient()
-//		{
-//			@Override
-//			public void onPageFinished(WebView webview, String url)
-//			{
-//				super.onPageFinished(webview, url);
-////				Toast.makeText(appContext, "PING", Toast.LENGTH_LONG).show();
-//				webView.invalidate();
-//				webView.forceLayout();
-//				news_player.invalidate();
-//				webView.forceLayout();
-//				news_player.requestLayout();
-//				webView.forceLayout();
-//
-//			}
-//		});
-
 		String data = width_adjusted_player;
 		webView.loadDataWithBaseURL("https://www.radio.net/inc/microsite/js/full.js", data, "text/html", "utf-8", null);
+		webView.invalidate();
+		webView.requestLayout();
 	}
 
-	public void launchNews(View v)
+	public void openRadioPlayer(View v)
 	{
 		View news_player = findViewById(R.id.news_player);
 		WebView webView = (WebView) findViewById(R.id.news_player_wv);
@@ -281,7 +275,54 @@ public class Morning_menu extends AppCompatActivity
 		news_player.requestLayout();
 		webView.invalidate();
 		webView.requestLayout();
+
+		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
+		v.setBackgroundColor(Color.GRAY);
+		v.setClickable(false);
+
+		Button b = findViewById(R.id.news_button);
+		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+		b.getBackground().setColorFilter(filter);
 	}
+
+	public void closeRadioPlayer(View v)
+	{
+		View news_player = findViewById(R.id.news_player);
+		WebView webView = (WebView) findViewById(R.id.news_player_wv);
+		View player_buttons = findViewById(R.id.RadioPlayerButtons);
+
+		news_player.setVisibility(View.GONE);
+		player_buttons.setVisibility(View.GONE);
+		webView.destroy();
+
+		Button b = findViewById(R.id.news_button);
+		b.setClickable(false);
+
+		View m = findViewById(R.id.News_Menu);
+		m.setVisibility(View.GONE);
+	}
+
+	public void changeRadioChannel(View v)
+	{
+		// TODO: Save user's preferred radio channel in db, prompt them to select one if none is saved yet.
+		// TODO: Allow them to change their preferred radio channel here.
+		Toast.makeText(this, "Feature not implemented yet lmao", Toast.LENGTH_LONG).show();
+	}
+
+	public void NewsSkip(View v)
+	{
+		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+		View m = findViewById(R.id.News_Menu);
+		Button b = findViewById(R.id.news_button);
+
+		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
+		v.setBackgroundColor(Color.GRAY);
+		v.setClickable(false);
+		m.setVisibility(View.GONE);
+		b.getBackground().setColorFilter(filter);
+		b.setClickable(false);
+	}
+
 
 	public void launchLanguage(View v)
 	{
@@ -324,6 +365,7 @@ public class Morning_menu extends AppCompatActivity
 		switch (item.getItemId())
 		{
 			case android.R.id.home:
+				closeRadioPlayer(findViewById(R.id.ClosePlayer));
 				this.finish();
 				return true;
 		}
