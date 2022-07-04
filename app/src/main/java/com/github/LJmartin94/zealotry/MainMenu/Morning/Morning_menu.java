@@ -37,7 +37,8 @@ public class Morning_menu extends AppCompatActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_morning_menu);
-		loadRadioPlayer();
+		View dummyButton = findViewById(R.id.ReloadPlayer);
+		loadRadioPlayer(dummyButton);
 	}
 
 	public void launchWakeUp(View v)
@@ -185,7 +186,7 @@ public class Morning_menu extends AppCompatActivity
 		b.setClickable(false);
 	}
 
-	public void loadRadioPlayer()
+	public void loadRadioPlayer(View v)
 	{
 		//TODO Let users save their own preferred radio station from radio.net.
 		String unchanged_player =
@@ -273,36 +274,13 @@ public class Morning_menu extends AppCompatActivity
 	{
 		View news_player = findViewById(R.id.news_player);
 		WebView webView = (WebView) findViewById(R.id.news_player_wv);
+		View player_buttons = findViewById(R.id.RadioPlayerButtons);
+		player_buttons.setVisibility(View.VISIBLE);
 
 		news_player.invalidate();
 		news_player.requestLayout();
 		webView.invalidate();
 		webView.requestLayout();
-
-		news_player.invalidate();
-		news_player.requestLayout();
-		webView.invalidate();
-		webView.requestLayout();
-
-
-		// could try loading the link when user presses news and displaying the player when user presses the fab under news
-		// need to figure out why its happening though
-		// https://stackoverflow.com/questions/26709703/error-android-xmlplacing-a-webview-in-a-parent-element-that-uses-a-wrap-cont
-
-
-		news_player.setVisibility(View.VISIBLE);
-
-		news_player.invalidate();
-		news_player.requestLayout();
-		webView.invalidate();
-		webView.requestLayout();
-
-		news_player.invalidate();
-		news_player.requestLayout();
-		webView.invalidate();
-		webView.requestLayout();
-
-		news_player.setVisibility(View.VISIBLE);
 	}
 
 	public void launchLanguage(View v)
