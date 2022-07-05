@@ -23,15 +23,19 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.LJmartin94.zealotry.MainMenu.Utils.WebView_Util_Activity;
 import com.github.LJmartin94.zealotry.R;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Morning_menu extends AppCompatActivity
 {
+	Calendar mCalendar = Calendar.getInstance();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -49,7 +53,8 @@ public class Morning_menu extends AppCompatActivity
 			startActivity(i);
 			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 		}
-		disable_button(v);
+		TextView timeText = (TextView)findViewById(R.id.wakeup_time);
+		disable_menu(v, timeText, null);
 	}
 
 	public void launchGetUp(View v)
@@ -108,16 +113,15 @@ public class Morning_menu extends AppCompatActivity
 
 	public void disableGetUp(View v)
 	{
-		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
-		View m = findViewById(R.id.GetUp_Menu);
-		Button b = findViewById(R.id.get_up_button);
-
+		//Disable this button first
 		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
 		v.setBackgroundColor(Color.GRAY);
 		v.setClickable(false);
-		m.setVisibility(View.GONE);
-		b.getBackground().setColorFilter(filter);
-		b.setClickable(false);
+
+		View m = findViewById(R.id.GetUp_Menu);
+		Button b = findViewById(R.id.get_up_button);
+		TextView t = (TextView)findViewById(R.id.get_up_time);
+		disable_menu(b, t, m);
 	}
 
 	public void launchShower(View v)
@@ -323,7 +327,6 @@ public class Morning_menu extends AppCompatActivity
 		b.setClickable(false);
 	}
 
-
 	public void launchLanguage(View v)
 	{
 		Intent i = getPackageManager().getLaunchIntentForPackage("com.duolingo");
@@ -357,6 +360,23 @@ public class Morning_menu extends AppCompatActivity
 		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
 		v.getBackground().setColorFilter(filter);
 		v.setClickable(false);
+	}
+
+	public void disable_menu(View b, TextView t, View m)
+	{
+		long timeLong = mCalendar.getTimeInMillis();
+		SimpleDateFormat hmm = new SimpleDateFormat("H:mm");
+		String timeString = hmm.format(timeLong);
+		t.setText(timeString);
+
+		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+		b.getBackground().setColorFilter(filter);
+		b.setClickable(false);
+
+		if (m != null)
+		{
+			m.setVisibility(View.GONE);
+		}
 	}
 
 	@Override
