@@ -73,9 +73,7 @@ public class Morning_menu extends AppCompatActivity
 		i.putExtra("ACTIVITY_NAME", "Wordle");
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
-			v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
-			v.setBackgroundColor(Color.GRAY);
-			v.setClickable(false);
+			disable_fab(v);
 			startActivity(i);
 			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 		}
@@ -88,9 +86,7 @@ public class Morning_menu extends AppCompatActivity
 		i.putExtra("ACTIVITY_NAME", "Xordle");
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
-			v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
-			v.setBackgroundColor(Color.GRAY);
-			v.setClickable(false);
+			disable_fab(v);
 			startActivity(i);
 			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 		}
@@ -103,9 +99,7 @@ public class Morning_menu extends AppCompatActivity
 		i.putExtra("ACTIVITY_NAME", "WorLdle");
 		if (i.resolveActivity(getPackageManager()) != null)
 		{
-			v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
-			v.setBackgroundColor(Color.GRAY);
-			v.setClickable(false);
+			disable_fab(v);
 			startActivity(i);
 			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 		}
@@ -113,10 +107,7 @@ public class Morning_menu extends AppCompatActivity
 
 	public void disableGetUp(View v)
 	{
-		//Disable this button first
-		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
-		v.setBackgroundColor(Color.GRAY);
-		v.setClickable(false);
+		disable_fab(v);
 
 		View m = findViewById(R.id.GetUp_Menu);
 		Button b = findViewById(R.id.get_up_button);
@@ -143,51 +134,37 @@ public class Morning_menu extends AppCompatActivity
 
 	public void ShowerBody(View v)
 	{
-		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
-		v.setBackgroundColor(Color.GRAY);
-		v.setClickable(false);
+		disable_fab(v);
 	}
 
 	public void ShowerHair(View v)
 	{
-		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
-		v.setBackgroundColor(Color.GRAY);
-		v.setClickable(false);
+		disable_fab(v);
 	}
 
 	public void ShowerShave(View v)
 	{
-		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
-		v.setBackgroundColor(Color.GRAY);
-		v.setClickable(false);
+		disable_fab(v);
 	}
 
 	public void ShowerDone(View v)
 	{
-		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
-		View m = findViewById(R.id.Shower_Menu);
 		Button b = findViewById(R.id.shower_button);
+		TextView t = findViewById(R.id.shower_time);
+		View m = findViewById(R.id.Shower_Menu);
 
-		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
-		v.setBackgroundColor(Color.GRAY);
-		v.setClickable(false);
-		m.setVisibility(View.GONE);
-		b.getBackground().setColorFilter(filter);
-		b.setClickable(false);
+		disable_fab(v);
+		disable_menu(b, t, m);
 	}
 
 	public void ShowerSkip(View v)
 	{
-		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
-		View m = findViewById(R.id.Shower_Menu);
 		Button b = findViewById(R.id.shower_button);
+		TextView t = findViewById(R.id.shower_time);
+		View m = findViewById(R.id.Shower_Menu);
 
-		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
-		v.setBackgroundColor(Color.GRAY);
-		v.setClickable(false);
-		m.setVisibility(View.GONE);
-		b.getBackground().setColorFilter(filter);
-		b.setClickable(false);
+		disable_fab(v);
+		disable_menu(b, t, m);
 	}
 
 	public void launchNews(View v)
@@ -359,6 +336,13 @@ public class Morning_menu extends AppCompatActivity
 	{
 		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
 		v.getBackground().setColorFilter(filter);
+		v.setClickable(false);
+	}
+
+	public void disable_fab(View v)
+	{
+		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
+		v.setBackgroundColor(Color.GRAY);
 		v.setClickable(false);
 	}
 

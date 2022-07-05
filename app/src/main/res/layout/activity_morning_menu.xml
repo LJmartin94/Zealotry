@@ -151,14 +151,32 @@
 					/>
 			</LinearLayout>
 
-			<Button
-				android:id="@+id/shower_button"
+			<FrameLayout
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/water_bath_small"
-				android:drawableLeft="@drawable/water_bath_small"
-				android:onClick="launchShower"
-				android:text="@string/shower" />
+				android:layout_height="wrap_content">
+
+				<Button
+					android:id="@+id/shower_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/water_bath_small"
+					android:drawableLeft="@drawable/water_bath_small"
+					android:onClick="launchShower"
+					android:text="@string/shower" />
+
+				<TextView
+					android:id="@+id/shower_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
+
+			</FrameLayout>
 
 			<LinearLayout
 				android:id="@+id/Shower_Menu"
