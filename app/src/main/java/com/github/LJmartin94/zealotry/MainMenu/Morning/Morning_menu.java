@@ -43,7 +43,7 @@ public class Morning_menu extends AppCompatActivity
 		loadRadioPlayer(dummyButton);
 	}
 
-	public void launchWakeUp(View v)
+	public void launchWakeUp(View b)
 	{
 		Intent i = new Intent(this, Wake_up.class);
 		if (i.resolveActivity(getPackageManager()) != null)
@@ -51,8 +51,8 @@ public class Morning_menu extends AppCompatActivity
 			startActivity(i);
 			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 		}
-		TextView timeText = (TextView)findViewById(R.id.wakeup_time);
-		disable_menu(v, timeText, null);
+		TextView t = (TextView)findViewById(R.id.wakeup_time);
+		disable_menu(b, true, t, null);
 	}
 
 	public void launchGetUp(View v)
@@ -110,7 +110,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.GetUp_Menu);
 		Button b = findViewById(R.id.get_up_button);
 		TextView t = (TextView)findViewById(R.id.get_up_time);
-		disable_menu(b, t, m);
+		disable_menu(b, true, t, m);
 	}
 
 	public void launchShower(View v)
@@ -152,7 +152,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Shower_Menu);
 
 		disable_fab(v);
-		disable_menu(b, t, m);
+		disable_menu(b, true, t, m);
 	}
 
 	public void ShowerSkip(View v)
@@ -162,7 +162,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Shower_Menu);
 
 		disable_fab(v);
-		disable_menu(b, t, m);
+		disable_menu(b, true, t, m);
 	}
 
 	public void launchNews(View v)
@@ -255,13 +255,11 @@ public class Morning_menu extends AppCompatActivity
 		webView.invalidate();
 		webView.requestLayout();
 
-		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
-		v.setBackgroundColor(Color.GRAY);
-		v.setClickable(false);
+		disable_fab(v);
 
 		Button b = findViewById(R.id.news_button);
-		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
-		b.getBackground().setColorFilter(filter);
+		TextView t = findViewById(R.id.news_time);
+		disable_menu(b, false, t, null);
 	}
 
 	public void closeRadioPlayer(View v)
@@ -290,16 +288,13 @@ public class Morning_menu extends AppCompatActivity
 
 	public void NewsSkip(View v)
 	{
-		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
-		View m = findViewById(R.id.News_Menu);
-		Button b = findViewById(R.id.news_button);
+		disable_fab(v);
 
-		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
-		v.setBackgroundColor(Color.GRAY);
-		v.setClickable(false);
-		m.setVisibility(View.GONE);
-		b.getBackground().setColorFilter(filter);
-		b.setClickable(false);
+		Button b = findViewById(R.id.news_button);
+		TextView t = findViewById(R.id.news_time);
+		View m = findViewById(R.id.News_Menu);
+
+		disable_menu(b, true, t, m);
 	}
 
 	public void launchLanguage(View v)
@@ -344,7 +339,7 @@ public class Morning_menu extends AppCompatActivity
 		v.setClickable(false);
 	}
 
-	public void disable_menu(View b, TextView t, View m)
+	public void disable_menu(View b, Boolean disable_button, TextView t, View m)
 	{
 		Calendar calendar = Calendar.getInstance();
 		long timeLong = calendar.getTimeInMillis();
@@ -354,7 +349,8 @@ public class Morning_menu extends AppCompatActivity
 
 		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
 		b.getBackground().setColorFilter(filter);
-		b.setClickable(false);
+		if (disable_button)
+			b.setClickable(false);
 
 		if (m != null)
 		{
