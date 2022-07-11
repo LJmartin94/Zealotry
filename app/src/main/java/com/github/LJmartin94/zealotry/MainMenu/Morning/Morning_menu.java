@@ -34,8 +34,6 @@ import java.util.Calendar;
 
 public class Morning_menu extends AppCompatActivity
 {
-	Calendar mCalendar = Calendar.getInstance();
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -348,7 +346,8 @@ public class Morning_menu extends AppCompatActivity
 
 	public void disable_menu(View b, TextView t, View m)
 	{
-		long timeLong = mCalendar.getTimeInMillis();
+		Calendar calendar = Calendar.getInstance();
+		long timeLong = calendar.getTimeInMillis();
 		SimpleDateFormat hmm = new SimpleDateFormat("H:mm");
 		String timeString = hmm.format(timeLong);
 		t.setText(timeString);
