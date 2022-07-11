@@ -359,6 +359,18 @@
 					android:onClick="disable_button"
 					android:text="@string/curtains" />
 
+				<TextView
+					android:id="@+id/curtains_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
+
 			</FrameLayout>
 
 			<FrameLayout
@@ -373,6 +385,18 @@
 					android:drawableLeft="@drawable/energy_rune_small"
 					android:onClick="disable_button"
 					android:text="@string/coffee" />
+
+				<TextView
+					android:id="@+id/coffee_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
 
 			</FrameLayout>
 
@@ -389,6 +413,18 @@
 					android:onClick="disable_button"
 					android:text="@string/smoothie" />
 
+				<TextView
+					android:id="@+id/smoothie_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
+
 			</FrameLayout>
 
 			<FrameLayout
@@ -403,6 +439,18 @@
 					android:drawableLeft="@drawable/water_alt_small"
 					android:onClick="disable_button"
 					android:text="@string/water" />
+
+				<TextView
+					android:id="@+id/hydrate_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
 
 			</FrameLayout>
 
@@ -419,6 +467,18 @@
 					android:onClick="disable_button"
 					android:text="@string/vitamins" />
 
+				<TextView
+					android:id="@+id/vitamins_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
+
 			</FrameLayout>
 
 			<FrameLayout
@@ -433,6 +493,18 @@
 					android:drawableLeft="@drawable/posession_stone_small"
 					android:onClick="disable_button"
 					android:text="@string/dishes" />
+
+				<TextView
+					android:id="@+id/dishes_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
 
 			</FrameLayout>
 
@@ -449,6 +521,18 @@
 					android:onClick="disable_button"
 					android:text="@string/breakfast" />
 
+				<TextView
+					android:id="@+id/breakfast_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
+
 			</FrameLayout>
 
 			<FrameLayout
@@ -463,6 +547,18 @@
 					android:drawableLeft="@drawable/lotus_watered_small"
 					android:onClick="disable_button"
 					android:text="@string/water_plants" />
+
+				<TextView
+					android:id="@+id/plants_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
 
 			</FrameLayout>
 
@@ -479,6 +575,18 @@
 					android:onClick="launchMeditation"
 					android:text="@string/meditation" />
 
+				<TextView
+					android:id="@+id/meditation_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
+
 			</FrameLayout>
 
 			<FrameLayout
@@ -494,6 +602,18 @@
 					android:onClick="launchLanguage"
 					android:text="@string/language" />
 
+				<TextView
+					android:id="@+id/lang_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
+
 			</FrameLayout>
 
 			<FrameLayout
@@ -508,6 +628,18 @@
 					android:drawableLeft="@drawable/tooth_alt_small"
 					android:onClick="disable_button"
 					android:text="@string/brush_teeth" />
+
+				<TextView
+					android:id="@+id/teeth_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
 
 			</FrameLayout>
 
@@ -541,6 +673,18 @@
 					android:onClick="disable_button"
 					android:text="@string/pack" />
 
+				<TextView
+					android:id="@+id/pack_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
+
 			</FrameLayout>
 
 			<FrameLayout
@@ -556,6 +700,18 @@
 					android:onClick="disable_button"
 					android:text="@string/make_bed" />
 
+				<TextView
+					android:id="@+id/make_bed_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
+
 			</FrameLayout>
 
 			<FrameLayout
@@ -570,6 +726,18 @@
 					android:drawableLeft="@drawable/bins_small"
 					android:onClick="disable_button"
 					android:text="@string/bins" />
+
+				<TextView
+					android:id="@+id/bin_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
 
 			</FrameLayout>
 
