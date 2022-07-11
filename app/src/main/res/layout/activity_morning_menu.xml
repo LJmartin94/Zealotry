@@ -572,7 +572,7 @@
 					android:text="@string/bins" />
 
 			</FrameLayout>
-			
+
 		</LinearLayout>
 	</ScrollView>
 
