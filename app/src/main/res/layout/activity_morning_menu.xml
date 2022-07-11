@@ -346,144 +346,233 @@
 					/>
 			</LinearLayout>
 
-
-
-			<Button
-				android:id="@+id/curtains_button"
+			<FrameLayout
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/curtains_small"
-				android:drawableLeft="@drawable/curtains_small"
-				android:onClick="disable_button"
-				android:text="@string/curtains" />
+				android:layout_height="wrap_content">
 
-			<Button
-				android:id="@+id/coffee_button"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/energy_rune_small"
-				android:drawableLeft="@drawable/energy_rune_small"
-				android:onClick="disable_button"
-				android:text="@string/coffee" />
+				<Button
+					android:id="@+id/curtains_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/curtains_small"
+					android:drawableLeft="@drawable/curtains_small"
+					android:onClick="disable_button"
+					android:text="@string/curtains" />
 
-			<Button
-				android:id="@+id/smoothie_button"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/health_rune_small"
-				android:drawableLeft="@drawable/health_rune_small"
-				android:onClick="disable_button"
-				android:text="@string/smoothie" />
+			</FrameLayout>
 
-			<Button
-				android:id="@+id/hydrate_button"
+			<FrameLayout
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/water_alt_small"
-				android:drawableLeft="@drawable/water_alt_small"
-				android:onClick="disable_button"
-				android:text="@string/water" />
+				android:layout_height="wrap_content">
 
-			<Button
-				android:id="@+id/vitamins_button"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/asclepius_small"
-				android:drawableLeft="@drawable/asclepius_small"
-				android:onClick="disable_button"
-				android:text="@string/vitamins" />
+				<Button
+					android:id="@+id/coffee_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/energy_rune_small"
+					android:drawableLeft="@drawable/energy_rune_small"
+					android:onClick="disable_button"
+					android:text="@string/coffee" />
 
-			<Button
-				android:id="@+id/dishes_button"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/posession_stone_small"
-				android:drawableLeft="@drawable/posession_stone_small"
-				android:onClick="disable_button"
-				android:text="@string/dishes" />
+			</FrameLayout>
 
-			<Button
-				android:id="@+id/breakfast_button"
+			<FrameLayout
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/grain_jar_small"
-				android:drawableLeft="@drawable/grain_jar_small"
-				android:onClick="disable_button"
-				android:text="@string/breakfast" />
+				android:layout_height="wrap_content">
 
-			<Button
-				android:id="@+id/plants_button"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/lotus_watered_small"
-				android:drawableLeft="@drawable/lotus_watered_small"
-				android:onClick="disable_button"
-				android:text="@string/water_plants" />
+				<Button
+					android:id="@+id/smoothie_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/health_rune_small"
+					android:drawableLeft="@drawable/health_rune_small"
+					android:onClick="disable_button"
+					android:text="@string/smoothie" />
 
-			<Button
-				android:id="@+id/meditation_button"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/meditation_small"
-				android:drawableLeft="@drawable/meditation_small"
-				android:onClick="launchMeditation"
-				android:text="@string/meditation" />
+			</FrameLayout>
 
-			<Button
-				android:id="@+id/lang_button"
+			<FrameLayout
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/language_small"
-				android:drawableLeft="@drawable/language_small"
-				android:onClick="launchLanguage"
-				android:text="@string/language" />
+				android:layout_height="wrap_content">
 
-			<Button
-				android:id="@+id/teeth_button"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/tooth_alt_small"
-				android:drawableLeft="@drawable/tooth_alt_small"
-				android:onClick="disable_button"
-				android:text="@string/brush_teeth" />
+				<Button
+					android:id="@+id/hydrate_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/water_alt_small"
+					android:drawableLeft="@drawable/water_alt_small"
+					android:onClick="disable_button"
+					android:text="@string/water" />
 
-			<Button
-				android:id="@+id/gel_button"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/ic_baseline_flare_24"
-				android:drawableLeft="@drawable/ic_baseline_flare_24"
-				android:onClick="disable_button"
-				android:text="@string/gel" />
-<!--			android:drawableStart="@drawable/perfume_small"-->
-<!--			android:drawableLeft="@drawable/perfume_small"-->
+			</FrameLayout>
 
-			<Button
-				android:id="@+id/pack_button"
+			<FrameLayout
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/pack_small"
-				android:drawableLeft="@drawable/pack_small"
-				android:onClick="disable_button"
-				android:text="@string/pack" />
+				android:layout_height="wrap_content">
 
-			<Button
-				android:id="@+id/make_bed_button"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/imix_small"
-				android:drawableLeft="@drawable/imix_small"
-				android:onClick="disable_button"
-				android:text="@string/make_bed" />
+				<Button
+					android:id="@+id/vitamins_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/asclepius_small"
+					android:drawableLeft="@drawable/asclepius_small"
+					android:onClick="disable_button"
+					android:text="@string/vitamins" />
 
-			<Button
-				android:id="@+id/bin_button"
+			</FrameLayout>
+
+			<FrameLayout
 				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:drawableStart="@drawable/bins_small"
-				android:drawableLeft="@drawable/bins_small"
-				android:onClick="disable_button"
-				android:text="@string/bins" />
+				android:layout_height="wrap_content">
+
+				<Button
+					android:id="@+id/dishes_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/posession_stone_small"
+					android:drawableLeft="@drawable/posession_stone_small"
+					android:onClick="disable_button"
+					android:text="@string/dishes" />
+
+			</FrameLayout>
+
+			<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<Button
+					android:id="@+id/breakfast_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/grain_jar_small"
+					android:drawableLeft="@drawable/grain_jar_small"
+					android:onClick="disable_button"
+					android:text="@string/breakfast" />
+
+			</FrameLayout>
+
+			<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<Button
+					android:id="@+id/plants_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/lotus_watered_small"
+					android:drawableLeft="@drawable/lotus_watered_small"
+					android:onClick="disable_button"
+					android:text="@string/water_plants" />
+
+			</FrameLayout>
+
+			<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<Button
+					android:id="@+id/meditation_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/meditation_small"
+					android:drawableLeft="@drawable/meditation_small"
+					android:onClick="launchMeditation"
+					android:text="@string/meditation" />
+
+			</FrameLayout>
+
+			<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<Button
+					android:id="@+id/lang_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/language_small"
+					android:drawableLeft="@drawable/language_small"
+					android:onClick="launchLanguage"
+					android:text="@string/language" />
+
+			</FrameLayout>
+
+			<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<Button
+					android:id="@+id/teeth_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/tooth_alt_small"
+					android:drawableLeft="@drawable/tooth_alt_small"
+					android:onClick="disable_button"
+					android:text="@string/brush_teeth" />
+
+			</FrameLayout>
+
+			<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<Button
+					android:id="@+id/gel_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/ic_baseline_flare_24"
+					android:drawableLeft="@drawable/ic_baseline_flare_24"
+					android:onClick="disable_button"
+					android:text="@string/gel" />
+	<!--			android:drawableStart="@drawable/perfume_small"-->
+	<!--			android:drawableLeft="@drawable/perfume_small"-->
+
+			</FrameLayout>
+
+			<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<Button
+					android:id="@+id/pack_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/pack_small"
+					android:drawableLeft="@drawable/pack_small"
+					android:onClick="disable_button"
+					android:text="@string/pack" />
+
+			</FrameLayout>
+
+			<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<Button
+					android:id="@+id/make_bed_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/imix_small"
+					android:drawableLeft="@drawable/imix_small"
+					android:onClick="disable_button"
+					android:text="@string/make_bed" />
+
+			</FrameLayout>
+
+			<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<Button
+					android:id="@+id/bin_button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:drawableStart="@drawable/bins_small"
+					android:drawableLeft="@drawable/bins_small"
+					android:onClick="disable_button"
+					android:text="@string/bins" />
+
+			</FrameLayout>
+			
 		</LinearLayout>
 	</ScrollView>
 
