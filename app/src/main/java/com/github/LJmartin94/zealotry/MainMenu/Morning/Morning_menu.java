@@ -264,6 +264,8 @@ public class Morning_menu extends AppCompatActivity
 
 	public void closeRadioPlayer(View v)
 	{
+		disable_fab(v);
+
 		View news_player = findViewById(R.id.news_player);
 		WebView webView = (WebView) findViewById(R.id.news_player_wv);
 		View player_buttons = findViewById(R.id.RadioPlayerButtons);
@@ -273,10 +275,9 @@ public class Morning_menu extends AppCompatActivity
 		webView.destroy();
 
 		Button b = findViewById(R.id.news_button);
-		b.setClickable(false);
-
 		View m = findViewById(R.id.News_Menu);
-		m.setVisibility(View.GONE);
+
+		disable_menu(b, true, null, m);
 	}
 
 	public void changeRadioChannel(View v)
@@ -292,6 +293,8 @@ public class Morning_menu extends AppCompatActivity
 
 		Button b = findViewById(R.id.news_button);
 		TextView t = findViewById(R.id.news_time);
+		if (t.getText().toString().length() != 0)
+			t = null;
 		View m = findViewById(R.id.News_Menu);
 
 		disable_menu(b, true, t, m);
@@ -341,11 +344,14 @@ public class Morning_menu extends AppCompatActivity
 
 	public void disable_menu(View b, Boolean disable_button, TextView t, View m)
 	{
-		Calendar calendar = Calendar.getInstance();
-		long timeLong = calendar.getTimeInMillis();
-		SimpleDateFormat hmm = new SimpleDateFormat("H:mm");
-		String timeString = hmm.format(timeLong);
-		t.setText(timeString);
+		if (t != null)
+		{
+			Calendar calendar = Calendar.getInstance();
+			long timeLong = calendar.getTimeInMillis();
+			SimpleDateFormat hmm = new SimpleDateFormat("H:mm");
+			String timeString = hmm.format(timeLong);
+			t.setText(timeString);
+		}
 
 		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
 		b.getBackground().setColorFilter(filter);
