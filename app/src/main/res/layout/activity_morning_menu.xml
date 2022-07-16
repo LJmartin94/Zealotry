@@ -490,7 +490,7 @@
 					android:layout_height="wrap_content"
 					android:drawableStart="@drawable/health_rune_small"
 					android:drawableLeft="@drawable/health_rune_small"
-					android:onClick="disable_button"
+					android:onClick="launchSmoothie"
 					android:text="@string/smoothie" />
 
 				<TextView
@@ -506,6 +506,46 @@
 					android:textSize="40sp"/>
 
 			</FrameLayout>
+
+			<LinearLayout
+				android:id="@+id/Smoothie_Menu"
+				android:theme="@style/MaterialGworl"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="0dp"
+				android:visibility="gone"
+				android:orientation="vertical">
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/SmoothieDone"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Made smoothie."
+					android:text="Made smoothie."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="SmoothieDone"
+					app:icon="@drawable/health_rune_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/SmoothieSkipped"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Skip."
+					android:text="Skip."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="SmoothieSkip"
+					app:icon="@drawable/ic_baseline_fast_forward_24"
+					/>
+			</LinearLayout>
 
 			<FrameLayout
 				android:layout_width="match_parent"
@@ -544,7 +584,7 @@
 					android:layout_height="wrap_content"
 					android:drawableStart="@drawable/asclepius_small"
 					android:drawableLeft="@drawable/asclepius_small"
-					android:onClick="disable_button"
+					android:onClick="launchVitamins"
 					android:text="@string/vitamins" />
 
 				<TextView
@@ -560,6 +600,46 @@
 					android:textSize="40sp"/>
 
 			</FrameLayout>
+
+			<LinearLayout
+				android:id="@+id/Vitamins_Menu"
+				android:theme="@style/MaterialGworl"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="0dp"
+				android:visibility="gone"
+				android:orientation="vertical">
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/VitaminsDone"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Taken vitamins."
+					android:text="Taken vitamins"
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="VitaminsDone"
+					app:icon="@drawable/asclepius_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/VitaminsSkipped"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Skip."
+					android:text="Skip."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="VitaminsSkip"
+					app:icon="@drawable/ic_baseline_fast_forward_24"
+					/>
+			</LinearLayout>
 
 			<FrameLayout
 				android:layout_width="match_parent"

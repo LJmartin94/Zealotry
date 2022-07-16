@@ -360,6 +360,67 @@ public class Morning_menu extends AppCompatActivity
 		disable_menu(b, true, t, m);
 	}
 
+	public void launchSmoothie(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.Smoothie_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void SmoothieDone(View v)
+	{
+		Button b = findViewById(R.id.smoothie_button);
+		TextView t = findViewById(R.id.smoothie_time);
+		View m = findViewById(R.id.Smoothie_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void SmoothieSkip(View v)
+	{
+		Button b = findViewById(R.id.smoothie_button);
+		TextView t = findViewById(R.id.smoothie_time);
+		View m = findViewById(R.id.Smoothie_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	//TODO: Refactor the way 'Water' works, make it its own activity
+	// that remind you to stay hydrated throughout the day and helps you track your progress towards 2L intake.
+
+	public void launchVitamins(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.Vitamins_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void VitaminsDone(View v)
+	{
+		Button b = findViewById(R.id.vitamins_button);
+		TextView t = findViewById(R.id.vitamins_time);
+		View m = findViewById(R.id.Vitamins_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void VitaminsSkip(View v)
+	{
+		Button b = findViewById(R.id.vitamins_button);
+		TextView t = findViewById(R.id.vitamins_time);
+		View m = findViewById(R.id.Vitamins_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
 	public void launchLanguage(View v)
 	{
 		Intent i = getPackageManager().getLaunchIntentForPackage("com.duolingo");
