@@ -300,6 +300,66 @@ public class Morning_menu extends AppCompatActivity
 		disable_menu(b, true, t, m);
 	}
 
+	public void launchCurtains(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.Curtains_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void CurtainsDone(View v)
+	{
+		Button b = findViewById(R.id.curtains_button);
+		TextView t = findViewById(R.id.curtains_time);
+		View m = findViewById(R.id.Curtains_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void CurtainsSkip(View v)
+	{
+		Button b = findViewById(R.id.curtains_button);
+		TextView t = findViewById(R.id.curtains_time);
+		View m = findViewById(R.id.Curtains_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	//TODO: Coffee option should only be visible if user gets up within X time of wake-up.
+	public void launchCoffee(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.Coffee_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void CoffeeDone(View v)
+	{
+		Button b = findViewById(R.id.coffee_button);
+		TextView t = findViewById(R.id.coffee_time);
+		View m = findViewById(R.id.Coffee_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	//TODO: skipping coffee should still give reward.
+	public void CoffeeSkip(View v)
+	{
+		Button b = findViewById(R.id.coffee_button);
+		TextView t = findViewById(R.id.coffee_time);
+		View m = findViewById(R.id.Coffee_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
 	public void launchLanguage(View v)
 	{
 		Intent i = getPackageManager().getLaunchIntentForPackage("com.duolingo");

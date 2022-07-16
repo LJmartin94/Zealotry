@@ -356,7 +356,7 @@
 					android:layout_height="wrap_content"
 					android:drawableStart="@drawable/curtains_small"
 					android:drawableLeft="@drawable/curtains_small"
-					android:onClick="disable_button"
+					android:onClick="launchCurtains"
 					android:text="@string/curtains" />
 
 				<TextView
@@ -373,6 +373,46 @@
 
 			</FrameLayout>
 
+			<LinearLayout
+				android:id="@+id/Curtains_Menu"
+				android:theme="@style/MaterialGworl"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="0dp"
+				android:visibility="gone"
+				android:orientation="vertical">
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/CurtainsDone"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Opened the curtains."
+					android:text="Opened the curtains."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="CurtainsDone"
+					app:icon="@drawable/curtains_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/CurtainsSkipped"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Skip."
+					android:text="Skip."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="CurtainsSkip"
+					app:icon="@drawable/ic_baseline_fast_forward_24"
+					/>
+			</LinearLayout>
+
 			<FrameLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content">
@@ -383,7 +423,7 @@
 					android:layout_height="wrap_content"
 					android:drawableStart="@drawable/energy_rune_small"
 					android:drawableLeft="@drawable/energy_rune_small"
-					android:onClick="disable_button"
+					android:onClick="launchCoffee"
 					android:text="@string/coffee" />
 
 				<TextView
@@ -399,6 +439,46 @@
 					android:textSize="40sp"/>
 
 			</FrameLayout>
+
+			<LinearLayout
+				android:id="@+id/Coffee_Menu"
+				android:theme="@style/MaterialGworl"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="0dp"
+				android:visibility="gone"
+				android:orientation="vertical">
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/CoffeeDone"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Made coffee."
+					android:text="Made coffee."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="CoffeeDone"
+					app:icon="@drawable/energy_rune_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/CoffeeSkipped"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Skip."
+					android:text="Skip."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="CoffeeSkip"
+					app:icon="@drawable/ic_baseline_fast_forward_24"
+					/>
+			</LinearLayout>
 
 			<FrameLayout
 				android:layout_width="match_parent"
