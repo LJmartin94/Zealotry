@@ -553,6 +553,50 @@ public class Morning_menu extends AppCompatActivity
 		disable_menu(b, true, t, null);
 	}
 
+	public void launchTeeth(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.Teeth_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void TeethBrushed(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void Flossed(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void MouthWashed(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void TeethDone(View v)
+	{
+		Button b = findViewById(R.id.teeth_button);
+		TextView t = findViewById(R.id.teeth_time);
+		View m = findViewById(R.id.Teeth_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void TeethSkip(View v)
+	{
+		Button b = findViewById(R.id.teeth_button);
+		TextView t = findViewById(R.id.teeth_time);
+		View m = findViewById(R.id.Teeth_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
 	public void disable_button(View v)
 	{
 		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
