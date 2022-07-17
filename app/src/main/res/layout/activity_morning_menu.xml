@@ -557,7 +557,7 @@
 					android:layout_height="wrap_content"
 					android:drawableStart="@drawable/water_alt_small"
 					android:drawableLeft="@drawable/water_alt_small"
-					android:onClick="disable_button"
+					android:onClick="launchWater"
 					android:text="@string/water" />
 
 				<TextView

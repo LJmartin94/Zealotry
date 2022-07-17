@@ -391,6 +391,11 @@ public class Morning_menu extends AppCompatActivity
 
 	//TODO: Refactor the way 'Water' works, make it its own activity
 	// that remind you to stay hydrated throughout the day and helps you track your progress towards 2L intake.
+	public void launchWater(View b)
+	{
+		TextView t = (TextView)findViewById(R.id.hydrate_time);
+		disable_menu(b, true, t, null);
+	}
 
 	public void launchVitamins(View v)
 	{
@@ -518,6 +523,18 @@ public class Morning_menu extends AppCompatActivity
 		disable_menu(b, true, t, m);
 	}
 
+	public void launchMeditation(View b)
+	{
+		Intent i = new Intent(AlarmClock.ACTION_SET_TIMER);
+		i.putExtra(AlarmClock.EXTRA_MINUTES, 10);
+		if (i.resolveActivity(getPackageManager()) != null)
+		{
+			startActivity(i);
+			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
+		}
+		TextView t = (TextView)findViewById(R.id.meditation_time);
+		disable_menu(b, true, t, null);
+	}
 
 	public void launchLanguage(View b)
 	{
@@ -533,19 +550,6 @@ public class Morning_menu extends AppCompatActivity
 			error.show();
 		}
 		TextView t = (TextView)findViewById(R.id.lang_time);
-		disable_menu(b, true, t, null);
-	}
-
-	public void launchMeditation(View b)
-	{
-		Intent i = new Intent(AlarmClock.ACTION_SET_TIMER);
-		i.putExtra(AlarmClock.EXTRA_MINUTES, 10);
-		if (i.resolveActivity(getPackageManager()) != null)
-		{
-			startActivity(i);
-			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
-		}
-		TextView t = (TextView)findViewById(R.id.meditation_time);
 		disable_menu(b, true, t, null);
 	}
 
