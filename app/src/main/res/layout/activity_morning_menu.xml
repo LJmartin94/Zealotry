@@ -1044,17 +1044,127 @@
 				android:layout_height="wrap_content">
 
 				<Button
-					android:id="@+id/gel_button"
+					android:id="@+id/cosmeticism_button"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:drawableStart="@drawable/ic_baseline_flare_24"
 					android:drawableLeft="@drawable/ic_baseline_flare_24"
-					android:onClick="disable_button"
+					android:onClick="launchCosmeticism"
 					android:text="@string/gel" />
-	<!--			android:drawableStart="@drawable/perfume_small"-->
-	<!--			android:drawableLeft="@drawable/perfume_small"-->
+
+				<TextView
+					android:id="@+id/cosmeticism_time"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layoutDirection="rtl"
+					android:gravity="center_vertical"
+					android:elevation="7dp"
+					android:layout_margin="4dp"
+					android:text=""
+					android:textColor="@color/colorDefaultButton"
+					android:textSize="40sp"/>
 
 			</FrameLayout>
+
+			<LinearLayout
+				android:id="@+id/Cosmeticism_Menu"
+				android:theme="@style/MaterialGworl"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="0dp"
+				android:visibility="gone"
+				android:orientation="vertical">
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/Cologne"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Applied cologne/perfume."
+					android:text="Applied cologne/perfume."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="CologneApplied"
+					app:icon="@drawable/perfume_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/BodySpray"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Applied body-spray/deodorant."
+					android:text="Applied body-spray/deodorant."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="BodySprayed"
+					app:icon="@drawable/perfume_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/Skincare"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Applied skin care."
+					android:text="Applied skin care."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="SkinCared"
+					app:icon="@drawable/ic_baseline_flare_24"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/HairGel"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Fixed hair."
+					android:text="Fixed hair."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="HairGelled"
+					app:icon="@drawable/ic_baseline_flare_24"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/CosmeticismDone"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Done."
+					android:text="Done."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="CosmeticismDone"
+					app:icon="@drawable/ic_baseline_flare_24"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/CosmeticismSkipped"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Skip."
+					android:text="Skip."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="CosmeticismSkip"
+					app:icon="@drawable/ic_baseline_fast_forward_24"
+					/>
+			</LinearLayout>
 
 			<FrameLayout
 				android:layout_width="match_parent"

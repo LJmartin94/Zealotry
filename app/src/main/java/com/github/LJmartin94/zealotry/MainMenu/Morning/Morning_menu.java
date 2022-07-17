@@ -597,6 +597,55 @@ public class Morning_menu extends AppCompatActivity
 		disable_menu(b, true, t, m);
 	}
 
+	public void launchCosmeticism(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.Cosmeticism_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void CologneApplied(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void BodySprayed(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void SkinCared(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void HairGelled(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void CosmeticismDone(View v)
+	{
+		Button b = findViewById(R.id.cosmeticism_button);
+		TextView t = findViewById(R.id.cosmeticism_time);
+		View m = findViewById(R.id.Cosmeticism_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void CosmeticismSkip(View v)
+	{
+		Button b = findViewById(R.id.cosmeticism_button);
+		TextView t = findViewById(R.id.cosmeticism_time);
+		View m = findViewById(R.id.Cosmeticism_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
 	public void disable_button(View v)
 	{
 		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
