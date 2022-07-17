@@ -572,6 +572,7 @@ public class Morning_menu extends AppCompatActivity
 		disable_fab(v);
 	}
 
+	//TODO: Add timer in FAB for mouthwash?
 	public void MouthWashed(View v)
 	{
 		disable_fab(v);
@@ -641,6 +642,91 @@ public class Morning_menu extends AppCompatActivity
 		Button b = findViewById(R.id.cosmeticism_button);
 		TextView t = findViewById(R.id.cosmeticism_time);
 		View m = findViewById(R.id.Cosmeticism_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+
+	public void launchPack(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.Pack_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void HouseKeys(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void BikeKeys(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void WorkKeys(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void Wallet(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void Phone(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void PhoneCharger(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void Headphones(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void Laptop(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void LaptopCharger(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void WaterBottle(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void Lunch(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void PackDone(View v)
+	{
+		Button b = findViewById(R.id.pack_button);
+		TextView t = findViewById(R.id.pack_time);
+		View m = findViewById(R.id.Pack_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void PackSkip(View v)
+	{
+		Button b = findViewById(R.id.pack_button);
+		TextView t = findViewById(R.id.pack_time);
+		View m = findViewById(R.id.Pack_Menu);
 
 		disable_fab(v);
 		disable_menu(b, true, t, m);

@@ -1176,7 +1176,7 @@
 					android:layout_height="wrap_content"
 					android:drawableStart="@drawable/pack_small"
 					android:drawableLeft="@drawable/pack_small"
-					android:onClick="disable_button"
+					android:onClick="launchPack"
 					android:text="@string/pack" />
 
 				<TextView
@@ -1192,6 +1192,211 @@
 					android:textSize="40sp"/>
 
 			</FrameLayout>
+
+			<LinearLayout
+				android:id="@+id/Pack_Menu"
+				android:theme="@style/MaterialGworl"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="0dp"
+				android:visibility="gone"
+				android:orientation="vertical">
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/HouseKeys"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="House keys."
+					android:text="House keys."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="HouseKeys"
+					app:icon="@drawable/keys_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/BikeKeys"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Bike keys."
+					android:text="Bike keys."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="BikeKeys"
+					app:icon="@drawable/keys_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/WorkKeys"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Work keys."
+					android:text="Work keys."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="WorkKeys"
+					app:icon="@drawable/keys_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/Wallet"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Wallet."
+					android:text="Wallet."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="Wallet"
+					app:icon="@drawable/moolah_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/Phone"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Phone."
+					android:text="Phone."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="Phone"
+					app:icon="@drawable/ic_baseline_phone_android_24"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/PhoneCharger"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Phone charger."
+					android:text="Phone charger."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="PhoneCharger"
+					app:icon="@drawable/ic_baseline_phone_android_24"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/Headphones"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Headphones."
+					android:text="Headphones."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="Headphones"
+					app:icon="@drawable/ic_baseline_phone_android_24"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/Laptop"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Laptop."
+					android:text="Laptop."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="Laptop"
+					app:icon="@drawable/ic_baseline_memory_24"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/LaptopCharger"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Laptop charger."
+					android:text="Laptop charger."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="LaptopCharger"
+					app:icon="@drawable/ic_baseline_memory_24"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/WaterBottle"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Water bottle."
+					android:text="Water bottle."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="WaterBottle"
+					app:icon="@drawable/ic_baseline_invert_colors_24"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/Lunch"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Lunch."
+					android:text="Lunch."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="Lunch"
+					app:icon="@drawable/grain_jar_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/PackDone"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Done."
+					android:text="Done."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="PackDone"
+					app:icon="@drawable/ic_baseline_work_outline_24"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/PackSkipped"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Skip."
+					android:text="Skip."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="PackSkip"
+					app:icon="@drawable/ic_baseline_fast_forward_24"
+					/>
+			</LinearLayout>
 
 			<FrameLayout
 				android:layout_width="match_parent"
