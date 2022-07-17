@@ -461,6 +461,35 @@ public class Morning_menu extends AppCompatActivity
 		disable_menu(b, true, t, m);
 	}
 
+	public void launchBreakfast(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.Breakfast_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void BreakfastDone(View v)
+	{
+		Button b = findViewById(R.id.breakfast_button);
+		TextView t = findViewById(R.id.breakfast_time);
+		View m = findViewById(R.id.Breakfast_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void BreakfastSkip(View v)
+	{
+		Button b = findViewById(R.id.breakfast_button);
+		TextView t = findViewById(R.id.breakfast_time);
+		View m = findViewById(R.id.Breakfast_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
 
 	public void launchLanguage(View v)
 	{

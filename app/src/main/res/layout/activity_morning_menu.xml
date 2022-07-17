@@ -748,7 +748,7 @@
 					android:layout_height="wrap_content"
 					android:drawableStart="@drawable/grain_jar_small"
 					android:drawableLeft="@drawable/grain_jar_small"
-					android:onClick="disable_button"
+					android:onClick="launchBreakfast"
 					android:text="@string/breakfast" />
 
 				<TextView
@@ -764,6 +764,46 @@
 					android:textSize="40sp"/>
 
 			</FrameLayout>
+
+			<LinearLayout
+				android:id="@+id/Breakfast_Menu"
+				android:theme="@style/MaterialGworl"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="0dp"
+				android:visibility="gone"
+				android:orientation="vertical">
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/BreakfastDone"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Had breakfast."
+					android:text="Had breakfast."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="BreakfastDone"
+					app:icon="@drawable/grain_jar_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/BreakfastSkipped"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Skip."
+					android:text="Skip."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="BreakfastSkip"
+					app:icon="@drawable/ic_baseline_fast_forward_24"
+					/>
+			</LinearLayout>
 
 			<FrameLayout
 				android:layout_width="match_parent"
