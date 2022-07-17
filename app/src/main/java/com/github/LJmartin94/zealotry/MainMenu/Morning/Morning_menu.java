@@ -421,7 +421,6 @@ public class Morning_menu extends AppCompatActivity
 		disable_menu(b, true, t, m);
 	}
 
-
 	public void launchDishes(View v)
 	{
 		View newsRadioMenu = findViewById(R.id.Dishes_Menu);
@@ -485,6 +484,35 @@ public class Morning_menu extends AppCompatActivity
 		Button b = findViewById(R.id.breakfast_button);
 		TextView t = findViewById(R.id.breakfast_time);
 		View m = findViewById(R.id.Breakfast_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void launchPlants(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.Plants_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void PlantsDone(View v)
+	{
+		Button b = findViewById(R.id.plants_button);
+		TextView t = findViewById(R.id.plants_time);
+		View m = findViewById(R.id.Plants_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void PlantsSkip(View v)
+	{
+		Button b = findViewById(R.id.plants_button);
+		TextView t = findViewById(R.id.plants_time);
+		View m = findViewById(R.id.Plants_Menu);
 
 		disable_fab(v);
 		disable_menu(b, true, t, m);
