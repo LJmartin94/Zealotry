@@ -421,6 +421,47 @@ public class Morning_menu extends AppCompatActivity
 		disable_menu(b, true, t, m);
 	}
 
+
+	public void launchDishes(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.Dishes_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void LoadDishwasher(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void CleanPans(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void DishesDone(View v)
+	{
+		Button b = findViewById(R.id.dishes_button);
+		TextView t = findViewById(R.id.dishes_time);
+		View m = findViewById(R.id.Dishes_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void DishesSkip(View v)
+	{
+		Button b = findViewById(R.id.dishes_button);
+		TextView t = findViewById(R.id.dishes_time);
+		View m = findViewById(R.id.Dishes_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+
 	public void launchLanguage(View v)
 	{
 		Intent i = getPackageManager().getLaunchIntentForPackage("com.duolingo");

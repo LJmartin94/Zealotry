@@ -651,7 +651,7 @@
 					android:layout_height="wrap_content"
 					android:drawableStart="@drawable/posession_stone_small"
 					android:drawableLeft="@drawable/posession_stone_small"
-					android:onClick="disable_button"
+					android:onClick="launchDishes"
 					android:text="@string/dishes" />
 
 				<TextView
@@ -667,6 +667,76 @@
 					android:textSize="40sp"/>
 
 			</FrameLayout>
+
+			<LinearLayout
+				android:id="@+id/Dishes_Menu"
+				android:theme="@style/MaterialGworl"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="0dp"
+				android:visibility="gone"
+				android:orientation="vertical">
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/DishwasherLoaded"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Loaded/unloaded dishwasher if necessary."
+					android:text="Loaded/unloaded dishwasher."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="LoadDishwasher"
+					app:icon="@drawable/posession_stone_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/PansWashed"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Washed up other pans &amp; dishes if necessary."
+					android:text="Washed up other pans &amp; dishes."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="CleanPans"
+					app:icon="@drawable/posession_stone_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/DishesDone"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Done."
+					android:text="Done."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="DishesDone"
+					app:icon="@drawable/posession_stone_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/DishesSkipped"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Skip."
+					android:text="Skip."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="DishesSkip"
+					app:icon="@drawable/ic_baseline_fast_forward_24"
+					/>
+			</LinearLayout>
 
 			<FrameLayout
 				android:layout_width="match_parent"
