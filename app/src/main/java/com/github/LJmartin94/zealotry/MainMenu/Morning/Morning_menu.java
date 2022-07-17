@@ -519,7 +519,7 @@ public class Morning_menu extends AppCompatActivity
 	}
 
 
-	public void launchLanguage(View v)
+	public void launchLanguage(View b)
 	{
 		Intent i = getPackageManager().getLaunchIntentForPackage("com.duolingo");
 		if (i.resolveActivity(getPackageManager()) != null)
@@ -532,10 +532,11 @@ public class Morning_menu extends AppCompatActivity
 			Toast error = Toast.makeText(this, "Please download Duolingo first", Toast.LENGTH_SHORT);
 			error.show();
 		}
-		disable_button(v);
+		TextView t = (TextView)findViewById(R.id.lang_time);
+		disable_menu(b, true, t, null);
 	}
 
-	public void launchMeditation(View v)
+	public void launchMeditation(View b)
 	{
 		Intent i = new Intent(AlarmClock.ACTION_SET_TIMER);
 		i.putExtra(AlarmClock.EXTRA_MINUTES, 10);
@@ -544,7 +545,8 @@ public class Morning_menu extends AppCompatActivity
 			startActivity(i);
 			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 		}
-		disable_button(v);
+		TextView t = (TextView)findViewById(R.id.meditation_time);
+		disable_menu(b, true, t, null);
 	}
 
 	public void disable_button(View v)
