@@ -761,6 +761,66 @@ public class Morning_menu extends AppCompatActivity
 		disable_menu(b, true, t, m);
 	}
 
+	public void launchBins(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.bin_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void generalRubbish(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void paperRecycling(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void glassRecycling(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void plasticRecycling(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void organicRecycling(View v)
+	{
+		disable_fab(v);
+	}
+
+	// TODO: Give EXP iff generalRubbish hasn't been taken out. Disable all other fabs.
+	public void noBins(View v)
+	{
+		disable_fab(v);
+	}
+
+	public void binDone(View v)
+	{
+		Button b = findViewById(R.id.bin_button);
+		TextView t = findViewById(R.id.bin_time);
+		View m = findViewById(R.id.bin_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void binSkip(View v)
+	{
+		Button b = findViewById(R.id.bin_button);
+		TextView t = findViewById(R.id.bin_time);
+		View m = findViewById(R.id.bin_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
 	public void disable_button(View v)
 	{
 		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);

@@ -1475,7 +1475,7 @@
 					android:layout_height="wrap_content"
 					android:drawableStart="@drawable/bins_small"
 					android:drawableLeft="@drawable/bins_small"
-					android:onClick="disable_button"
+					android:onClick="launchBins"
 					android:text="@string/bins" />
 
 				<TextView
@@ -1491,6 +1491,136 @@
 					android:textSize="40sp"/>
 
 			</FrameLayout>
+
+			<LinearLayout
+				android:id="@+id/bin_Menu"
+				android:theme="@style/MaterialGworl"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="0dp"
+				android:visibility="gone"
+				android:orientation="vertical">
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/generalRubbish"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Took out the general waste."
+					android:text="Took out the general waste."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="generalRubbish"
+					app:icon="@drawable/bins_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/paperRecycling"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Took out the paper recycling."
+					android:text="Took out the paper recycling."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="paperRecycling"
+					app:icon="@drawable/bins_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/glassRecycling"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Took out the glass recycling."
+					android:text="Took out the glass recycling."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="glassRecycling"
+					app:icon="@drawable/bins_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/plasticRecycling"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Took out the plastic recycling."
+					android:text="Took out the plastic recycling."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="plasticRecycling"
+					app:icon="@drawable/bins_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/organicRecycling"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Took out the organic recycling."
+					android:text="Took out the organic recycling."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="organicRecycling"
+					app:icon="@drawable/bins_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/noBins"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="No bins need emptying."
+					android:text="No bins need emptying."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="noBins"
+					app:icon="@drawable/bins_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/bin_Done"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Done."
+					android:text="Done."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="binDone"
+					app:icon="@drawable/bins_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/bin_Skipped"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Skip."
+					android:text="Skip."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="binSkip"
+					app:icon="@drawable/ic_baseline_fast_forward_24"
+					/>
+			</LinearLayout>
 
 		</LinearLayout>
 	</ScrollView>
