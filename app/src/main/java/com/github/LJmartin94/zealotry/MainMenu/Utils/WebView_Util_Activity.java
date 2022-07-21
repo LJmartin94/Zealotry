@@ -54,7 +54,7 @@ public class WebView_Util_Activity extends AppCompatActivity
 	public void startWebView(String addressURL)
 	{
 		progDailog = ProgressDialog.show(this, "Loading","Please wait...", true);
-		progDailog.setCancelable(false);
+		progDailog.setCancelable(true);
 
 		WebView myWebView = (WebView) findViewById(R.id.webview);
 
