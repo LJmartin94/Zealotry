@@ -732,6 +732,35 @@ public class Morning_menu extends AppCompatActivity
 		disable_menu(b, true, t, m);
 	}
 
+	public void launchMake_bed(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.make_bed_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void make_bed_Done(View v)
+	{
+		Button b = findViewById(R.id.make_bed_button);
+		TextView t = findViewById(R.id.make_bed_time);
+		View m = findViewById(R.id.make_bed_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void make_bed_Skip(View v)
+	{
+		Button b = findViewById(R.id.make_bed_button);
+		TextView t = findViewById(R.id.make_bed_time);
+		View m = findViewById(R.id.make_bed_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
 	public void disable_button(View v)
 	{
 		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);

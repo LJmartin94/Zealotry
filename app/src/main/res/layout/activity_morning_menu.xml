@@ -1408,7 +1408,7 @@
 					android:layout_height="wrap_content"
 					android:drawableStart="@drawable/imix_small"
 					android:drawableLeft="@drawable/imix_small"
-					android:onClick="disable_button"
+					android:onClick="launchMake_bed"
 					android:text="@string/make_bed" />
 
 				<TextView
@@ -1424,6 +1424,46 @@
 					android:textSize="40sp"/>
 
 			</FrameLayout>
+
+			<LinearLayout
+				android:id="@+id/make_bed_Menu"
+				android:theme="@style/MaterialGworl"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="0dp"
+				android:visibility="gone"
+				android:orientation="vertical">
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/make_bed_Done"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Made bed."
+					android:text="Made bed."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="make_bed_Done"
+					app:icon="@drawable/imix_small"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/make_bed_Skipped"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Skip."
+					android:text="Skip."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="make_bed_Skip"
+					app:icon="@drawable/ic_baseline_fast_forward_24"
+					/>
+			</LinearLayout>
 
 			<FrameLayout
 				android:layout_width="match_parent"
