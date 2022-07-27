@@ -6,11 +6,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
-import com.github.LJmartin94.zealotry.MainMenu.Data.Exercise_Entity;
+import com.github.LJmartin94.zealotry.MainMenu.Data.String_KVP_Entity;
 
-public class Exercise_rvAdapter extends ListAdapter<Exercise_Entity, Exercise_rvViewHolder>
+public class Exercise_rvAdapter extends ListAdapter<String_KVP_Entity, Exercise_rvViewHolder>
 {
-	public Exercise_rvAdapter(@NonNull DiffUtil.ItemCallback<Exercise_Entity> diffCallback)
+	public Exercise_rvAdapter(@NonNull DiffUtil.ItemCallback<String_KVP_Entity> diffCallback)
 	{
 		super(diffCallback);
 	}
@@ -24,26 +24,26 @@ public class Exercise_rvAdapter extends ListAdapter<Exercise_Entity, Exercise_rv
 	@Override
 	public void onBindViewHolder(Exercise_rvViewHolder holder, int position)
 	{
-		Exercise_Entity current = getItem(position);
-		holder.bind(current.getID());
+		String_KVP_Entity current = getItem(position);
+		holder.bind(current.getKey());
 	}
 
-	static class ExerciseDiff extends DiffUtil.ItemCallback<Exercise_Entity>
+	static class ExerciseDiff extends DiffUtil.ItemCallback<String_KVP_Entity>
 	{
 		@Override
-		public boolean areItemsTheSame(@NonNull Exercise_Entity oldItem,
-									   @NonNull Exercise_Entity newItem)
+		public boolean areItemsTheSame(@NonNull String_KVP_Entity oldItem,
+									   @NonNull String_KVP_Entity newItem)
 		{
 			return oldItem == newItem;
 		}
 
 		@Override
-		public boolean areContentsTheSame(@NonNull Exercise_Entity oldItem,
-										  @NonNull Exercise_Entity newItem)
+		public boolean areContentsTheSame(@NonNull String_KVP_Entity oldItem,
+										  @NonNull String_KVP_Entity newItem)
 		{
 			//For all fields in Entity, add a comparison to the return expression.
-			return ( oldItem.getID().equals(newItem.getID()) &&
-					true);
+			return ( oldItem.getKey().equals(newItem.getKey()) &&
+					oldItem.getValue().equals(newItem.getValue()) );
 		}
 	}
 }

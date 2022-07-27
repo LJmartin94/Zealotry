@@ -5,17 +5,17 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "exercise_table")
+@Entity(tableName = "kvp_table")
 public class String_KVP_Entity
 {
 	// Member variables
 	@PrimaryKey
 	@NonNull
-	@ColumnInfo(name = "KEY")
+	@ColumnInfo(name = "dbKEY")
 	private String key;
 
 	@NonNull
-	@ColumnInfo(name = "VALUE")
+	@ColumnInfo(name = "dbVALUE")
 	private String value;
 
 
@@ -27,6 +27,7 @@ public class String_KVP_Entity
 	};
 
 	// Accessors
-	public String getID(){return this.key;}
+	public String getKey(){return this.key;}
+	public String getValue(){return this.value;}
 
 }

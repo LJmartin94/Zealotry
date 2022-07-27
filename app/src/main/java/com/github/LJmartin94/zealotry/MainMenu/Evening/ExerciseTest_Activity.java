@@ -15,7 +15,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.github.LJmartin94.zealotry.MainMenu.Data.Exercise_Entity;
+import com.github.LJmartin94.zealotry.MainMenu.Data.String_KVP_Entity;
 import com.github.LJmartin94.zealotry.R;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
@@ -50,8 +50,8 @@ public class ExerciseTest_Activity extends AppCompatActivity
 							if (result.getResultCode() == RESULT_OK)
 							{
 								Intent data = result.getData();
-								Exercise_Entity exercise = new Exercise_Entity(data.getStringExtra(ExerciseTest_NewExercise_Activity.EXTRA_REPLY));
-								mViewModel.insert(exercise);
+								String_KVP_Entity entity = new String_KVP_Entity(data.getStringExtra(ExerciseTest_NewExercise_Activity.EXTRA_REPLY), data.getStringExtra(ExerciseTest_NewExercise_Activity.EXTRA_REPLY));
+								mViewModel.insert(entity);
 							}
 							else
 							{

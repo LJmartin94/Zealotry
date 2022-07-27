@@ -11,7 +11,7 @@ import androidx.room.Query;
 import java.util.List;
 
 @Dao
-public interface Exercise_DAO
+public interface KVP_DAO
 {
 	// allowing the insert of the same word multiple times by passing a conflict
 	// resolution strategy
@@ -21,12 +21,12 @@ public interface Exercise_DAO
 	//	for deleting and updating rows.
 
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	void insert(String_KVP_Entity exercise);
+	void insert(String_KVP_Entity entity);
 
-	@Query("DELETE FROM exercise_table")
+	@Query("DELETE FROM kvp_table")
 	void deleteAll();
 
-	@Query("SELECT * FROM exercise_table ORDER BY ID ASC")
-	LiveData<List<String_KVP_Entity>> getOrderedExercises();
+	@Query("SELECT * FROM kvp_table ORDER BY dbKEY ASC")
+	LiveData<List<String_KVP_Entity>> getOrderedKeys();
 
 }

@@ -8,30 +8,30 @@ import java.util.List;
 
 public class App_Repository
 {
-	private Exercise_DAO mExerciseDao;
-	private LiveData<List<Exercise_Entity>> mAllExercises;
+	private KVP_DAO mKvpDao;
+	private LiveData<List<String_KVP_Entity>> mAllKeys;
 
 	public App_Repository(Application application)
 	{
 		App_DataBase db = App_DataBase.getDatabase(application);
-		mExerciseDao = db.eiDAO();
-		mAllExercises = mExerciseDao.getOrderedExercises();
+		mKvpDao = db.eiDAO();
+		mAllKeys = mKvpDao.getOrderedKeys();
 	}
 
 	// Room executes all queries on a separate thread.
 	// Observed LiveData will notify the observer when the data has changed.
-	public LiveData<List<Exercise_Entity>> getAllExercises()
+	public LiveData<List<String_KVP_Entity>> getAllKeys()
 	{
-		return mAllExercises;
+		return mAllKeys;
 	}
 
 	// You must call this on a non-UI thread or your app will throw an exception. Room ensures
 	// that you're not doing any long running operations on the main thread, blocking the UI.
-	public void insert(Exercise_Entity exercise)
+	public void insert(String_KVP_Entity entity)
 	{
 		App_DataBase.databaseWriteExecutor.execute(() ->
 		{
-			mExerciseDao.insert(exercise);
+			mKvpDao.insert(entity);
 		});
 	}
 
