@@ -587,7 +587,16 @@ public class Morning_menu extends AppCompatActivity
 		disable_menu(b, true, t, m);
 	}
 
-	public void launchLanguage(View b)
+	public void launchLanguage(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.Language_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void LanguageStart(View v)
 	{
 		Intent i = getPackageManager().getLaunchIntentForPackage("com.duolingo");
 		if (i.resolveActivity(getPackageManager()) != null)
@@ -600,8 +609,27 @@ public class Morning_menu extends AppCompatActivity
 			Toast error = Toast.makeText(this, "Please download Duolingo first", Toast.LENGTH_SHORT);
 			error.show();
 		}
-		TextView t = (TextView)findViewById(R.id.lang_time);
-		disable_menu(b, true, t, null);
+		disable_fab(v);
+	}
+
+	public void LanguageDone(View v)
+	{
+		Button b = findViewById(R.id.language_button);
+		TextView t = findViewById(R.id.language_time);
+		View m = findViewById(R.id.Language_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void LanguageSkip(View v)
+	{
+		Button b = findViewById(R.id.language_button);
+		TextView t = findViewById(R.id.language_time);
+		View m = findViewById(R.id.Language_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
 	}
 
 	public void launchTeeth(View v)
