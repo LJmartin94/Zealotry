@@ -52,7 +52,7 @@ public class Morning_menu extends AppCompatActivity
 			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 		}
 		TextView t = (TextView)findViewById(R.id.wakeup_time);
-		disable_menu(b, true, t, null);
+		disable_menu(b, true, t, null, true);
 	}
 
 	public void launchGetUp(View v)
@@ -110,7 +110,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.GetUp_Menu);
 		Button b = findViewById(R.id.get_up_button);
 		TextView t = (TextView)findViewById(R.id.get_up_time);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void launchShower(View v)
@@ -152,7 +152,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Shower_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void ShowerSkip(View v)
@@ -162,7 +162,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Shower_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	public void launchNews(View v)
@@ -259,7 +259,7 @@ public class Morning_menu extends AppCompatActivity
 
 		Button b = findViewById(R.id.news_button);
 		TextView t = findViewById(R.id.news_time);
-		disable_menu(b, false, t, null);
+		disable_menu(b, false, t, null, true);
 	}
 
 	public void closeRadioPlayer(View v)
@@ -277,7 +277,7 @@ public class Morning_menu extends AppCompatActivity
 		Button b = findViewById(R.id.news_button);
 		View m = findViewById(R.id.News_Menu);
 
-		disable_menu(b, true, null, m);
+		disable_menu(b, true, null, m, false);
 	}
 
 	public void changeRadioChannel(View v)
@@ -297,7 +297,7 @@ public class Morning_menu extends AppCompatActivity
 			t = null;
 		View m = findViewById(R.id.News_Menu);
 
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	public void launchCurtains(View v)
@@ -316,7 +316,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Curtains_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void CurtainsSkip(View v)
@@ -326,7 +326,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Curtains_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	//TODO: Coffee option should only be visible if user gets up within X time of wake-up.
@@ -346,7 +346,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Coffee_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	//TODO: skipping coffee should still give reward.
@@ -357,7 +357,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Coffee_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	public void launchSmoothie(View v)
@@ -376,7 +376,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Smoothie_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void SmoothieSkip(View v)
@@ -386,7 +386,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Smoothie_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	//TODO: Refactor the way 'Water' works, make it its own activity
@@ -407,7 +407,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Hydrate_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void HydrateSkip(View v)
@@ -417,7 +417,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Hydrate_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	public void launchVitamins(View v)
@@ -436,7 +436,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Vitamins_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void VitaminsSkip(View v)
@@ -446,7 +446,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Vitamins_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	public void launchDishes(View v)
@@ -475,7 +475,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Dishes_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void DishesSkip(View v)
@@ -485,7 +485,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Dishes_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	public void launchBreakfast(View v)
@@ -504,7 +504,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Breakfast_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void BreakfastSkip(View v)
@@ -514,7 +514,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Breakfast_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	public void launchPlants(View v)
@@ -533,7 +533,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Plants_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void PlantsSkip(View v)
@@ -543,7 +543,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Plants_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	public void launchMeditation(View v)
@@ -574,7 +574,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Meditation_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void MeditationSkip(View v)
@@ -584,7 +584,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Meditation_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	public void launchLanguage(View v)
@@ -619,7 +619,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Language_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void LanguageSkip(View v)
@@ -629,7 +629,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Language_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	public void launchTeeth(View v)
@@ -664,7 +664,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Teeth_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void TeethSkip(View v)
@@ -674,7 +674,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Teeth_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	public void launchCosmeticism(View v)
@@ -713,7 +713,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Cosmeticism_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void CosmeticismSkip(View v)
@@ -723,9 +723,8 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Cosmeticism_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
-
 
 	public void launchPack(View v)
 	{
@@ -798,7 +797,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Pack_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void PackSkip(View v)
@@ -808,7 +807,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.Pack_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	public void launchMake_bed(View v)
@@ -827,7 +826,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.make_bed_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void make_bed_Skip(View v)
@@ -837,7 +836,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.make_bed_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	public void launchBins(View v)
@@ -887,7 +886,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.bin_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, true);
 	}
 
 	public void binSkip(View v)
@@ -897,7 +896,7 @@ public class Morning_menu extends AppCompatActivity
 		View m = findViewById(R.id.bin_Menu);
 
 		disable_fab(v);
-		disable_menu(b, true, t, m);
+		disable_menu(b, true, t, m, false);
 	}
 
 	public void disable_fab(View v)
@@ -907,7 +906,7 @@ public class Morning_menu extends AppCompatActivity
 		v.setClickable(false);
 	}
 
-	public void disable_menu(View b, Boolean disable_button, TextView t, View m)
+	public void disable_menu(View b, Boolean disable_button, TextView t, View m, Boolean timed)
 	{
 		if (t != null)
 		{
