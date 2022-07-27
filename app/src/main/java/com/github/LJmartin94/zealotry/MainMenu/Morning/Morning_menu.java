@@ -917,7 +917,7 @@ public class Morning_menu extends AppCompatActivity
 			String timeString = hmm.format(timeLong);
 			t.setText(timeString);
 			ActionBar actionBar = getSupportActionBar();
-			actionBar.setTitle("Good Morning - ETD: " + calculate_ETD());
+			actionBar.setTitle("Good Morning - ETD: " + calculate_ETD(timeLong));
 		}
 
 		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
@@ -931,10 +931,10 @@ public class Morning_menu extends AppCompatActivity
 		}
 	}
 
-	public String calculate_ETD()
+	public String calculate_ETD(long timeLong)
 	{
-		int ret = 0;
-		
+		long ret = 0;
+
 		if ( ( (TextView)findViewById(R.id.wakeup_time) ).getText().equals("") )
 			ret++;
 		if ( ( (TextView)findViewById(R.id.get_up_time) ).getText().equals("") )

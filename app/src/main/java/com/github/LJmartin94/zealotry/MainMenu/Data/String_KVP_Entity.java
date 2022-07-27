@@ -6,23 +6,27 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "exercise_table")
-public class Exercise_Entity
+public class String_KVP_Entity
 {
 	// Member variables
 	@PrimaryKey
 	@NonNull
-	@ColumnInfo(name = "ID")
-	private String mID;
+	@ColumnInfo(name = "KEY")
+	private String key;
+
+	@NonNull
+	@ColumnInfo(name = "VALUE")
+	private String value;
 
 
 	// Constructor
-	public Exercise_Entity(@NonNull String mID)
+	public String_KVP_Entity(@NonNull String key, @NonNull String value)
 	{
-		this.mID = mID;
+		this.key = key;
+		this.value = value;
 	};
 
-
 	// Accessors
-	public String getID(){return this.mID;}
+	public String getID(){return this.key;}
 
 }

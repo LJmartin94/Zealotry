@@ -21,12 +21,12 @@ public interface Exercise_DAO
 	//	for deleting and updating rows.
 
 	@Insert(onConflict = OnConflictStrategy.REPLACE)
-	void insert(Exercise_Entity exercise);
+	void insert(String_KVP_Entity exercise);
 
 	@Query("DELETE FROM exercise_table")
 	void deleteAll();
 
 	@Query("SELECT * FROM exercise_table ORDER BY ID ASC")
-	LiveData<List<Exercise_Entity>> getOrderedExercises();
+	LiveData<List<String_KVP_Entity>> getOrderedExercises();
 
 }
