@@ -29,4 +29,7 @@ public interface KVP_DAO
 	@Query("SELECT * FROM kvp_table ORDER BY dbKEY ASC")
 	LiveData<List<String_KVP_Entity>> getOrderedKeys();
 
+	@Query("SELECT * FROM kvp_table WHERE dbKEY = :val LIMIT 1")
+	String_KVP_Entity retrieveEntry(String val);
+
 }

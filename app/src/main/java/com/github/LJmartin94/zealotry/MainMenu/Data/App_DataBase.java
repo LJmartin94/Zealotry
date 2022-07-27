@@ -62,10 +62,140 @@ public abstract class App_DataBase extends RoomDatabase
 				KVP_DAO dao = INSTANCE.eiDAO();
 				dao.deleteAll();
 
-				String_KVP_Entity ex00 = new String_KVP_Entity("ex00", "some ex");
-				dao.insert(ex00);
-				String_KVP_Entity ex01 = new String_KVP_Entity("ex01", "some other ex");
-				dao.insert(ex01);
+				long val;
+
+				val = 0;
+				val = val * 60 * 1000; //convert minutes to milliseconds.
+				String_KVP_Entity MorningUI_WakeUp_duration = new String_KVP_Entity("MorningUI_WakeUp_duration", String.valueOf(val));
+				dao.insert(MorningUI_WakeUp_duration);
+				String_KVP_Entity MorningUI_WakeUp_attempts = new String_KVP_Entity("MorningUI_WakeUp_attempt", String.valueOf(1));
+				dao.insert(MorningUI_WakeUp_attempts);
+
+				val = 0;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_GetUp_duration = new String_KVP_Entity("MorningUI_GetUp_duration", String.valueOf(val));
+				dao.insert(MorningUI_GetUp_duration);
+				String_KVP_Entity MorningUI_GetUp_attempts = new String_KVP_Entity("MorningUI_GetUp_attempt", String.valueOf(1));
+				dao.insert(MorningUI_GetUp_attempts);
+
+				val = 28;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Shower_duration = new String_KVP_Entity("MorningUI_Shower_duration", String.valueOf(val));
+				dao.insert(MorningUI_Shower_duration);
+				String_KVP_Entity MorningUI_Shower_attempts = new String_KVP_Entity("MorningUI_Shower_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Shower_attempts);
+
+				val = 2;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_News_duration = new String_KVP_Entity("MorningUI_News_duration", String.valueOf(val));
+				dao.insert(MorningUI_News_duration);
+				String_KVP_Entity MorningUI_News_attempts = new String_KVP_Entity("MorningUI_News_attempt", String.valueOf(1));
+				dao.insert(MorningUI_News_attempts);
+
+				val = 2;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Curtains_duration = new String_KVP_Entity("MorningUI_Curtains_duration", String.valueOf(val));
+				dao.insert(MorningUI_Curtains_duration);
+				String_KVP_Entity MorningUI_Curtains_attempts = new String_KVP_Entity("MorningUI_Curtains_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Curtains_attempts);
+
+				val = 18;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Coffee_duration = new String_KVP_Entity("MorningUI_Coffee_duration", String.valueOf(val));
+				dao.insert(MorningUI_Coffee_duration);
+				String_KVP_Entity MorningUI_Coffee_attempts = new String_KVP_Entity("MorningUI_Coffee_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Coffee_attempts);
+
+				val = 0;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Smoothie_duration = new String_KVP_Entity("MorningUI_Smoothie_duration", String.valueOf(val));
+				dao.insert(MorningUI_Smoothie_duration);
+				String_KVP_Entity MorningUI_Smoothie_attempts = new String_KVP_Entity("MorningUI_Smoothie_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Smoothie_attempts);
+
+				val = 3;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Hydrate_duration = new String_KVP_Entity("MorningUI_Hydrate_duration", String.valueOf(val));
+				dao.insert(MorningUI_Hydrate_duration);
+				String_KVP_Entity MorningUI_Hydrate_attempts = new String_KVP_Entity("MorningUI_Hydrate_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Hydrate_attempts);
+
+				val = 2;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Vitamins_duration = new String_KVP_Entity("MorningUI_Vitamins_duration", String.valueOf(val));
+				dao.insert(MorningUI_Vitamins_duration);
+				String_KVP_Entity MorningUI_Vitamins_attempts = new String_KVP_Entity("MorningUI_Vitamins_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Vitamins_attempts);
+
+				val = 8;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Dishes_duration = new String_KVP_Entity("MorningUI_Dishes_duration", String.valueOf(val));
+				dao.insert(MorningUI_Dishes_duration);
+				String_KVP_Entity MorningUI_Dishes_attempts = new String_KVP_Entity("MorningUI_Dishes_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Dishes_attempts);
+
+				val = 17;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Breakfast_duration = new String_KVP_Entity("MorningUI_Breakfast_duration", String.valueOf(val));
+				dao.insert(MorningUI_Breakfast_duration);
+				String_KVP_Entity MorningUI_Breakfast_attempts = new String_KVP_Entity("MorningUI_Breakfast_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Breakfast_attempts);
+
+				val = 4;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Plants_duration = new String_KVP_Entity("MorningUI_Plants_duration", String.valueOf(val));
+				dao.insert(MorningUI_Plants_duration);
+				String_KVP_Entity MorningUI_Plants_attempts = new String_KVP_Entity("MorningUI_Plants_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Plants_attempts);
+
+				val = 19;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Meditation_duration = new String_KVP_Entity("MorningUI_Meditation_duration", String.valueOf(val));
+				dao.insert(MorningUI_Meditation_duration);
+				String_KVP_Entity MorningUI_Meditation_attempts = new String_KVP_Entity("MorningUI_Meditation_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Meditation_attempts);
+
+				val = 17;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Language_duration = new String_KVP_Entity("MorningUI_Language_duration", String.valueOf(val));
+				dao.insert(MorningUI_Language_duration);
+				String_KVP_Entity MorningUI_Language_attempts = new String_KVP_Entity("MorningUI_Language_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Language_attempts);
+
+				val = 11;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Teeth_duration = new String_KVP_Entity("MorningUI_Teeth_duration", String.valueOf(val));
+				dao.insert(MorningUI_Teeth_duration);
+				String_KVP_Entity MorningUI_Teeth_attempts = new String_KVP_Entity("MorningUI_Teeth_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Teeth_attempts);
+
+				val = 4;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Cosmeticism_duration = new String_KVP_Entity("MorningUI_Cosmeticism_duration", String.valueOf(val));
+				dao.insert(MorningUI_Cosmeticism_duration);
+				String_KVP_Entity MorningUI_Cosmeticism_attempts = new String_KVP_Entity("MorningUI_Cosmeticism_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Cosmeticism_attempts);
+
+				val = 11;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Pack_duration = new String_KVP_Entity("MorningUI_Pack_duration", String.valueOf(val));
+				dao.insert(MorningUI_Pack_duration);
+				String_KVP_Entity MorningUI_Pack_attempts = new String_KVP_Entity("MorningUI_Pack_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Pack_attempts);
+
+				val = 1;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_MakeBed_duration = new String_KVP_Entity("MorningUI_MakeBed_duration", String.valueOf(val));
+				dao.insert(MorningUI_MakeBed_duration);
+				String_KVP_Entity MorningUI_MakeBed_attempts = new String_KVP_Entity("MorningUI_MakeBed_attempt", String.valueOf(1));
+				dao.insert(MorningUI_MakeBed_attempts);
+
+				val = 11;
+				val = val * 60 * 1000;
+				String_KVP_Entity MorningUI_Bin_duration = new String_KVP_Entity("MorningUI_Bin_duration", String.valueOf(val));
+				dao.insert(MorningUI_Bin_duration);
+				String_KVP_Entity MorningUI_Bin_attempts = new String_KVP_Entity("MorningUI_Bin_attempt", String.valueOf(1));
+				dao.insert(MorningUI_Bin_attempts);
 			});
 
 		}
