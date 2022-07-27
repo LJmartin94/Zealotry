@@ -41,6 +41,7 @@ public abstract class App_DataBase extends RoomDatabase
 					INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
 							App_DataBase.class, "Zealotry_Database")
 							.addCallback(sRoomDatabaseCallback)
+							.fallbackToDestructiveMigrationFrom(1)
 							.build();
 				}
 			}
