@@ -900,13 +900,6 @@ public class Morning_menu extends AppCompatActivity
 		disable_menu(b, true, t, m);
 	}
 
-	public void disable_button(View v)
-	{
-		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
-		v.getBackground().setColorFilter(filter);
-		v.setClickable(false);
-	}
-
 	public void disable_fab(View v)
 	{
 		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
