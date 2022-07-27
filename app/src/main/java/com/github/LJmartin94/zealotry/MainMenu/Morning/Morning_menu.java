@@ -1,6 +1,7 @@
 package com.github.LJmartin94.zealotry.MainMenu.Morning;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -915,6 +916,8 @@ public class Morning_menu extends AppCompatActivity
 			SimpleDateFormat hmm = new SimpleDateFormat("H:mm");
 			String timeString = hmm.format(timeLong);
 			t.setText(timeString);
+			ActionBar actionBar = getSupportActionBar();
+			actionBar.setTitle("Good Morning - ETD: " + calculate_ETD());
 		}
 
 		ColorFilter filter = new PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
@@ -926,6 +929,51 @@ public class Morning_menu extends AppCompatActivity
 		{
 			m.setVisibility(View.GONE);
 		}
+	}
+
+	public String calculate_ETD()
+	{
+		int ret = 0;
+		
+		if ( ( (TextView)findViewById(R.id.wakeup_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.get_up_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.shower_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.news_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.curtains_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.coffee_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.smoothie_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.hydrate_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.vitamins_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.dishes_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.breakfast_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.plants_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.meditation_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.language_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.teeth_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.cosmeticism_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.pack_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.make_bed_time) ).getText().equals("") )
+			ret++;
+		if ( ( (TextView)findViewById(R.id.bin_time) ).getText().equals("") )
+			ret++;
+		return (String.valueOf(ret));
 	}
 
 	@Override
