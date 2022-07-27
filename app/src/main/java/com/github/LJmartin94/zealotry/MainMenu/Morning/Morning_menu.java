@@ -546,7 +546,16 @@ public class Morning_menu extends AppCompatActivity
 		disable_menu(b, true, t, m);
 	}
 
-	public void launchMeditation(View b)
+	public void launchMeditation(View v)
+	{
+		View newsRadioMenu = findViewById(R.id.Meditation_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void MeditationStart(View v)
 	{
 		Intent i = new Intent(AlarmClock.ACTION_SET_TIMER);
 		i.putExtra(AlarmClock.EXTRA_MINUTES, 10);
@@ -555,8 +564,27 @@ public class Morning_menu extends AppCompatActivity
 			startActivity(i);
 			overridePendingTransition(R.anim.slide_in_from_right, R.anim.slide_out_to_left);
 		}
-		TextView t = (TextView)findViewById(R.id.meditation_time);
-		disable_menu(b, true, t, null);
+		disable_fab(v);
+	}
+
+	public void MeditationDone(View v)
+	{
+		Button b = findViewById(R.id.meditation_button);
+		TextView t = findViewById(R.id.meditation_time);
+		View m = findViewById(R.id.Meditation_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void MeditationSkip(View v)
+	{
+		Button b = findViewById(R.id.meditation_button);
+		TextView t = findViewById(R.id.meditation_time);
+		View m = findViewById(R.id.Meditation_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
 	}
 
 	public void launchLanguage(View b)
