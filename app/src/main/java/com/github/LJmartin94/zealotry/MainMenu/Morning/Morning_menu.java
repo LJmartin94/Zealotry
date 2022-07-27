@@ -391,10 +391,33 @@ public class Morning_menu extends AppCompatActivity
 
 	//TODO: Refactor the way 'Water' works, make it its own activity
 	// that remind you to stay hydrated throughout the day and helps you track your progress towards 2L intake.
-	public void launchWater(View b)
+	public void launchWater(View v)
 	{
-		TextView t = (TextView)findViewById(R.id.hydrate_time);
-		disable_menu(b, true, t, null);
+		View newsRadioMenu = findViewById(R.id.Hydrate_Menu);
+		if (newsRadioMenu.getVisibility() == View.GONE)
+			newsRadioMenu.setVisibility(View.VISIBLE);
+		else
+			newsRadioMenu.setVisibility(View.GONE);
+	}
+
+	public void HydrateDone(View v)
+	{
+		Button b = findViewById(R.id.hydrate_button);
+		TextView t = findViewById(R.id.hydrate_time);
+		View m = findViewById(R.id.Hydrate_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
+	}
+
+	public void HydrateSkip(View v)
+	{
+		Button b = findViewById(R.id.hydrate_button);
+		TextView t = findViewById(R.id.hydrate_time);
+		View m = findViewById(R.id.Hydrate_Menu);
+
+		disable_fab(v);
+		disable_menu(b, true, t, m);
 	}
 
 	public void launchVitamins(View v)

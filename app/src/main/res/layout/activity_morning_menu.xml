@@ -574,6 +574,46 @@
 
 			</FrameLayout>
 
+			<LinearLayout
+				android:id="@+id/Hydrate_Menu"
+				android:theme="@style/MaterialGworl"
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent"
+				android:layout_margin="0dp"
+				android:visibility="gone"
+				android:orientation="vertical">
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/HydrateDone"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Filled water bottle."
+					android:text="Filled water bottle."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="HydrateDone"
+					app:icon="@drawable/ic_baseline_invert_colors_24"
+					/>
+
+				<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+					android:id="@+id/HydrateSkipped"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="4dp"
+					android:layout_gravity="start"
+					android:layout_weight="1"
+					android:contentDescription="Skip."
+					android:text="Skip."
+					android:textAllCaps="false"
+					android:textAlignment="viewStart"
+					android:onClick="HydrateSkip"
+					app:icon="@drawable/ic_baseline_fast_forward_24"
+					/>
+			</LinearLayout>
+
 			<FrameLayout
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content">
