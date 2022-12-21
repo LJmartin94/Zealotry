@@ -1,6 +1,7 @@
 package com.github.LJmartin94.zealotry.MainMenu.Data;
 
 import android.app.Application;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 
@@ -33,6 +34,16 @@ public class App_Repository
 		{
 			mKvpDao.insert(entity);
 		});
+	}
+
+	public String retrieve(String key)
+	{
+		App_DataBase.databaseWriteExecutor.execute(() ->
+		{
+			mKvpDao.retrieveEntry(key).getValue();
+			Toast.makeText(null, mKvpDao.retrieveEntry(key).getValue(), Toast.LENGTH_LONG).show();
+		});
+		return("");
 	}
 
 }
