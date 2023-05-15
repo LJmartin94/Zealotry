@@ -3,15 +3,18 @@ package com.github.LJmartin94.zealotry.MainMenu.Morning;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.BlendMode;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.text.Layout;
@@ -27,6 +30,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.LJmartin94.zealotry.MainMenu.Data.App_DataBase;
+import com.github.LJmartin94.zealotry.MainMenu.Data.App_Repository;
 import com.github.LJmartin94.zealotry.MainMenu.Utils.WebView_Util_Activity;
 import com.github.LJmartin94.zealotry.R;
 
@@ -902,8 +907,14 @@ public class Morning_menu extends AppCompatActivity
 
 	public void disable_fab(View v)
 	{
-		v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
-		v.setBackgroundColor(Color.GRAY);
+//		try{
+//			v.setBackgroundTintBlendMode(BlendMode.MULTIPLY);
+//		} catch(e) {};
+//		v.setBackgroundColor(Color.GRAY);
+//		v.setClickable(false);
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+			v.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
 		v.setClickable(false);
 	}
 
@@ -936,7 +947,14 @@ public class Morning_menu extends AppCompatActivity
 		long ret = 0;
 
 		if ( ( (TextView)findViewById(R.id.wakeup_time) ).getText().equals("") )
+		{
 			ret++;
+			App_DataBase db = App_DataBase.getDatabase(this);
+//			db.eiDAO().retrieveEntry("MorningUI_WakeUp_duration");
+
+//			App_Repository repo = new App_Repository(this.getApplication());
+//			repo.retrieve("MorningUI_WakeUp_duration");
+		}
 		if ( ( (TextView)findViewById(R.id.get_up_time) ).getText().equals("") )
 			ret++;
 		if ( ( (TextView)findViewById(R.id.shower_time) ).getText().equals("") )
